@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcos Bernard | Modern Portfolio</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="reveal-overlay"></div>
+    
+    <nav class="nav-minimal">
+        <div class="nav-inner">
+            <a href="#" class="logo" id="main-logo">
+                <span class="logo-date">28.04.26</span>
+                <span class="logo-text">HOME</span>
+            </a>
+            <div class="nav-links">
+                <a href="#summary" class="nav-link">
+                    <span class="nav-label">INFO</span>
+                    <span class="nav-subtitle">EXECUTIVE SUMMARY</span>
+                </a>
+                <a href="#labs" class="nav-link">
+                    <span class="nav-label">CODE</span>
+                    <span class="nav-subtitle">ACTIVE LABS</span>
+                </a>
+                <a href="#stack" class="nav-link">
+                    <span class="nav-label">ARCH</span>
+                    <span class="nav-subtitle">OPERATIONAL STACK</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        <header class="hero-section">
+            <div class="hero-content">
+                <div class="hero-label-wrapper">
+                    <span class="hero-label animate-reveal">SENIOR TECHNICAL CONSULTANT</span>
+                </div>
+                <h1 class="hero-title animate-reveal" id="main-title">MARCOS BERNARD</h1>
+                <div class="hero-meta animate-reveal">
+                    <div class="meta-item">
+                        <span class="meta-label">LOC:</span>
+                        <span class="meta-value" id="hero-location">LIMA, PE</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">OS:</span>
+                        <span class="meta-value" id="hero-os">FEDORA / NVIM</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section id="summary" class="section">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">EXECUTIVE SUMMARY</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="section-content">
+                <p id="bio-text" class="bio-text animate-fade-in"></p>
+            </div>
+        </section>
+
+        <div class="domain-wrapper section">
+            <div class="domain-selector animate-reveal">
+                <button class="domain-btn active" data-domain="ALL">ALL / ALL</button>
+                <button class="domain-btn" data-domain="SOFT">SOFT / CLOUD</button>
+                <button class="domain-btn" data-domain="HARD">HARD / EMBED</button>
+                <button class="domain-btn" data-domain="DOCS">DOCS / STAND</button>
+            </div>
+        </div>
+
+        <section id="labs" class="section">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">ACTIVE LABS</h2>
+                <div class="section-line"></div>
+            </div>
+            <div id="labs-grid" class="projects-grid">
+                <!-- Data injected by main.js -->
+            </div>
+        </section>
+
+        <section id="archive" class="section">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">LEGACY ARCHIVE</h2>
+                <div class="section-line"></div>
+            </div>
+            <div id="archive-grid" class="projects-grid">
+                <!-- Data injected by main.js -->
+            </div>
+        </section>
+
+        <section id="stack" class="section">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">OPERATIONAL STACK</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="stack-grid animate-fade-in">
+                <div class="stack-category">
+                    <h3>CORE</h3>
+                    <div class="stack-items" id="stack-core">C / C++ / PYTHON / SH</div>
+                </div>
+                <div class="stack-category">
+                    <h3>ENV</h3>
+                    <div class="stack-items" id="stack-env">FEDORA / TMUX / YAZI / ZATHURA</div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer-minimal">
+            <div class="footer-line"></div>
+            <div class="footer-bottom">
+                <span class="footer-copy">© 2026 MB</span>
+                <span class="footer-status">STABLE RELEASE</span>
+            </div>
+        </footer>
+    </main>
+
+    <script src="assets/js/main.js" type="module"></script>
+</body>
+</html>

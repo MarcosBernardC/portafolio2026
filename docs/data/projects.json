@@ -1,0 +1,70 @@
+{
+  "projects": [
+    {
+      "id": "01",
+      "title": "DomoNode",
+      "category": "Control & Automation",
+      "domain": "SOFT",
+      "status": "active",
+      "status_label": "Alpha 3.14",
+      "github_url": "https://github.com/MarcosBernardC/domonode",
+      "stack": ["Python 3.14", "TUI", "YAML Persistence"],
+      "description": "Simulación de flujos binarios y lectura de hardware mediante interfaces de terminal eficientes."
+    },
+    {
+      "id": "02",
+      "title": "Synquork",
+      "category": "Productivity",
+      "domain": "SOFT",
+      "status": "active",
+      "status_label": "Alpha 3.14",
+      "github_url": "https://github.com/MarcosBernardC/trellix",
+      "stack": ["Javascript", "LocalStorage", "CSS3"],
+      "description": "Motor de productividad histórico enfocado en gestión de tareas minimalistas."
+    },
+    {
+      "id": "03",
+      "title": "Dimmer PIC12F675",
+      "category": "Electronics",
+      "domain": "HARD",
+      "status": "legacy",
+      "status_label": "Legacy v1.2",
+      "github_url": "https://github.com/MarcosBernardC/PIC12F675-LED-Dimmer",
+      "stack": ["XC8", "PIC12F", "Assembly"],
+      "description": "Sistema de control de potencia y gestión de recursos limitados en sistemas PIC12F."
+    },
+    {
+      "id": "04",
+      "title": "OldCore System",
+      "category": "Embedded Systems",
+      "domain": "HARD",
+      "status": "legacy",
+      "status_label": "Archive",
+      "github_url": "https://github.com/MarcosBernardC/oldcore-system",
+      "stack": ["C99", "AVR", "Interrups"],
+      "description": "Sistema de gestión de interrupciones para microcontroladores serie ATmega."
+    },
+    {
+      "id": "05",
+      "title": "Manuales Pro",
+      "category": "Technical Standards",
+      "domain": "DOCS",
+      "status": "legacy",
+      "status_label": "Draft",
+      "github_url": "https://github.com/MarcosBernardC/instrumentation-manuals-pro",
+      "stack": ["LaTeX", "Pandoc", "Makefile"],
+      "description": "Estandarización de manuales técnicos para procesos industriales complejos."
+    },
+    {
+      "id": "06",
+      "title": "Synquork Classic",
+      "category": "Productivity Tool",
+      "domain": "SOFT / WEB",
+      "status": "legacy", 
+      "status_label": "STABLE",
+      "github_url": null, 
+      "stack": ["fish", "fedora 43"],
+      "description": "Motor de productividad histórico enfocado en gestión de tareas minimalistas y persistencia local. Utilizado como base operativa privada desde abril del 2026."
+    }
+  ]
+}

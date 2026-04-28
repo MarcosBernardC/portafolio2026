@@ -1,0 +1,13 @@
+{
+  "profile": {
+    "name": "Marcos Bernard",
+    "role": "Ingeniero Electrónico & Software",
+    "location": "Lima, Perú",
+    "tagline": "Optimización de sistemas complejos y arquitectura de software de alto rendimiento."
+  },
+
+  "technical_stack": {
+    "languages": ["C", "C++", "Python", "SH"],
+    "infrastructure": ["Fedora", "Nvim", "Tmux", "Yazi", "Zathura"]
+  }
+}
