@@ -1,5 +1,3 @@
-# MARCOS BERNARD // PORTAFOLIO 2026
-
 ![Status](https://img.shields.io/badge/Status-Operational-brightgreen?style=for-the-badge)
 ![Engine](https://img.shields.io/badge/Engine-Synquork_v2.0-blue?style=for-the-badge&logo=python&logoColor=white)
 ![OS](https://img.shields.io/badge/OS-Fedora_43-0B57A4?style=for-the-badge&logo=fedora&logoColor=white)
