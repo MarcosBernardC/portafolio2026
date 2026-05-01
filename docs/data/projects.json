@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-05-01 // 08:47 PET",
+    "last_sync": "2026-05-01 // 10:37 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -41,8 +41,9 @@
         "SOFT"
       ],
       "status": {
-        "state": "active",
-        "label": "Alpha 3.14"
+        "label": "Alpha 3.14",
+        "color": "green",
+        "icon": "activity"
       },
       "environment": {
         "os": "Fedora 43",
@@ -66,8 +67,9 @@
         "Automation"
       ],
       "status": {
-        "state": "active",
-        "label": "TUI v2.0"
+        "label": "TUI v2.0",
+        "color": "green",
+        "icon": "activity"
       },
       "environment": {
         "os": "Fedora 43",
@@ -91,8 +93,9 @@
         "STAND"
       ],
       "status": {
-        "state": "legacy",
-        "label": "ISO-9001 Compliant"
+        "label": "ISO-9001 Compliant",
+        "color": "green",
+        "icon": "activity"
       },
       "environment": {
         "os": "Fedora 43",
@@ -117,8 +120,9 @@
         "RESEARCH"
       ],
       "status": {
-        "state": "internal",
-        "label": "Matriz de Decisión"
+        "label": "Matriz de Decisión",
+        "color": "green",
+        "icon": "activity"
       },
       "environment": {
         "os": "Fedora 43",
@@ -143,13 +147,14 @@
         "WEB"
       ],
       "status": {
-        "state": "active",
-        "label": "Dev-Deploy"
+        "label": "Dev-Deploy",
+        "color": "green",
+        "icon": "activity"
       },
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-04-30 // 22:35 PET"
+        "last_update": "2026-05-01 // 09:03 PET"
       },
       "github_url": "git@github.com:MarcosBernardC/elecciones-2026.git",
       "stack": [
