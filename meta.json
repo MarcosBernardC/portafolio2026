@@ -1,15 +1,26 @@
 {
-  "id": "07",
-  "title": "Portafolio 2026",
-  "category": "Brand Engine", 
-  "domain": ["SOFT", "WEB"],
-  "status": { "state": "active", "label": "Dev-Deploy" },
-  "environment": {
-    "os": "Fedora 43",
-    "shell": "fish",
-    "last_update": "2026-04-30 // 20:20 PET"
-  },
-  "github_url": "https://github.com/MarcosBernardC/portafolio2026.git",
-  "stack": ["HTML5", "CSS3", "JavaScript", "JSON"],
-  "description": "Sistema de despliegue de identidad profesional y gestión de activos."
-}
+      "id": "07",
+      "title": "Portafolio 2026",
+      "category": "Brand Engine",
+      "domain": [
+        "SOFT",
+        "WEB"
+      ],
+      "status": {
+        "state": "active",
+        "label": "Dev-Deploy"
+      },
+      "environment": {
+        "os": "Fedora 43",
+        "shell": "fish",
+        "last_update": "2026-04-30 // 22:35 PET"
+      },
+      "github_url": "git@github.com:MarcosBernardC/elecciones-2026.git",
+      "stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "JSON"
+      ],
+      "description": "Sistema de despliegue de identidad profesional y gestión de activos."
+    }
