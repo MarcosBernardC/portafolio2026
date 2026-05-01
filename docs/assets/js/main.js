@@ -60,12 +60,19 @@ const loadPortfolioData = async () => {
                 const linkAction = isPrivate 
                     ? `onclick="showNotice('${project.title}', '${project.links.notice || ''}')"` 
                     : `href="${url}" target="_blank"`;
+                
+                const readmeUrl = !isPrivate && url.includes('github.com') 
+                    ? url.replace('github.com', 'raw.githubusercontent.com') + '/main/README.md'
+                    : null;
 
                 return `
                     <article class="project-card animate-fade-in ${isPrivate ? 'is-private' : ''}">
                         <div class="project-header">
                             <span class="project-id">${String(index + 1).padStart(2, '0')}.</span>
-                            <h3 class="project-title">${project.title}</h3>
+                            <h3 class="project-title">
+                                ${project.title}
+                                ${readmeUrl ? `<span class="readme-trigger" onclick="showReadme('${project.title}', '${readmeUrl}')">[i]</span>` : ''}
+                            </h3>
                             <div class="project-cat">
                                 <span>${project.category}</span>
                                 <span class="status-badge">${project.status.label}</span>
@@ -293,4 +300,57 @@ const showNotice = (title, customNotice) => {
     });
 };
 
-window.showNotice = showNotice; // Make it global for onclick
+const showReadme = async (title, url) => {
+    if (document.querySelector('.docs-viewer')) return;
+
+    const viewer = document.createElement('div');
+    viewer.className = 'docs-viewer';
+    viewer.innerHTML = `
+        <div class="docs-inner">
+            <div class="docs-header">
+                <span class="docs-label">DOCS_VIEWER // ${title.toUpperCase()}</span>
+                <button class="docs-close" id="close-docs-btn">EXIT (ESC)</button>
+            </div>
+            <div class="docs-body scroll-custom">
+                <div id="docs-content">CARGANDO RECURSO...</div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(viewer);
+    
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            viewer.classList.add('active');
+        });
+    });
+
+    const closeBtn = viewer.querySelector('#close-docs-btn');
+    const closeDocs = () => {
+        viewer.classList.remove('active');
+        setTimeout(() => viewer.remove(), 400);
+    };
+
+    closeBtn.addEventListener('click', closeDocs);
+    window.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeDocs(); }, { once: true });
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error("Recurso no disponible");
+        let text = await response.text();
+
+        // Basic GitHub relative path correction for images
+        const baseUrl = url.substring(0, url.lastIndexOf('/') + 1);
+        text = text.replace(/!\[(.*?)\]\((?!http)(.*?)\)/g, (match, alt, path) => {
+            return `![${alt}](${baseUrl}${path})`;
+        });
+
+        const htmlContent = marked.parse(text);
+        document.getElementById('docs-content').innerHTML = htmlContent;
+    } catch (err) {
+        document.getElementById('docs-content').innerText = `ERROR: No se pudo obtener la documentación del proyecto [${title}].\n\nVerifica la conexión o accede directamente vía SRC // REPO.`;
+    }
+};
+
+window.showNotice = showNotice;
+window.showReadme = showReadme;
