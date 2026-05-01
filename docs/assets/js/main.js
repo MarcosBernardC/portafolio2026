@@ -70,7 +70,7 @@ const loadPortfolioData = async () => {
                         <div class="project-header">
                             <span class="project-id">${String(index + 1).padStart(2, '0')}.</span>
                             <h3 class="project-title">
-                                ${project.title}
+                                ${project.title.length > 27 ? project.title.substring(0, 23) + '...' : project.title}
                                 ${readmeUrl ? `<span class="readme-trigger" onclick="showReadme('${project.title}', '${readmeUrl}')">[i]</span>` : ''}
                             </h3>
                             <div class="project-cat">
@@ -345,8 +345,26 @@ const showReadme = async (title, url) => {
             return `![${alt}](${baseUrl}${path})`;
         });
 
-        const htmlContent = marked.parse(text);
-        document.getElementById('docs-content').innerHTML = htmlContent;
+        let htmlContent = marked.parse(text);
+        
+        // Remove <p> wrappers from images to allow flex-row alignment
+        htmlContent = htmlContent.replace(/<p>\s*((?:<a.*?>)?<img.*?>(\s*<\/a>)?)\s*<\/p>/g, '$1');
+
+        const docsContainer = document.getElementById('docs-content');
+        docsContainer.innerHTML = htmlContent;
+
+        // Check if there are images and add repo link
+        if (text.includes('![')) {
+            const repoUrl = url.replace('raw.githubusercontent.com', 'github.com').replace('/main/README.md', '');
+            const linkWrapper = document.createElement('div');
+            linkWrapper.className = 'repo-link-wrapper animate-reveal';
+            linkWrapper.innerHTML = `
+                <a href="${repoUrl}" target="_blank" class="repo-link-btn">
+                    VER EN REPOSITORIO ORIGINAL <span>→</span>
+                </a>
+            `;
+            docsContainer.appendChild(linkWrapper);
+        }
     } catch (err) {
         document.getElementById('docs-content').innerText = `ERROR: No se pudo obtener la documentación del proyecto [${title}].\n\nVerifica la conexión o accede directamente vía SRC // REPO.`;
     }

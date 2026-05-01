@@ -2,31 +2,12 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-05-01 // 13:32 PET",
+    "last_sync": "2026-05-01 // 11:15 PET",
     "operational_stack": {
-      "core": [
-        "C",
-        "XC8 Specialist",
-        "Python 3.14 (struct, toml)",
-        "ASM"
-      ],
-      "eda_cad": [
-        "KiCad",
-        "FreeCAD (Python Scripting)"
-      ],
-      "env": [
-        "Fedora 43",
-        "Hyprland",
-        "NVIM",
-        "Tmux",
-        "Fish",
-        "Yazi"
-      ],
-      "docs": [
-        "LuaLaTeX",
-        "XeLaTeX",
-        "Zathura"
-      ]
+      "core": ["C", "XC8 Specialist", "Python 3.14 (struct, toml)", "ASM"],
+      "eda_cad": ["KiCad", "FreeCAD (Python Scripting)"],
+      "env": ["Fedora 43", "Hyprland", "NVIM", "Tmux", "Fish", "Yazi"],
+      "docs": ["LuaLaTeX", "XeLaTeX", "Zathura"]
     },
     "stats": {
       "total_managed": 5
@@ -37,11 +18,10 @@
       "id": "01",
       "title": "TUI-DomoNode",
       "category": "Automation",
-      "domain": [
-        "SOFT"
-      ],
+      "visibility": "PRIVATE",
+      "domain": ["SOFT"],
       "status": {
-        "state": "active",
+        "state": "ACTIVE LABS",
         "label": "Alpha 3.14"
       },
       "environment": {
@@ -49,24 +29,22 @@
         "shell": "fish",
         "last_update": "2026-04-29 // 16:18 PET"
       },
-      "github_url": "git@github.com:MarcosBernardC/tui_domonode.git",
-      "stack": [
-        "Python 3.14",
-        "TUI",
-        "TOML"
-      ],
+      "links": {
+        "ssh": "git@github.com:MarcosBernardC/tui_domonode.git",
+        "https": "https://github.com/MarcosBernardC/tui_domonode",
+        "notice": "Este repositorio contiene lógica de control propietaria y acceso a hardware restringido. Código disponible bajo solicitud formal."
+      },
+      "stack": ["Python 3.14", "TUI", "TOML"],
       "description": "Simulación de flujos binarios y lectura de hardware."
     },
     {
       "id": "02",
       "title": "Synquork",
       "category": "Productivity",
-      "domain": [
-        "CLI",
-        "Automation"
-      ],
+      "visibility": "PUBLIC",
+      "domain": ["CLI", "Automation"],
       "status": {
-        "state": "active",
+        "state": "ACTIVE LABS",
         "label": "TUI v2.0"
       },
       "environment": {
@@ -74,24 +52,21 @@
         "shell": "fish",
         "last_update": "2026-05-01 // 08:41 PET"
       },
-      "github_url": "git@github.com:MarcosBernardC/synquork.git",
-      "stack": [
-        "Python",
-        "Fish",
-        "JSON"
-      ],
-      "description": "Orquestador de activos de ingeniería y motor de sincronización automatizada de portafolio."
+      "links": {
+        "ssh": "git@github.com:MarcosBernardC/synquork.git",
+        "https": "https://github.com/MarcosBernardC/synquork"
+      },
+      "stack": ["Python", "Fish", "JSON"],
+      "description": "Orquestador de activos de ingeniería y motor de sincronización automatizada."
     },
     {
       "id": "03",
       "title": "Industrial Instrumentation Standards",
       "category": "Industrial R&D",
-      "domain": [
-        "DOCS",
-        "STAND"
-      ],
+      "visibility": "PUBLIC",
+      "domain": ["DOCS", "STAND"],
       "status": {
-        "state": "legacy",
+        "state": "LEGACY ARCHIVE",
         "label": "ISO-9001 Compliant"
       },
       "environment": {
@@ -99,25 +74,21 @@
         "shell": "fish",
         "last_update": "2026-02-27 // 08:39 PET"
       },
-      "github_url": "git@github.com:MarcosBernardC/instrumentation-manuals-pro.git",
-      "stack": [
-        "LuaLaTeX",
-        "TikZ/PGF",
-        "Makefile",
-        "Vector Graphics"
-      ],
-      "description": "Protocolos de optimización y estandarización de activos documentales industriales bajo metodología DaC."
+      "links": {
+        "ssh": "git@github.com:MarcosBernardC/instrumentation-manuals-pro.git",
+        "https": "https://github.com/MarcosBernardC/instrumentation-manuals-pro"
+      },
+      "stack": ["LuaLaTeX", "TikZ/PGF", "Makefile", "Vector Graphics"],
+      "description": "Protocolos de optimización y estandarización de activos documentales."
     },
     {
       "id": "04",
       "title": "Investigación Electoral 2026",
       "category": "Data Science",
-      "domain": [
-        "DATA",
-        "RESEARCH"
-      ],
+      "visibility": "PRIVATE",
+      "domain": ["DATA", "RESEARCH"],
       "status": {
-        "state": "internal",
+        "state": "LEGACY ARCHIVE",
         "label": "Matriz de Decisión"
       },
       "environment": {
@@ -125,39 +96,34 @@
         "shell": "fish",
         "last_update": "2026-04-11 // 17:50 PET"
       },
-      "github_url": "Internal Repository",
-      "stack": [
-        "Python",
-        "Pandas",
-        "APA 7",
-        "Statistics"
-      ],
-      "description": "Análisis estadístico y cuantitativo de planes de gobierno y hojas de vida para comicios 2026."
+      "links": {
+        "ssh": "git@github.com:MarcosBernardC/elecciones-2026.git",
+        "https": "https://github.com/MarcosBernardC/elecciones-2026",
+        "notice": "Activo de investigación interna para análisis de datos soberanos. Acceso limitado por políticas de privacidad."
+      },
+      "stack": ["Python", "Pandas", "APA 7", "Statistics"],
+      "description": "Análisis estadístico y cuantitativo de planes de gobierno y hojas de vida."
     },
     {
       "id": "07",
       "title": "Portafolio 2026",
       "category": "Brand Engine",
-      "domain": [
-        "SOFT",
-        "WEB"
-      ],
+      "visibility": "PUBLIC",
+      "domain": ["SOFT", "WEB"],
       "status": {
-        "state": "active",
+        "state": "ACTIVE LABS",
         "label": "Dev-Deploy"
       },
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-01 // 13:31 PET"
+        "last_update": "2026-04-30 // 22:35 PET"
       },
-      "github_url": "git@github.com:MarcosBernardC/elecciones-2026.git",
-      "stack": [
-        "HTML5",
-        "CSS3",
-        "JavaScript",
-        "JSON"
-      ],
+      "links": {
+        "ssh": "git@github.com:MarcosBernardC/portafolio2026.git",
+        "https": "https://github.com/MarcosBernardC/portafolio2026"
+      },
+      "stack": ["HTML5", "CSS3", "JavaScript", "JSON"],
       "description": "Sistema de despliegue de identidad profesional y gestión de activos."
     }
   ]

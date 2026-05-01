@@ -824,27 +824,58 @@ html:not([data-theme="dark"]) .switch-label:first-child {
     font-size: 1.05rem;
     line-height: 1.7;
     color: var(--fg);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
 }
 
-#docs-content h1, #docs-content h2, #docs-content h3 {
+#docs-content > * {
+    width: 100%;
+    text-align: left;
+}
+
+#docs-content h1 { text-align: center; }
+
+#docs-content h1 { 
+    font-size: 2.8rem; 
+    border-bottom: none; 
+    padding-bottom: 0; 
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Center badges and top images horizontally */
+#docs-content > p:has(img),
+#docs-content > a:has(img),
+#docs-content > img {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 0 5px 1rem 5px;
+}
+
+#docs-content img {
+    max-width: 100%;
+    height: auto;
+    border: none;
+    margin: 0;
+    display: inline-block;
+}
+
+#docs-content h2, #docs-content h3 {
     font-family: var(--font-sans);
     font-weight: 800;
-    margin-top: 3rem;
+    margin-top: 4rem;
     margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
 }
 
-#docs-content h1:first-child {
-    text-align: center;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    border-bottom: none;
-    font-size: 3rem;
-}
-
-#docs-content h1 { font-size: 2.2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.8rem; }
-#docs-content h2 { font-size: 1.6rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
-#docs-content h3 { font-size: 1.2rem; }
+#docs-content h2 { font-size: 1.8rem; border-top: 1px solid var(--border); padding-top: 3rem; }
+#docs-content h3 { font-size: 1.3rem; }
 
 #docs-content p {
     margin-bottom: 1.5rem;
@@ -861,36 +892,12 @@ html:not([data-theme="dark"]) .switch-label:first-child {
     opacity: 0.85;
 }
 
-/* Badge normalization: Detect paragraphs containing mostly images/badges */
-#docs-content p:has(img) {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-items: center;
-    margin-bottom: 2rem;
-}
-
-/* If it's a badge row following the main title, center it */
-#docs-content h1:first-child + p:has(img) {
-    justify-content: center;
-}
-
-#docs-content img {
+#docs-content img.large-img {
     max-width: 100%;
     height: auto;
     border: 1px solid var(--border);
-    margin: 2rem 0;
+    margin: 2rem auto;
     display: block;
-}
-
-/* Special treatment for badges (usually small images without borders) */
-#docs-content img[src*="shields.io"],
-#docs-content img[src*="badge"],
-#docs-content img[height*="20"] {
-    display: inline-block;
-    margin: 0;
-    border: none;
-    vertical-align: middle;
 }
 
 #docs-content code {
@@ -913,6 +920,41 @@ html:not([data-theme="dark"]) .switch-label:first-child {
     background: none;
     padding: 0;
     font-size: 0.9rem;
+}
+
+.repo-link-wrapper {
+    margin-top: 6rem;
+    padding: 4rem 0;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: center;
+}
+
+.repo-link-btn {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--fg);
+    text-decoration: none;
+    padding: 1.2rem 2.5rem;
+    border: 1px solid var(--fg);
+    transition: all 0.4s var(--ease);
+}
+
+.repo-link-btn:hover {
+    background: var(--fg);
+    color: var(--bg);
+    transform: translateY(-5px);
+}
+
+.repo-link-btn span {
+    display: inline-block;
+    transition: transform 0.3s var(--ease);
+}
+
+.repo-link-btn:hover span {
+    transform: translateX(6px);
 }
 
 /* Custom Scroll for Docs */
