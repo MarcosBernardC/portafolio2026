@@ -3,11 +3,26 @@
     "name": "Marcos Bernard",
     "role": "Ingeniero Electrónico & Software",
     "location": "Lima, Perú",
-    "tagline": "Optimización de sistemas complejos y arquitectura de software de alto rendimiento."
+    "tagline": "Arquitectura de sistemas embebidos de alta disponibilidad y software de alto rendimiento.",
+    "pillars": [
+      {
+        "title": "Firmware & Hardware",
+        "desc": "Especialista en C/XC8/XC16 para arquitecturas Microchip/dsPIC y diseño electrónico en KiCad."
+      },
+      {
+        "title": "Data & Python",
+        "desc": "Optimización de telemetría y procesamiento binario eficiente bajo estándares industriales."
+      },
+      {
+        "title": "Productive Stack",
+        "desc": "Flujos de trabajo automatizados en Fedora 43 con documentación técnica en LaTeX."
+      }
+    ]
   },
-
   "technical_stack": {
-    "languages": ["C", "C++", "Python", "SH"],
-    "infrastructure": ["Fedora", "Nvim", "Tmux", "Yazi", "Zathura"]
+    "core": ["C", "XC8 Specialist", "Python 3.14 (struct, toml)", "ASM"],
+    "eda_cad": ["KiCad", "FreeCAD (Python Scripting)"],
+    "env": ["Fedora 43", "Hyprland", "NVIM", "Tmux", "Fish", "Yazi"],
+    "docs": ["LuaLaTeX", "XeLaTeX", "Zathura"]
   }
 }

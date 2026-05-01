@@ -23,7 +23,7 @@
                     <span class="nav-label">INFO</span>
                     <span class="nav-subtitle">EXECUTIVE SUMMARY</span>
                 </a>
-                <a href="#labs" class="nav-link">
+                <a href="#code" class="nav-link">
                     <span class="nav-label">CODE</span>
                     <span class="nav-subtitle">ACTIVE LABS</span>
                 </a>
@@ -63,17 +63,20 @@
             </div>
             <div class="section-content">
                 <p id="bio-text" class="bio-text animate-fade-in"></p>
+                <div id="pillars-grid" class="pillars-grid animate-fade-in">
+                    <!-- Injected by JS -->
+                </div>
             </div>
         </section>
 
-        <div class="domain-wrapper section">
+        <section id="code" class="domain-wrapper section">
             <div class="domain-selector animate-reveal">
                 <button class="domain-btn active" data-domain="ALL">ALL / ALL</button>
                 <button class="domain-btn" data-domain="SOFT">SOFT / CLOUD</button>
                 <button class="domain-btn" data-domain="HARD">HARD / EMBED</button>
                 <button class="domain-btn" data-domain="DOCS">DOCS / STAND</button>
             </div>
-        </div>
+        </section>
 
         <section id="labs" class="section">
             <div class="section-header">
@@ -106,11 +109,19 @@
             <div class="stack-grid animate-fade-in">
                 <div class="stack-category">
                     <h3>CORE</h3>
-                    <div class="stack-items" id="stack-core">C / C++ / PYTHON / SH</div>
+                    <div class="stack-items" id="stack-core">C / XC8 / PYTHON / ASM</div>
+                </div>
+                <div class="stack-category">
+                    <h3>EDA/CAD</h3>
+                    <div class="stack-items" id="stack-eda">KICAD / FREECAD</div>
                 </div>
                 <div class="stack-category">
                     <h3>ENV</h3>
-                    <div class="stack-items" id="stack-env">FEDORA / TMUX / YAZI / ZATHURA</div>
+                    <div class="stack-items" id="stack-env">FEDORA / HYPRLAND / NVIM / TMUX / FISH / YAZI</div>
+                </div>
+                <div class="stack-category">
+                    <h3>DOCS</h3>
+                    <div class="stack-items" id="stack-docs">LATEX / ZATHURA</div>
                 </div>
             </div>
         </section>

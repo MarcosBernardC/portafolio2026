@@ -1,70 +1,124 @@
 {
+  "metadata": {
+    "owner": "Marcos Bernard",
+    "global_status": "Operational",
+    "last_sync": "2026-04-30T08:45:00Z",
+    "operational_stack": {
+      "core": ["C", "XC8 Specialist", "Python 3.14 (struct, toml)", "ASM"],
+      "eda_cad": ["KiCad", "FreeCAD (Python Scripting)"],
+      "env": ["Fedora 43", "Hyprland", "NVIM", "Tmux", "Fish", "Yazi"],
+      "docs": ["LuaLaTeX", "XeLaTeX", "Zathura"]
+    },
+    "stats": {}
+  },
   "projects": [
     {
       "id": "01",
       "title": "DomoNode",
-      "category": "Control & Automation",
-      "domain": "SOFT",
-      "status": "active",
-      "status_label": "Alpha 3.14",
+      "category": "Automation",
+      "domain": ["SOFT"],
+      "status": { "state": "active", "label": "Alpha 3.14" },
+      "environment": {
+        "os": "Fedora 43",
+        "desktop": "Hyprland",
+        "shell": "fish",
+        "last_update": "2026-04-15"
+      },
       "github_url": "https://github.com/MarcosBernardC/domonode",
-      "stack": ["Python 3.14", "TUI", "YAML Persistence"],
-      "description": "Simulación de flujos binarios y lectura de hardware mediante interfaces de terminal eficientes."
+      "stack": ["Python 3.14", "TUI", "YAML"],
+      "description": "Simulación de flujos binarios y lectura de hardware."
     },
     {
       "id": "02",
       "title": "Synquork",
       "category": "Productivity",
-      "domain": "SOFT",
-      "status": "active",
-      "status_label": "Alpha 3.14",
+      "domain": ["SOFT", "WEB"],
+      "status": { "state": "active", "label": "Alpha 3.14" },
+      "environment": {
+        "os": "Fedora 42",
+        "desktop": "GNOME 48",
+        "shell": "zsh",
+        "last_update": "2025-11-20"
+      },
       "github_url": "https://github.com/MarcosBernardC/trellix",
       "stack": ["Javascript", "LocalStorage", "CSS3"],
-      "description": "Motor de productividad histórico enfocado en gestión de tareas minimalistas."
+      "description": "Motor de gestión de tareas minimalistas."
     },
     {
       "id": "03",
       "title": "Dimmer PIC12F675",
       "category": "Electronics",
-      "domain": "HARD",
-      "status": "legacy",
-      "status_label": "Legacy v1.2",
+      "domain": ["HARD"],
+      "status": { "state": "legacy", "label": "v1.2" },
+      "environment": {
+        "os": "Windows 10 (VM)",
+        "ide": "MPLAB X v6.0",
+        "last_update": "2024-03-10"
+      },
       "github_url": "https://github.com/MarcosBernardC/PIC12F675-LED-Dimmer",
       "stack": ["XC8", "PIC12F", "Assembly"],
-      "description": "Sistema de control de potencia y gestión de recursos limitados en sistemas PIC12F."
+      "description": "Control de potencia y gestión de recursos en sistemas PIC."
     },
     {
       "id": "04",
       "title": "OldCore System",
-      "category": "Embedded Systems",
-      "domain": "HARD",
-      "status": "legacy",
-      "status_label": "Archive",
+      "category": "Embedded",
+      "domain": ["HARD"],
+      "status": { "state": "legacy", "label": "Archive" },
+      "environment": {
+        "os": "Debian 12",
+        "desktop": "Sway",
+        "last_update": "2023-08-05"
+      },
       "github_url": "https://github.com/MarcosBernardC/oldcore-system",
-      "stack": ["C99", "AVR", "Interrups"],
-      "description": "Sistema de gestión de interrupciones para microcontroladores serie ATmega."
+      "stack": ["C99", "AVR", "Interrupts"],
+      "description": "Gestión de interrupciones para microcontroladores ATmega."
     },
     {
       "id": "05",
       "title": "Manuales Pro",
-      "category": "Technical Standards",
-      "domain": "DOCS",
-      "status": "legacy",
-      "status_label": "Draft",
+      "category": "Documentation",
+      "domain": ["DOCS"],
+      "status": { "state": "legacy", "label": "Draft" },
+      "environment": {
+        "os": "Fedora 40",
+        "desktop": "KDE Plasma",
+        "last_update": "2025-01-12"
+      },
       "github_url": "https://github.com/MarcosBernardC/instrumentation-manuals-pro",
       "stack": ["LaTeX", "Pandoc", "Makefile"],
-      "description": "Estandarización de manuales técnicos para procesos industriales complejos."
+      "description": "Estandarización de manuales técnicos industriales."
     },
     {
       "id": "06",
       "title": "Synquork Classic",
-      "category": "Productivity Tool",
-      "domain": "SOFT / WEB",
-      "status": "legacy", 
-      "status_label": "STABLE",
-      "github_url": null, 
-      "stack": ["fish", "fedora 43"],
-      "description": "Motor de productividad histórico enfocado en gestión de tareas minimalistas y persistencia local. Utilizado como base operativa privada desde abril del 2026."
+      "category": "Productivity",
+      "domain": ["SOFT", "WEB"],
+      "status": { "state": "legacy", "label": "Stable" },
+      "environment": {
+        "os": "Fedora 43",
+        "desktop": "Hyprland",
+        "shell": "fish",
+        "last_update": "2026-04-01"
+      },
+      "github_url": null,
+      "stack": ["fish", "Fedora 43"],
+      "description": "Base operativa privada. Enfoque en persistencia local."
+    },
+    {
+      "id": "07",
+      "title": "Portafolio 2026",
+      "category": "Brand Engine", 
+      "domain": ["SOFT", "WEB"],
+      "status": { "state": "active", "label": "Dev-Deploy" },
+      "environment": {
+        "os": "Fedora 43",
+        "shell": "fish",
+        "last_update": "2026-04-30"
+      },
+      "github_url": "https://github.com/MarcosBernardC/portafolio2026.git",
+      "stack": ["HTML5", "CSS3", "JavaScript", "JSON"],
+      "description": "Sistema de despliegue de identidad profesional y gestión de activos."
     }
   ]
 }
