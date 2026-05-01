@@ -260,20 +260,37 @@ const initNavigation = () => {
 };
 
 const showNotice = (title, customNotice) => {
+    if (document.querySelector('.security-notice')) return;
+
     const defaultMessage = `Repositorio de arquitectura privada o restringida. El proyecto [${title}] se encuentra bajo protocolos de seguridad interna y no está disponible para acceso público directo.`;
     const message = customNotice && customNotice !== 'undefined' ? customNotice : defaultMessage;
     
-    // Create notice element
     const notice = document.createElement('div');
-    notice.className = 'security-notice animate-fade-in';
+    notice.className = 'security-notice';
     notice.innerHTML = `
         <div class="notice-inner">
             <span class="notice-label">SECURITY_PROTOCOL_ALERT</span>
             <p class="notice-text">${message}</p>
-            <button class="notice-close" onclick="this.parentElement.parentElement.remove()">ACKNOWLEDGE / CLOSE</button>
+            <button class="notice-close" id="close-notice-btn">ACKNOWLEDGE / CLOSE</button>
         </div>
     `;
+    
     document.body.appendChild(notice);
+    
+    // Ensure the browser has painted the initial state
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            notice.classList.add('active');
+        });
+    });
+
+    const closeBtn = notice.querySelector('#close-notice-btn');
+    closeBtn.addEventListener('click', () => {
+        notice.classList.remove('active');
+        setTimeout(() => {
+            notice.remove();
+        }, 400); // Match CSS transition time
+    });
 };
 
 window.showNotice = showNotice; // Make it global for onclick
