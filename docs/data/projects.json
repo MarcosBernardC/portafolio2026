@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-05-01 // 10:40 PET",
+    "last_sync": "2026-05-01 // 10:42 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -41,9 +41,8 @@
         "SOFT"
       ],
       "status": {
-        "label": "Alpha 3.14",
-        "color": "green",
-        "icon": "activity"
+        "state": "active",
+        "label": "Alpha 3.14"
       },
       "environment": {
         "os": "Fedora 43",
@@ -67,9 +66,8 @@
         "Automation"
       ],
       "status": {
-        "label": "TUI v2.0",
-        "color": "green",
-        "icon": "activity"
+        "state": "active",
+        "label": "TUI v2.0"
       },
       "environment": {
         "os": "Fedora 43",
@@ -93,9 +91,8 @@
         "STAND"
       ],
       "status": {
-        "label": "ISO-9001 Compliant",
-        "color": "green",
-        "icon": "activity"
+        "state": "legacy",
+        "label": "ISO-9001 Compliant"
       },
       "environment": {
         "os": "Fedora 43",
@@ -120,9 +117,8 @@
         "RESEARCH"
       ],
       "status": {
-        "label": "Matriz de Decisión",
-        "color": "green",
-        "icon": "activity"
+        "state": "internal",
+        "label": "Matriz de Decisión"
       },
       "environment": {
         "os": "Fedora 43",
@@ -147,9 +143,8 @@
         "WEB"
       ],
       "status": {
-        "label": "Dev-Deploy",
-        "color": "green",
-        "icon": "activity"
+        "state": "active",
+        "label": "Dev-Deploy"
       },
       "environment": {
         "os": "Fedora 43",
