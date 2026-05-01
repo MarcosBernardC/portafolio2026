@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-04-30 // 22:12 PET",
+    "last_sync": "2026-05-01 // 08:47 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -29,7 +29,7 @@
       ]
     },
     "stats": {
-      "total_managed": 4
+      "total_managed": 5
     }
   },
   "projects": [
@@ -49,7 +49,7 @@
         "shell": "fish",
         "last_update": "2026-04-29 // 16:18 PET"
       },
-      "github_url": "https://github.com/MarcosBernardC/domonode",
+      "github_url": "git@github.com:MarcosBernardC/tui_domonode.git",
       "stack": [
         "Python 3.14",
         "TUI",
@@ -62,25 +62,25 @@
       "title": "Synquork",
       "category": "Productivity",
       "domain": [
-        "SOFT",
-        "WEB"
+        "CLI",
+        "Automation"
       ],
       "status": {
         "state": "active",
-        "label": "Alpha 3.14"
+        "label": "TUI v2.0"
       },
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-04-30 // 21:50 PET"
+        "last_update": "2026-05-01 // 08:41 PET"
       },
-      "github_url": "https://github.com/MarcosBernardC/trellix",
+      "github_url": "git@github.com:MarcosBernardC/synquork.git",
       "stack": [
-        "Javascript",
-        "LocalStorage",
-        "CSS3"
+        "Python",
+        "Fish",
+        "JSON"
       ],
-      "description": "Motor de gestión de tareas minimalistas."
+      "description": "Orquestador de activos de ingeniería y motor de sincronización automatizada de portafolio."
     },
     {
       "id": "03",
@@ -97,9 +97,9 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-04-30 // 22:05 PET"
+        "last_update": "2026-02-27 // 08:39 PET"
       },
-      "github_url": "https://github.com/MarcosBernardC/industrial-docs",
+      "github_url": "git@github.com:MarcosBernardC/instrumentation-manuals-pro.git",
       "stack": [
         "LuaLaTeX",
         "TikZ/PGF",
@@ -112,15 +112,26 @@
       "id": "04",
       "title": "Investigación Electoral 2026",
       "category": "Data Science",
-      "domain": ["DATA", "RESEARCH"],
-      "status": { "state": "internal", "label": "Matriz de Decisión" },
+      "domain": [
+        "DATA",
+        "RESEARCH"
+      ],
+      "status": {
+        "state": "internal",
+        "label": "Matriz de Decisión"
+      },
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-04-30 // 22:15 PET"
+        "last_update": "2026-04-11 // 17:50 PET"
       },
       "github_url": "Internal Repository",
-      "stack": ["Python", "Pandas", "APA 7", "Statistics"],
+      "stack": [
+        "Python",
+        "Pandas",
+        "APA 7",
+        "Statistics"
+      ],
       "description": "Análisis estadístico y cuantitativo de planes de gobierno y hojas de vida para comicios 2026."
     },
     {
@@ -132,15 +143,15 @@
         "WEB"
       ],
       "status": {
-        "state": "internal",
+        "state": "active",
         "label": "Dev-Deploy"
       },
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-04-30 // 20:18 PET"
+        "last_update": "2026-04-30 // 22:35 PET"
       },
-      "github_url": "https://github.com/MarcosBernardC/portafolio2026.git",
+      "github_url": "git@github.com:MarcosBernardC/elecciones-2026.git",
       "stack": [
         "HTML5",
         "CSS3",
