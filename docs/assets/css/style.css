@@ -713,9 +713,23 @@ html:not([data-theme="dark"]) .switch-label:first-child {
 }
 
 .project-link-btn.private {
-    cursor: help;
+    cursor: pointer;
     background: var(--light-gray);
     border: 1px dashed var(--border);
+}
+
+.project-link-btn.private:hover {
+    background: #DE6143 !important;
+    border-color: #DE6143 !important;
+    color: #ffffff !important;
+}
+
+.project-card.is-private {
+    transition: border-color 0.3s var(--ease);
+}
+
+.project-card.is-private:hover {
+    border-bottom-color: #DE6143;
 }
 
 .security-notice {

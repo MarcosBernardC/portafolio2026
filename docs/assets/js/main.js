@@ -21,13 +21,12 @@ const loadPortfolioData = async () => {
 
         if (nameElement) nameElement.innerText = profileData.profile.name.toUpperCase();
         if (locationElement) locationElement.innerText = profileData.profile.location.toUpperCase();
-        if (osElement) osElement.innerText = profileData.profile.tagline.split(' ')[0].toUpperCase(); // Just a fallback or use infrastructure
         
-        // Better OS/Stack display:
+        // Better OS/Stack display from projects data:
         if (osElement && projectsData.metadata.operational_stack) {
             const env = projectsData.metadata.operational_stack.env;
             if (env && env.length >= 2) {
-                osElement.innerText = `${env[0]} / ${env[1]}`.toUpperCase();
+                osElement.innerText = `${env[0]} / ${env[2] || env[1]}`.toUpperCase();
             }
         }
 
@@ -56,21 +55,21 @@ const loadPortfolioData = async () => {
                 : projectsData.projects.filter(p => p.domain.includes(filterDomain));
 
             const renderProject = (project, index) => {
-                const url = project.github_url || "";
-                const isPrivate = !url || url.includes('Internal') || !url.startsWith('http');
+                const url = project.links.https || "";
+                const isPrivate = project.visibility === 'PRIVATE';
                 const linkAction = isPrivate 
-                    ? `onclick="showNotice('${project.title}')"` 
+                    ? `onclick="showNotice('${project.title}', '${project.links.notice || ''}')"` 
                     : `href="${url}" target="_blank"`;
 
                 return `
-                    <article class="project-card animate-fade-in">
+                    <article class="project-card animate-fade-in ${isPrivate ? 'is-private' : ''}">
                         <div class="project-header">
                             <span class="project-id">${String(index + 1).padStart(2, '0')}.</span>
                             <h3 class="project-title">${project.title}</h3>
                             <div class="project-cat">
                                 <span>${project.category}</span>
                                 <span class="status-badge">${project.status.label}</span>
-                                <span class="project-date">DATE: ${project.environment.last_update}</span>
+                                <span class="project-date">DATE: ${project.environment.last_update.split(' // ')[0]}</span>
                             </div>
                         </div>
                         <p class="project-desc">${project.description}</p>
@@ -88,9 +87,19 @@ const loadPortfolioData = async () => {
                 `;
             };
 
-            const activeProjects = filteredProjects.filter(p => p.status.state === 'active');
-            const internalProjects = filteredProjects.filter(p => p.status.state === 'internal');
-            const legacyProjects = filteredProjects.filter(p => p.status.state === 'legacy');
+            const sortByVisibility = (a, b) => {
+                if (a.visibility === 'PUBLIC' && b.visibility === 'PRIVATE') return -1;
+                if (a.visibility === 'PRIVATE' && b.visibility === 'PUBLIC') return 1;
+                return 0;
+            };
+
+            const activeProjects = filteredProjects
+                .filter(p => p.status.state === 'ACTIVE LABS')
+                .sort(sortByVisibility);
+
+            const legacyProjects = filteredProjects
+                .filter(p => p.status.state === 'LEGACY ARCHIVE')
+                .sort(sortByVisibility);
 
             const updateSection = (sectionId, gridId, projects) => {
                 const section = document.getElementById(sectionId);
@@ -122,7 +131,6 @@ const loadPortfolioData = async () => {
             };
 
             updateSection('labs', 'labs-grid', activeProjects);
-            updateSection('internal', 'internal-grid', internalProjects);
             updateSection('archive', 'archive-grid', legacyProjects);
         };
 
@@ -151,6 +159,12 @@ const loadPortfolioData = async () => {
             if (edaStack) edaStack.innerText = stack.eda_cad.join(' / ').toUpperCase();
             if (envStack) envStack.innerText = stack.env.join(' / ').toUpperCase();
             if (docsStack) docsStack.innerText = stack.docs.join(' / ').toUpperCase();
+        }
+
+        // 6. Sync Footer Status
+        const statusElement = document.getElementById('footer-status');
+        if (statusElement && projectsData.metadata.last_sync) {
+            statusElement.innerText = `SYNC_OK // ${projectsData.metadata.last_sync}`;
         }
 
     } catch (error) {
@@ -232,7 +246,7 @@ const initNavigation = () => {
         navLinks.forEach(link => {
             link.classList.remove('active');
             const href = link.getAttribute('href');
-            if (current !== '' && (href.includes(current) || (href === '#code' && (current === 'labs' || current === 'internal' || current === 'archive')))) {
+            if (current !== '' && (href.includes(current) || (href === '#code' && (current === 'labs' || current === 'archive')))) {
                 link.classList.add('active');
             }
         });
@@ -245,8 +259,9 @@ const initNavigation = () => {
     });
 };
 
-const showNotice = (title) => {
-    const message = `Repositorio de arquitectura privada o restringida. El proyecto [${title}] se encuentra bajo protocolos de seguridad interna y no está disponible para acceso público directo.`;
+const showNotice = (title, customNotice) => {
+    const defaultMessage = `Repositorio de arquitectura privada o restringida. El proyecto [${title}] se encuentra bajo protocolos de seguridad interna y no está disponible para acceso público directo.`;
+    const message = customNotice && customNotice !== 'undefined' ? customNotice : defaultMessage;
     
     // Create notice element
     const notice = document.createElement('div');
