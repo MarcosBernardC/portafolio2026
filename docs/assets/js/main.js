@@ -56,10 +56,11 @@ const loadPortfolioData = async () => {
                 : projectsData.projects.filter(p => p.domain.includes(filterDomain));
 
             const renderProject = (project, index) => {
-                const isPrivate = !project.github_url;
+                const url = project.github_url || "";
+                const isPrivate = !url || url.includes('Internal') || !url.startsWith('http');
                 const linkAction = isPrivate 
-                    ? `onclick="showNotice('${project.id}')"` 
-                    : `href="${project.github_url}" target="_blank"`;
+                    ? `onclick="showNotice('${project.title}')"` 
+                    : `href="${url}" target="_blank"`;
 
                 return `
                     <article class="project-card animate-fade-in">
@@ -88,45 +89,41 @@ const loadPortfolioData = async () => {
             };
 
             const activeProjects = filteredProjects.filter(p => p.status.state === 'active');
+            const internalProjects = filteredProjects.filter(p => p.status.state === 'internal');
             const legacyProjects = filteredProjects.filter(p => p.status.state === 'legacy');
 
-            const labsSection = document.getElementById('labs');
-            const archiveSection = document.getElementById('archive');
+            const updateSection = (sectionId, gridId, projects) => {
+                const section = document.getElementById(sectionId);
+                const grid = document.getElementById(gridId);
+                if (!section || !grid) return;
 
-            if (labsSection) {
-                if (activeProjects.length > 0) {
-                    labsSection.style.display = 'block';
-                    labsSection.classList.remove('section-reveal');
-                    void labsSection.offsetWidth; 
-                    labsSection.classList.add('section-reveal');
-                    labsGrid.innerHTML = activeProjects.map(renderProject).join('');
+                if (projects.length > 0) {
+                    section.style.display = 'block';
+                    grid.innerHTML = projects.map(renderProject).join('');
+                    
+                    // Update or inject count
+                    let countSpan = section.querySelector('.section-count');
+                    if (!countSpan) {
+                        const title = section.querySelector('.section-title');
+                        if (title) {
+                            title.innerHTML += ` <span class="section-count"></span>`;
+                            countSpan = section.querySelector('.section-count');
+                        }
+                    }
+                    if (countSpan) countSpan.innerText = `${projects.length} ITEMS`;
+                    
+                    // Trigger animation
+                    section.classList.remove('section-reveal');
+                    void section.offsetWidth;
+                    section.classList.add('section-reveal');
                 } else {
-                    labsSection.style.display = 'none';
+                    section.style.display = 'none';
                 }
-            }
+            };
 
-            if (archiveSection) {
-                if (legacyProjects.length > 0) {
-                    archiveSection.style.display = 'block';
-                    archiveSection.classList.remove('section-reveal');
-                    void archiveSection.offsetWidth;
-                    archiveSection.classList.add('section-reveal');
-                    archiveGrid.innerHTML = legacyProjects.map(renderProject).join('');
-                } else {
-                    archiveSection.style.display = 'none';
-                }
-            }
-
-            // Update section counts dynamically and elegantly
-            const activeHeader = document.querySelector('#labs .section-title');
-            const archiveHeader = document.querySelector('#archive .section-title');
-            
-            if (activeHeader) {
-                activeHeader.innerHTML = `ACTIVE LABS <span class="section-count">${activeProjects.length} ITEMS</span>`;
-            }
-            if (archiveHeader) {
-                archiveHeader.innerHTML = `LEGACY ARCHIVE <span class="section-count">${legacyProjects.length} ITEMS</span>`;
-            }
+            updateSection('labs', 'labs-grid', activeProjects);
+            updateSection('internal', 'internal-grid', internalProjects);
+            updateSection('archive', 'archive-grid', legacyProjects);
         };
 
         // Initial render
@@ -164,9 +161,26 @@ const loadPortfolioData = async () => {
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
+    initTheme();
     await loadPortfolioData();
     initNavigation();
 });
+
+const initTheme = () => {
+    const themeToggle = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'light';
+    
+    // Apply theme
+    document.documentElement.setAttribute('data-theme', savedTheme);
+
+    themeToggle?.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('portfolio-theme', newTheme);
+    });
+};
 
 const initNavigation = () => {
     const logo = document.getElementById('main-logo');
@@ -218,7 +232,7 @@ const initNavigation = () => {
         navLinks.forEach(link => {
             link.classList.remove('active');
             const href = link.getAttribute('href');
-            if (current !== '' && (href.includes(current) || (href === '#code' && (current === 'labs' || current === 'archive')))) {
+            if (current !== '' && (href.includes(current) || (href === '#code' && (current === 'labs' || current === 'internal' || current === 'archive')))) {
                 link.classList.add('active');
             }
         });
@@ -231,22 +245,20 @@ const initNavigation = () => {
     });
 };
 
-const showNotice = (id) => {
-    if (id === '06') {
-        const message = "Repositorio de arquitectura privada. Este proyecto funciona como el motor de gestión local bajo Fedora 43 y no está sujeto a distribución pública para preservar la seguridad de los metadatos de producción.";
-        
-        // Create notice element
-        const notice = document.createElement('div');
-        notice.className = 'security-notice animate-fade-in';
-        notice.innerHTML = `
-            <div class="notice-inner">
-                <span class="notice-label">SECURITY_PROTOCOL_ALERT</span>
-                <p class="notice-text">${message}</p>
-                <button class="notice-close" onclick="this.parentElement.parentElement.remove()">ACKNOWLEDGE / CLOSE</button>
-            </div>
-        `;
-        document.body.appendChild(notice);
-    }
+const showNotice = (title) => {
+    const message = `Repositorio de arquitectura privada o restringida. El proyecto [${title}] se encuentra bajo protocolos de seguridad interna y no está disponible para acceso público directo.`;
+    
+    // Create notice element
+    const notice = document.createElement('div');
+    notice.className = 'security-notice animate-fade-in';
+    notice.innerHTML = `
+        <div class="notice-inner">
+            <span class="notice-label">SECURITY_PROTOCOL_ALERT</span>
+            <p class="notice-text">${message}</p>
+            <button class="notice-close" onclick="this.parentElement.parentElement.remove()">ACKNOWLEDGE / CLOSE</button>
+        </div>
+    `;
+    document.body.appendChild(notice);
 };
 
 window.showNotice = showNotice; // Make it global for onclick
