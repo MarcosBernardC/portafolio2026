@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-05-01 // 22:25 PET",
+    "last_sync": "2026-05-02 // 15:40 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -29,7 +29,7 @@
       ]
     },
     "stats": {
-      "total_managed": 5
+      "total_managed": 6
     }
   },
   "projects": [
@@ -186,6 +186,38 @@
         "JSON"
       ],
       "description": "Sistema de despliegue de identidad profesional y gestión de activos."
+    },
+    {
+      "id": "08",
+      "title": "PIC12F675 LED Dimmer",
+      "category": "Power Electronics",
+      "visibility": "PUBLIC",
+      "domain": [
+        "HARD",
+        "EMB"
+      ],
+      "status": {
+        "state": "ARCHIVE",
+        "label": "Stable-HW"
+      },
+      "environment": {
+        "os": "Fedora 43",
+        "shell": "fish",
+        "last_update": "2026-05-02 // 15:34 PET",
+        "last_commit_log": "15:34 | Change project status note to ARCHIVE"
+      },
+      "links": {
+        "ssh": "git@github.com:MarcosBernardC/pic12f675-led-dimmer.git",
+        "https": "https://github.com/MarcosBernardC/pic12f675-led-dimmer"
+      },
+      "stack": [
+        "C",
+        "KiCad",
+        "XC8",
+        "MPLAB X",
+        "LaTeX"
+      ],
+      "description": "Controlador de intensidad lumínica basado en microcontrolador de 8 bits con investigación técnica documentada."
     }
   ]
 }
