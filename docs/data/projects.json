@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-05-02 // 16:18 PET",
+    "last_sync": "2026-05-02 // 16:37 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -109,8 +109,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-01 // 21:46 PET",
-        "last_commit_log": "21:46 | feat: add synquork metadata descriptor"
+        "last_update": "2026-05-02 // 16:37 PET",
+        "last_commit_log": "16:37 | chore: cambiar número de imágnes de renderizado 2D a una sola (minimalismo)"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/instrumentation-manuals-pro.git",
