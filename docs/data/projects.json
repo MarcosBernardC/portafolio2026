@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-05-01 // 21:28 PET",
+    "last_sync": "2026-05-01 // 21:37 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -95,13 +95,13 @@
       "id": "03",
       "title": "Industrial Instrumentation Standards",
       "category": "Industrial R&D",
-      "visibility": "PRIVATE",
+      "visibility": "PUBLIC",
       "domain": [
         "DOCS",
         "STAND"
       ],
       "status": {
-        "state": "legacy",
+        "state": "ARCHIVE",
         "label": "ISO-9001 Compliant"
       },
       "environment": {
@@ -110,8 +110,8 @@
         "last_update": "2026-02-27 // 08:39 PET"
       },
       "links": {
-        "ssh": "",
-        "https": ""
+        "ssh": "git@github.com:MarcosBernardC/instrumentation-manuals-pro.git",
+        "https": "https://github.com/MarcosBernardC/instrumentation-manuals-pro"
       },
       "stack": [
         "LuaLaTeX",
@@ -119,7 +119,7 @@
         "Makefile",
         "Vector Graphics"
       ],
-      "description": "Protocolos de optimización y estandarización de activos documentales industriales bajo metodología DaC."
+      "description": "Protocolos de optimización y estandarización de activos documentales."
     },
     {
       "id": "04",
@@ -168,7 +168,7 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-01 // 21:25 PET"
+        "last_update": "2026-05-01 // 21:28 PET"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/portafolio2026.git",
