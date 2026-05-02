@@ -94,8 +94,7 @@ body {
     width: 100%;
     padding: 2rem 4rem;
     z-index: 100;
-    background: var(--glass);
-    backdrop-filter: blur(10px);
+    background: var(--bg);
     border-bottom: 1px solid var(--border);
 }
 
@@ -330,6 +329,39 @@ html:not([data-theme="dark"]) .switch-label:first-child {
 .section {
     margin-bottom: 15rem;
     scroll-margin-top: 10rem;
+    transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+    will-change: opacity, transform;
+}
+
+/* Base state for all sections when focus mode is active */
+body[data-focus] .section:not(.is-focused) {
+    opacity: 0.08 !important;
+    pointer-events: none;
+    transform: scale(0.98) !important;
+}
+
+/* The focused section itself */
+.section.is-focused {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    z-index: 10;
+}
+
+/* Sub-section Focus Logic */
+.sub-section {
+    transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+/* Sibling Status for Sub-Sections (Labs/Archive) */
+#dynamic-sections-container:has(> .sub-section:hover) > .sub-section:not(:hover),
+#dynamic-sections-container:has(> .sub-section.is-focused) > .sub-section:not(.is-focused) {
+    opacity: 0.3;
+    transform: scale(0.99);
+}
+
+.sub-section.is-focused {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .domain-wrapper {
@@ -341,9 +373,78 @@ html:not([data-theme="dark"]) .switch-label:first-child {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
-    margin-bottom: 6rem;
-    border-top: 2px solid var(--fg);
-    padding-top: 1.5rem;
+    margin-bottom: 4rem;
+    padding-top: 2rem;
+    position: relative;
+}
+
+.main-header {
+    position: sticky;
+    top: 5.4rem;
+    background: var(--bg);
+    z-index: 150;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0;
+    margin-top: 8rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    transition: background-color 0.4s var(--ease);
+}
+
+.header-content-left {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+}
+
+.main-header .section-title {
+    font-size: 1.8rem;
+    letter-spacing: 0.05em;
+    font-weight: 900;
+}
+
+.main-header .section-number {
+    font-size: 1rem;
+    font-weight: 900;
+    color: var(--fg);
+}
+
+.sub-section {
+    margin-bottom: 0;
+    padding-left: 0;
+    border-left: none;
+}
+
+.sub-section .section-header {
+    position: sticky;
+    top: 9.3rem;
+    background: var(--bg);
+    z-index: 130;
+    padding: 0.6rem 0;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    transition: all 0.4s var(--ease);
+}
+
+.sub-section .section-title {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+}
+
+.sub-section .section-number {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
 }
 
 .section-number {
@@ -374,10 +475,7 @@ html:not([data-theme="dark"]) .switch-label:first-child {
 }
 
 .section-line {
-    width: 100%;
-    height: 1px;
-    background: var(--border);
-    margin-top: 1rem;
+    display: none;
 }
 
 .section-content {
@@ -433,9 +531,10 @@ html:not([data-theme="dark"]) .switch-label:first-child {
 /* --- Domain Selector --- */
 .domain-selector {
     display: flex;
-    gap: 3rem;
-    padding-left: 3rem;
-    border-bottom: 1px solid var(--border);
+    gap: 2rem;
+    padding: 0;
+    margin-bottom: 0;
+    z-index: 110;
 }
 
 .domain-btn {
@@ -467,6 +566,7 @@ html:not([data-theme="dark"]) .switch-label:first-child {
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: 4rem;
     padding-left: 0;
+    margin-bottom: 2rem;
 }
 
 .project-item {
@@ -489,16 +589,18 @@ html:not([data-theme="dark"]) .switch-label:first-child {
 
 .project-id {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
-    margin-bottom: 1rem;
+    font-size: 0.65rem;
+    margin-bottom: 0.5rem;
     display: block;
+    opacity: 0.5;
 }
 
 .project-title {
-    font-size: 2.5rem;
+    font-size: 1.15rem;
     font-weight: 800;
-    margin-bottom: 1.5rem;
-    line-height: 1;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
 }
 
 .project-desc {
@@ -574,8 +676,14 @@ html:not([data-theme="dark"]) .switch-label:first-child {
 }
 
 /* --- Animations --- */
+/* section-reveal: uses animation-fill-mode: none so it does NOT persist
+   and block the focus system. JS removes the class after animation ends. */
 .section-reveal {
-    animation: sectionReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: sectionReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.section-reveal.anim-done {
+    animation: none;
 }
 
 @keyframes sectionReveal {
@@ -588,19 +696,52 @@ html:not([data-theme="dark"]) .switch-label:first-child {
     to { transform: translateY(0); }
 }
 
+.animate-reveal {
+    opacity: 0;
+    animation: revealIn 0.8s var(--ease) 0.2s both;
+}
+
+.animate-reveal.anim-done {
+    animation: none;
+    opacity: 1;
+    transform: translateY(0);
+}
+
 @keyframes revealIn {
     from { transform: translateY(30px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 .animate-fade-in {
-    animation: fadeIn var(--transition-slow) 0.2s forwards;
+    animation: fadeIn var(--transition-slow) 0.2s both;
     opacity: 0;
+}
+
+.animate-fade-in.anim-done {
+    animation: none;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    padding: 6rem 0;
+    border-top: 1px dashed var(--border);
+    border-bottom: 1px dashed var(--border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--gray);
+    letter-spacing: 0.2em;
+    opacity: 0.4;
+    text-transform: uppercase;
 }
 
 /* Mobile Responsive */
@@ -617,6 +758,42 @@ html:not([data-theme="dark"]) .switch-label:first-child {
     margin-top: 2rem;
     padding-bottom: 2rem;
     border-bottom: 1px solid var(--border);
+    position: relative;
+    transition: all 0.3s var(--ease);
+}
+
+.project-card::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--fg);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s var(--ease), opacity 0.6s var(--ease);
+    opacity: 0;
+}
+
+.project-card:hover::after {
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+.project-card:hover .readme-trigger {
+    color: var(--fg);
+    opacity: 1 !important;
+    border-color: var(--fg);
+}
+
+.project-card:hover .project-id,
+.project-card:hover .project-title,
+.project-card:hover .project-desc,
+.project-card:hover .project-cat,
+.project-card:hover .project-stack {
+    opacity: 1;
+    color: var(--fg);
 }
 
 .project-header {
@@ -630,12 +807,16 @@ html:not([data-theme="dark"]) .switch-label:first-child {
     font-family: 'JetBrains Mono', monospace;
     font-weight: 700;
     font-size: 1.2rem;
+    opacity: 0.4;
+    transition: opacity 0.4s var(--ease);
 }
 
 .project-title {
     font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: -0.01em;
+    opacity: 0.7;
+    transition: opacity 0.4s var(--ease);
 }
 
 .project-cat {
@@ -648,6 +829,8 @@ html:not([data-theme="dark"]) .switch-label:first-child {
     flex-direction: column;
     align-items: flex-end;
     gap: 4px;
+    opacity: 0.3;
+    transition: opacity 0.4s var(--ease);
 }
 
 .status-badge {
@@ -667,9 +850,11 @@ html:not([data-theme="dark"]) .switch-label:first-child {
 
 .project-desc {
     font-size: 1.1rem;
-    color: #ccc;
+    color: var(--gray);
     max-width: 70ch;
     margin-bottom: 1rem;
+    opacity: 0.5;
+    transition: all 0.4s var(--ease);
 }
 
 .project-footer {
@@ -684,6 +869,8 @@ html:not([data-theme="dark"]) .switch-label:first-child {
     font-size: 0.75rem;
     color: var(--gray);
     max-width: 60%;
+    opacity: 0.4;
+    transition: all 0.4s var(--ease);
 }
 
 .project-link-btn {
@@ -695,6 +882,12 @@ html:not([data-theme="dark"]) .switch-label:first-child {
     border: 1px solid var(--border);
     padding: 0.5rem 1rem;
     transition: all 0.3s var(--ease);
+    opacity: 0.3;
+}
+
+.project-card:hover .project-link-btn {
+    opacity: 1;
+    border-color: var(--fg);
 }
 
 .project-link-btn:hover {
@@ -714,14 +907,15 @@ html:not([data-theme="dark"]) .switch-label:first-child {
 
 .project-link-btn.private {
     cursor: pointer;
-    background: var(--light-gray);
+    background: transparent;
     border: 1px dashed var(--border);
 }
 
 .project-link-btn.private:hover {
-    background: #DE6143 !important;
-    border-color: #DE6143 !important;
-    color: #ffffff !important;
+    background: var(--fg) !important;
+    border-color: var(--fg) !important;
+    color: var(--bg) !important;
+    border-style: solid; 
 }
 
 .project-card.is-private {
@@ -734,21 +928,25 @@ html:not([data-theme="dark"]) .switch-label:first-child {
 
 .readme-trigger {
     font-family: var(--font-mono);
-    font-size: 0.9rem;
-    color: var(--gray);
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--fg);
     cursor: pointer;
     margin-left: 1rem;
     opacity: 0.3;
     transition: all 0.3s var(--ease);
-    padding: 0 5px;
-    background: var(--light-gray);
-    border-radius: 2px;
+    padding: 2px 6px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 0;
+    vertical-align: middle;
 }
 
 .readme-trigger:hover {
     opacity: 1;
-    color: var(--fg);
-    background: var(--border);
+    color: var(--bg) !important;
+    background: var(--fg) !important;
+    border-color: var(--fg);
 }
 
 .docs-viewer {
@@ -978,7 +1176,6 @@ html:not([data-theme="dark"]) .switch-label:first-child {
     width: 100%;
     height: 100%;
     background: var(--bg);
-    backdrop-filter: blur(10px);
     display: flex;
     justify-content: center;
     align-items: center;
