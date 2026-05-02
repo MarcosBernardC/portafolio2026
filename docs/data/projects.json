@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-05-01 // 21:18 PET",
+    "last_sync": "2026-05-01 // 21:25 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -82,8 +82,7 @@
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/synquork.git",
-        "https": "https://github.com/MarcosBernardC/synquork",
-        "notice": ""
+        "https": "https://github.com/MarcosBernardC/synquork"
       },
       "stack": [
         "Python",
@@ -112,8 +111,7 @@
       },
       "links": {
         "ssh": "",
-        "https": "",
-        "notice": ""
+        "https": ""
       },
       "stack": [
         "LuaLaTeX",
@@ -170,12 +168,11 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-01 // 20:58 PET"
+        "last_update": "2026-05-01 // 21:18 PET"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/portafolio2026.git",
-        "https": "https://github.com/MarcosBernardC/portafolio2026",
-        "notice": ""
+        "https": "https://github.com/MarcosBernardC/portafolio2026"
       },
       "stack": [
         "HTML5",
