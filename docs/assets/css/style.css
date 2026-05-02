@@ -1192,6 +1192,144 @@ body[data-focus] .section:not(.is-focused) {
     background: var(--gray);
 }
 
+/* --- Inline Resource Viewer (PDF / Code / Text) --- */
+.inline-resource-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+    width: 100%;
+}
+
+.resource-type-badge {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--bg);
+    background: var(--fg);
+    padding: 4px 10px;
+    text-transform: uppercase;
+}
+
+.resource-filename {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--gray);
+    letter-spacing: 0.02em;
+}
+
+.inline-pdf-viewer {
+    width: 100%;
+    flex: 1;
+    min-height: 75vh;
+    border: 1px solid var(--border);
+    background: var(--light-gray);
+}
+
+.inline-code-block {
+    background: var(--light-gray);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    line-height: 1.7;
+    width: 100%;
+    white-space: pre;
+    tab-size: 4;
+}
+
+.inline-code-block code {
+    background: none;
+    padding: 0;
+    font-size: inherit;
+}
+
+.inline-code-loading {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--gray);
+    letter-spacing: 0.15em;
+    padding: 4rem 0;
+    text-align: center;
+    width: 100%;
+    animation: pulse-loading 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-loading {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+}
+
+.inline-md-content {
+    width: 100%;
+}
+
+.inline-resource-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.resource-external-link {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--fg);
+    text-decoration: none;
+    padding: 0.8rem 2rem;
+    border: 1px solid var(--border);
+    transition: all 0.3s var(--ease);
+}
+
+.resource-external-link:hover {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
+}
+
+.resource-external-link span {
+    display: inline-block;
+    transition: transform 0.3s var(--ease);
+}
+
+.resource-external-link:hover span {
+    transform: translateX(4px);
+}
+
+.inline-resource-error {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: #ff5555;
+    padding: 2rem;
+    border: 1px dashed #ff5555;
+    text-align: center;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+/* Make all links inside docs-content styled consistently */
+#docs-content a:not(.repo-link-btn):not(.resource-external-link) {
+    color: var(--fg);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1px;
+    transition: border-color 0.3s var(--ease);
+    cursor: pointer;
+}
+
+#docs-content a:not(.repo-link-btn):not(.resource-external-link):hover {
+    border-bottom-color: var(--fg);
+}
+
 .security-notice {
     position: fixed;
     top: 0;

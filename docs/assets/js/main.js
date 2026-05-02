@@ -391,6 +391,154 @@ const showNotice = (title, customNotice) => {
     });
 };
 
+// --- Inline resource renderer helpers ---
+const RAW_TEXT_EXTENSIONS = [
+    '.c', '.h', '.py', '.js', '.ts', '.md', '.txt', '.json', '.toml',
+    '.sh', '.fish', '.asm', '.s', '.cfg', '.mk', '.makefile', '.yaml',
+    '.yml', '.xml', '.html', '.css', '.tex', '.bib', '.ini', '.conf',
+    '.env', '.gitignore', '.dockerfile', '.rs', '.go', '.java', '.cpp',
+    '.hpp', '.rb', '.lua', '.zig', '.csv'
+];
+
+const isRawGithubUrl = (href) => href && href.includes('raw.githubusercontent.com');
+
+const getFileExtension = (href) => {
+    try {
+        const pathname = new URL(href).pathname;
+        const dot = pathname.lastIndexOf('.');
+        return dot !== -1 ? pathname.substring(dot).toLowerCase() : '';
+    } catch { return ''; }
+};
+
+const getLangFromExt = (ext) => {
+    const map = {
+        '.c': 'C', '.h': 'C Header', '.py': 'Python', '.js': 'JavaScript',
+        '.ts': 'TypeScript', '.json': 'JSON', '.toml': 'TOML', '.sh': 'Shell',
+        '.fish': 'Fish', '.asm': 'ASM', '.s': 'ASM', '.tex': 'LaTeX',
+        '.yaml': 'YAML', '.yml': 'YAML', '.html': 'HTML', '.css': 'CSS',
+        '.lua': 'Lua', '.rs': 'Rust', '.go': 'Go', '.java': 'Java',
+        '.cpp': 'C++', '.hpp': 'C++ Header', '.md': 'Markdown'
+    };
+    return map[ext] || ext.replace('.', '').toUpperCase();
+};
+
+const escapeHtml = (str) => str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+const renderInlineResource = async (href, docsContainer) => {
+    const ext = getFileExtension(href);
+    const fileName = decodeURIComponent(href.split('/').pop());
+
+    if (ext === '.pdf') {
+        docsContainer.innerHTML = `
+            <div class="inline-resource-header">
+                <span class="resource-type-badge">PDF_VIEWER</span>
+                <span class="resource-filename">${escapeHtml(fileName)}</span>
+            </div>
+            <div class="inline-code-loading">CARGANDO PDF...</div>
+        `;
+        try {
+            const pdfRes = await fetch(href);
+            if (!pdfRes.ok) throw new Error('PDF no disponible');
+            const pdfBlob = await pdfRes.blob();
+            const blobUrl = URL.createObjectURL(new Blob([pdfBlob], { type: 'application/pdf' }));
+
+            docsContainer.innerHTML = `
+                <div class="inline-resource-header">
+                    <span class="resource-type-badge">PDF_VIEWER</span>
+                    <span class="resource-filename">${escapeHtml(fileName)}</span>
+                </div>
+                <iframe src="${blobUrl}" class="inline-pdf-viewer" title="${escapeHtml(fileName)}"></iframe>
+                <div class="inline-resource-footer">
+                    <a href="${href}" target="_blank" class="resource-external-link">
+                        ABRIR EN NUEVA PESTAÑA <span>→</span>
+                    </a>
+                </div>
+            `;
+        } catch {
+            docsContainer.innerHTML = `
+                <div class="inline-resource-header">
+                    <span class="resource-type-badge">PDF_VIEWER</span>
+                    <span class="resource-filename">${escapeHtml(fileName)}</span>
+                </div>
+                <p class="inline-resource-error">ERROR: No se pudo cargar el PDF [${escapeHtml(fileName)}].</p>
+                <div class="inline-resource-footer">
+                    <a href="${href}" target="_blank" class="resource-external-link">
+                        DESCARGAR PDF <span>→</span>
+                    </a>
+                </div>
+            `;
+        }
+        return;
+    }
+
+    if (RAW_TEXT_EXTENSIONS.includes(ext)) {
+        docsContainer.innerHTML = `
+            <div class="inline-resource-header">
+                <span class="resource-type-badge">${getLangFromExt(ext)}</span>
+                <span class="resource-filename">${escapeHtml(fileName)}</span>
+            </div>
+            <div class="inline-code-loading">CARGANDO RECURSO...</div>
+        `;
+        try {
+            const res = await fetch(href);
+            if (!res.ok) throw new Error('Recurso no disponible');
+            const code = await res.text();
+
+            if (ext === '.md') {
+                const baseUrl = href.substring(0, href.lastIndexOf('/') + 1);
+                const corrected = code.replace(/!\[(.*?)\]\((?!http)(.*?)\)/g, (m, alt, path) => {
+                    return `![${alt}](${baseUrl}${path})`;
+                });
+                docsContainer.innerHTML = `
+                    <div class="inline-resource-header">
+                        <span class="resource-type-badge">MARKDOWN</span>
+                        <span class="resource-filename">${escapeHtml(fileName)}</span>
+                    </div>
+                    <div class="inline-md-content">${marked.parse(corrected)}</div>
+                    <div class="inline-resource-footer">
+                        <a href="${href}" target="_blank" class="resource-external-link">VER RAW <span>→</span></a>
+                    </div>
+                `;
+            } else {
+                docsContainer.innerHTML = `
+                    <div class="inline-resource-header">
+                        <span class="resource-type-badge">${getLangFromExt(ext)}</span>
+                        <span class="resource-filename">${escapeHtml(fileName)}</span>
+                    </div>
+                    <pre class="inline-code-block"><code>${escapeHtml(code)}</code></pre>
+                    <div class="inline-resource-footer">
+                        <a href="${href}" target="_blank" class="resource-external-link">VER RAW <span>→</span></a>
+                    </div>
+                `;
+            }
+        } catch {
+            docsContainer.innerHTML += `<p class="inline-resource-error">ERROR: No se pudo cargar el recurso [${escapeHtml(fileName)}].</p>`;
+        }
+        return;
+    }
+
+    // Unknown extension — open externally
+    window.open(href, '_blank');
+};
+
+const attachInlineLinkHandlers = (docsContainer) => {
+    docsContainer.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (!link) return;
+
+        const href = link.getAttribute('href');
+        if (!href) return;
+
+        if (isRawGithubUrl(href)) {
+            const ext = getFileExtension(href);
+            if (ext === '.pdf' || RAW_TEXT_EXTENSIONS.includes(ext)) {
+                e.preventDefault();
+                renderInlineResource(href, docsContainer);
+            }
+        }
+    });
+};
+
 const showReadme = async (title, url) => {
     if (document.querySelector('.docs-viewer')) return;
 
@@ -436,6 +584,11 @@ const showReadme = async (title, url) => {
             return `![${alt}](${baseUrl}${path})`;
         });
 
+        // Also fix relative links (not images) to point to raw GitHub
+        text = text.replace(/(?<!!)\[(.*?)\]\((?!http)(.*?)\)/g, (match, label, path) => {
+            return `[${label}](${baseUrl}${path})`;
+        });
+
         let htmlContent = marked.parse(text);
         
         // Remove <p> wrappers from images to allow flex-row alignment
@@ -443,6 +596,9 @@ const showReadme = async (title, url) => {
 
         const docsContainer = document.getElementById('docs-content');
         docsContainer.innerHTML = htmlContent;
+
+        // Attach inline resource handlers for raw GitHub links
+        attachInlineLinkHandlers(docsContainer);
 
         // Check if there are images and add repo link
         if (text.includes('![')) {
