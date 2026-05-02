@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-05-02 // 15:40 PET",
+    "last_sync": "2026-05-02 // 16:18 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -69,8 +69,8 @@
       "category": "Productivity",
       "visibility": "PUBLIC",
       "domain": [
-        "CLI",
-        "Automation"
+        "SOFT",
+        "CLOUD"
       ],
       "status": {
         "state": "ACTIVE LABS",
