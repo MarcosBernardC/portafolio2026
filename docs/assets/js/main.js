@@ -54,7 +54,7 @@ const loadPortfolioData = async () => {
                 ? projectsData.projects 
                 : projectsData.projects.filter(p => p.domain.includes(filterDomain));
 
-            const renderProject = (project, index) => {
+            const renderProject = (project, index, prefix = "02.x") => {
                 const url = project.links.https || "";
                 const isPrivate = project.visibility === 'PRIVATE';
                 const linkAction = isPrivate 
@@ -68,7 +68,7 @@ const loadPortfolioData = async () => {
                 return `
                     <article class="project-card animate-fade-in ${isPrivate ? 'is-private' : ''}">
                         <div class="project-header">
-                            <span class="project-id">${String(index + 1).padStart(2, '0')}.</span>
+                            <span class="project-id">${prefix}.${index + 1}</span>
                             <h3 class="project-title">
                                 ${project.title.length > 27 ? project.title.substring(0, 23) + '...' : project.title}
                                 ${readmeUrl ? `<span class="readme-trigger" onclick="showReadme('${project.title}', '${readmeUrl}')">[i]</span>` : ''}
@@ -105,41 +105,91 @@ const loadPortfolioData = async () => {
                 .sort(sortByVisibility);
 
             const legacyProjects = filteredProjects
-                .filter(p => p.status.state === 'LEGACY ARCHIVE')
+                .filter(p => p.status.state === 'ARCHIVE')
                 .sort(sortByVisibility);
 
-            const updateSection = (sectionId, gridId, projects) => {
+            const updateSection = (sectionId, gridId, countId, projects, prefix) => {
                 const section = document.getElementById(sectionId);
                 const grid = document.getElementById(gridId);
+                const countSpan = document.getElementById(countId);
                 if (!section || !grid) return;
 
+                section.style.display = 'block'; // Always show
+                
                 if (projects.length > 0) {
-                    section.style.display = 'block';
-                    grid.innerHTML = projects.map(renderProject).join('');
-                    
-                    // Update or inject count
-                    let countSpan = section.querySelector('.section-count');
-                    if (!countSpan) {
-                        const title = section.querySelector('.section-title');
-                        if (title) {
-                            title.innerHTML += ` <span class="section-count"></span>`;
-                            countSpan = section.querySelector('.section-count');
-                        }
-                    }
+                    grid.innerHTML = projects.map((p, i) => renderProject(p, i, prefix)).join('');
                     if (countSpan) countSpan.innerText = `${projects.length} ITEMS`;
-                    
-                    // Trigger animation
-                    section.classList.remove('section-reveal');
-                    void section.offsetWidth;
-                    section.classList.add('section-reveal');
                 } else {
-                    section.style.display = 'none';
+                    grid.innerHTML = `
+                        <div class="empty-state animate-fade-in">
+                            &gt; fish: No matches found for current query. Use [ALL] to reset scope.
+                        </div>
+                    `;
+                    if (countSpan) countSpan.innerText = `0 ITEMS`;
                 }
+                
+                // Trigger animation
+                section.classList.remove('section-reveal');
+                void section.offsetWidth;
+                section.classList.add('section-reveal');
             };
 
-            updateSection('labs', 'labs-grid', activeProjects);
-            updateSection('archive', 'archive-grid', legacyProjects);
+            // 1. Determine DOM Order and Prefixes
+            const container = document.getElementById('dynamic-sections-container');
+            const labsSection = document.getElementById('labs');
+            const archiveSection = document.getElementById('archive');
+            
+            let labsPrefix, archivePrefix;
+
+            if (activeProjects.length === 0 && legacyProjects.length > 0) {
+                container.insertBefore(archiveSection, labsSection);
+                archivePrefix = "02.1";
+                labsPrefix = "02.2";
+            } else {
+                container.insertBefore(labsSection, archiveSection);
+                labsPrefix = "02.1";
+                archivePrefix = "02.2";
+            }
+
+            // 2. Render sections with calculated prefixes
+            updateSection('labs', 'labs-grid', 'labs-count', activeProjects, labsPrefix);
+            updateSection('archive', 'archive-grid', 'archive-count', legacyProjects, archivePrefix);
+
+            // 3. Final re-sequencing of header titles
+            resequenceSections();
+
         };
+
+        const resequenceSections = () => {
+            // 1. Fixed Main Sections
+            const summarySpan = document.querySelector('#summary .section-number');
+            const codeSpan = document.querySelector('#code .section-number');
+            const stackSpan = document.querySelector('#stack .section-number');
+            
+            if (summarySpan) summarySpan.innerText = "01";
+            if (codeSpan) codeSpan.innerText = "02";
+            if (stackSpan) stackSpan.innerText = "03";
+
+            // 2. Sub-sections within CODE
+            const subSections = [
+                document.getElementById('labs'),
+                document.getElementById('archive')
+            ].sort((a, b) => {
+                return a.getBoundingClientRect().top - b.getBoundingClientRect().top;
+            });
+
+            let subIdx = 1;
+            subSections.forEach(sec => {
+                const span = sec.querySelector('.section-number');
+                if (span) {
+                    span.innerText = `02.${subIdx}`;
+                    subIdx++;
+                }
+            });
+        };
+
+        // 3a. Update Domain Selector (No numbers as requested)
+        // Removed dynamic counting of items on buttons
 
         // Initial render
         renderProjects();
@@ -185,7 +235,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     initTheme();
     await loadPortfolioData();
     initNavigation();
+    cleanupAnimations();
 });
+
+// After entrance animations finish, neutralize them so they don't
+// block the focus/opacity system from controlling section visibility.
+const cleanupAnimations = () => {
+    const animated = document.querySelectorAll('.section-reveal, .animate-reveal, .animate-fade-in');
+    animated.forEach(el => {
+        el.addEventListener('animationend', () => {
+            el.classList.add('anim-done');
+        }, { once: true });
+    });
+};
 
 const initTheme = () => {
     const themeToggle = document.getElementById('theme-toggle');
@@ -230,8 +292,7 @@ const initNavigation = () => {
         });
     });
 
-    window.addEventListener('scroll', () => {
-        let current = '';
+    const handleScroll = () => {
         const scrollPos = window.pageYOffset;
 
         // Logo toggle logic
@@ -241,14 +302,41 @@ const initNavigation = () => {
             logo.classList.remove('scrolled');
         }
 
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (scrollPos >= sectionTop - 200) {
-                current = section.getAttribute('id');
+        // Rigorous Centric Focus Logic
+        const mainSections = document.querySelectorAll('.main-container > .section');
+        let closestSection = null;
+        let minDistance = Infinity;
+
+        mainSections.forEach(section => {
+            section.classList.remove('is-focused');
+            const rect = section.getBoundingClientRect();
+            const sectionCenter = rect.top + rect.height / 2;
+            const distance = Math.abs(window.innerHeight / 2 - sectionCenter);
+
+            if (distance < minDistance) {
+                minDistance = distance;
+                closestSection = section;
             }
         });
 
-        if (scrollPos < 300) current = '';
+        if (scrollPos < 100) {
+            mainSections.forEach(s => s.classList.remove('is-focused'));
+            const home = document.getElementById('home');
+            if (home) {
+                home.classList.add('is-focused');
+                document.body.setAttribute('data-focus', 'home');
+            }
+            current = '';
+        } else if (closestSection) {
+            closestSection.classList.add('is-focused');
+            document.body.setAttribute('data-focus', closestSection.id);
+            current = closestSection.getAttribute('id');
+        }
+
+        if (scrollPos < 300 && scrollPos >= 100) {
+            current = '';
+            document.body.setAttribute('data-focus', 'between');
+        }
 
         navLinks.forEach(link => {
             link.classList.remove('active');
@@ -257,7 +345,10 @@ const initNavigation = () => {
                 link.classList.add('active');
             }
         });
-    });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial call to set focus on load
 
     // Smooth scroll to top
     logo.addEventListener('click', (e) => {
