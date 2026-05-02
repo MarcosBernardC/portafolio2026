@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-05-01 // 21:48 PET",
+    "last_sync": "2026-05-01 // 21:57 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -48,7 +48,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-04-29 // 16:18 PET"
+        "last_update": "2026-04-29 // 16:18 PET",
+        "last_commit_log": "16:18 | feat: integrar controlador de rutas para gestión de directorios de salida"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/tui_domonode.git",
@@ -78,7 +79,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-01 // 08:41 PET"
+        "last_update": "2026-05-01 // 08:41 PET",
+        "last_commit_log": "08:41 | chore: actualizar metadatos de repositorio"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/synquork.git",
@@ -107,7 +109,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-01 // 21:46 PET"
+        "last_update": "2026-05-01 // 21:46 PET",
+        "last_commit_log": "21:46 | feat: add synquork metadata descriptor"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/instrumentation-manuals-pro.git",
@@ -137,7 +140,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-04-11 // 17:50 PET"
+        "last_update": "2026-04-11 // 17:50 PET",
+        "last_commit_log": "17:50 | chore: actualizar ignores para excluir directorios temporales de datos"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/elecciones-2026.git",
@@ -168,7 +172,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-01 // 21:39 PET"
+        "last_update": "2026-05-01 // 21:49 PET",
+        "last_commit_log": "21:49 | chore(sync): auto-update project states 21:48 PET"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/portafolio2026.git",
