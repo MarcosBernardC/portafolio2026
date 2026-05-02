@@ -421,10 +421,8 @@ body[data-focus] .section:not(.is-focused) {
 }
 
 .sub-section .section-header {
-    position: sticky;
-    top: 9.3rem;
+    position: relative;
     background: var(--bg);
-    z-index: 130;
     padding: 0.6rem 0;
     margin-bottom: 2rem;
     display: flex;
