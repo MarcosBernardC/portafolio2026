@@ -66,7 +66,7 @@
       "visibility": "PUBLIC",
       "domain": ["DOCS", "STAND"],
       "status": {
-        "state": "LEGACY ARCHIVE",
+        "state": "ARCHIVE",
         "label": "ISO-9001 Compliant"
       },
       "environment": {
@@ -88,7 +88,7 @@
       "visibility": "PRIVATE",
       "domain": ["DATA", "RESEARCH"],
       "status": {
-        "state": "LEGACY ARCHIVE",
+        "state": "ARCHIVE",
         "label": "Matriz de Decisión"
       },
       "environment": {
