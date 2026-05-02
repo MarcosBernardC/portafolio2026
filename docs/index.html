@@ -35,7 +35,7 @@
                 </a>
                 <a href="#code" class="nav-link">
                     <span class="nav-label">CODE</span>
-                    <span class="nav-subtitle">ACTIVE LABS</span>
+                    <span class="nav-subtitle">REPOSITORIES</span>
                 </a>
                 <a href="#stack" class="nav-link">
                     <span class="nav-label">ARCH</span>
@@ -46,7 +46,7 @@
     </nav>
 
     <main class="main-container">
-        <header class="hero-section">
+        <header id="home" class="hero-section section">
             <div class="hero-content">
                 <div class="hero-label-wrapper">
                     <span class="hero-label animate-reveal">SENIOR TECHNICAL CONSULTANT</span>
@@ -65,10 +65,12 @@
             </div>
         </header>
 
-        <section id="summary" class="section">
-            <div class="section-header">
-                <span class="section-number">01</span>
-                <h2 class="section-title">EXECUTIVE SUMMARY</h2>
+        <section id="summary" class="section section-reveal">
+            <div class="section-header main-header">
+                <div class="header-content-left">
+                    <span class="section-number">01</span>
+                    <h2 class="section-title">EXECUTIVE SUMMARY</h2>
+                </div>
                 <div class="section-line"></div>
             </div>
             <div class="section-content">
@@ -79,43 +81,54 @@
             </div>
         </section>
 
-        <section id="code" class="domain-wrapper section">
-            <div class="domain-selector animate-reveal">
-                <button class="domain-btn active" data-domain="ALL">ALL / ALL</button>
-                <button class="domain-btn" data-domain="SOFT">SOFT / CLOUD</button>
-                <button class="domain-btn" data-domain="HARD">HARD / EMBED</button>
-                <button class="domain-btn" data-domain="DOCS">DOCS / STAND</button>
-                <button class="domain-btn" data-domain="DATA">DATA / ANALYST</button>
-            </div>
-        </section>
-
-        <section id="labs" class="section">
-            <div class="section-header">
-                <span class="section-number">02</span>
-                <h2 class="section-title">ACTIVE LABS</h2>
+        <section id="code" class="domain-wrapper section section-reveal">
+            <div class="section-header main-header">
+                <div class="header-content-left">
+                    <span class="section-number">02</span>
+                    <h2 class="section-title">REPOSITORIES</h2>
+                </div>
+                
+                <div class="domain-selector animate-reveal">
+                    <button class="domain-btn active" data-domain="ALL">ALL</button>
+                    <button class="domain-btn" data-domain="SOFT">SOFT / CLOUD</button>
+                    <button class="domain-btn" data-domain="HARD">HARD / EMBED</button>
+                    <button class="domain-btn" data-domain="DOCS">DOCS / STAND</button>
+                    <button class="domain-btn" data-domain="DATA">DATA / ANALYST</button>
+                </div>
                 <div class="section-line"></div>
             </div>
-            <div id="labs-grid" class="projects-grid">
-                <!-- Data injected by main.js -->
-            </div>
-        </section>
 
+            <div id="dynamic-sections-container">
+                <section id="labs" class="sub-section">
+                    <div class="section-header">
+                        <span class="section-number">02.1</span>
+                        <h2 class="section-title">ACTIVE LABS <span class="section-count" id="labs-count"></span></h2>
+                        <div class="section-line"></div>
+                    </div>
+                    <div id="labs-grid" class="projects-grid">
+                        <!-- Data injected by main.js -->
+                    </div>
+                </section>
 
-        <section id="archive" class="section">
-            <div class="section-header">
-                <span class="section-number">03</span>
-                <h2 class="section-title">LEGACY ARCHIVE</h2>
-                <div class="section-line"></div>
-            </div>
-            <div id="archive-grid" class="projects-grid">
-                <!-- Data injected by main.js -->
+                <section id="archive" class="sub-section">
+                    <div class="section-header">
+                        <span class="section-number">02.2</span>
+                        <h2 class="section-title">ARCHIVE <span class="section-count" id="archive-count"></span></h2>
+                        <div class="section-line"></div>
+                    </div>
+                    <div id="archive-grid" class="projects-grid">
+                        <!-- Data injected by main.js -->
+                    </div>
+                </section>
             </div>
         </section>
 
         <section id="stack" class="section">
-            <div class="section-header">
-                <span class="section-number">04</span>
-                <h2 class="section-title">OPERATIONAL STACK</h2>
+            <div class="section-header main-header">
+                <div class="header-content-left">
+                    <span class="section-number">03</span>
+                    <h2 class="section-title">OPERATIONAL STACK</h2>
+                </div>
                 <div class="section-line"></div>
             </div>
             <div class="stack-grid animate-fade-in">
@@ -138,7 +151,7 @@
             </div>
         </section>
 
-        <footer class="footer-minimal">
+        <footer class="footer-minimal section">
             <div class="footer-line"></div>
             <div class="footer-bottom">
                 <span class="footer-copy">© 2026 MB</span>
