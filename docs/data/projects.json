@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-05-02 // 20:51 PET",
+    "last_sync": "2026-05-02 // 20:55 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -223,7 +223,7 @@
       "id": "09",
       "title": "Helvetia-Instruments",
       "category": "Electronic Commerce",
-      "visibility": "PUBLIC",
+      "visibility": "PRIVATE",
       "domain": [
         "SOFT",
         "WEB",
@@ -241,7 +241,8 @@
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/Helvetia-Instruments.git",
-        "https": "https://github.com/MarcosBernardC/Helvetia-Instruments"
+        "https": "https://github.com/MarcosBernardC/Helvetia-Instruments",
+        "notice": "Proyecto en construcción. Despliegue público programado tras validación de módulos de automatización."
       },
       "stack": [
         "Python",
