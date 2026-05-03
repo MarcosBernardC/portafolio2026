@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-05-02 // 16:37 PET",
+    "last_sync": "2026-05-02 // 20:51 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -29,7 +29,7 @@
       ]
     },
     "stats": {
-      "total_managed": 6
+      "total_managed": 7
     }
   },
   "projects": [
@@ -172,8 +172,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-01 // 20:58 PET",
-        "last_commit_log": "20:58 | style: implementar escala tipográfica descendente y refinamiento de densidades"
+        "last_update": "2026-05-02 // 18:02 PET",
+        "last_commit_log": "18:02 | feat(web): implementar sistema de renderizado inline para recursos técnicos (PDF/Code)"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/portafolio2026.git",
@@ -203,8 +203,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-02 // 15:34 PET",
-        "last_commit_log": "15:34 | Change project status note to ARCHIVE"
+        "last_update": "2026-05-02 // 17:49 PET",
+        "last_commit_log": "17:49 | docs: actualizar enlace de código fuente a vista raw con apertura en pestaña nueva"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/pic12f675-led-dimmer.git",
@@ -218,6 +218,39 @@
         "LaTeX"
       ],
       "description": "Controlador de intensidad lumínica basado en microcontrolador de 8 bits con investigación técnica documentada."
+    },
+    {
+      "id": "09",
+      "title": "Helvetia-Instruments",
+      "category": "Electronic Commerce",
+      "visibility": "PUBLIC",
+      "domain": [
+        "SOFT",
+        "WEB",
+        "HARD"
+      ],
+      "status": {
+        "state": "ACTIVE LABS",
+        "label": "Beta-Infrastructure"
+      },
+      "environment": {
+        "os": "Fedora 43",
+        "shell": "fish",
+        "last_update": "2026-05-02 // 20:50 PET",
+        "last_commit_log": "20:50 | feat: definir esquemas iniciales de catálogo y perfil profesional"
+      },
+      "links": {
+        "ssh": "git@github.com:MarcosBernardC/Helvetia-Instruments.git",
+        "https": "https://github.com/MarcosBernardC/Helvetia-Instruments"
+      },
+      "stack": [
+        "Python",
+        "JavaScript",
+        "JSON",
+        "Fish",
+        "GitHub Pages"
+      ],
+      "description": "Ecosistema automatizado de instrumentación electrónica y suministro técnico de componentes."
     }
   ]
 }
