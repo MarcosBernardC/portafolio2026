@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-05-02 // 20:55 PET",
+    "last_sync": "2026-05-05 // 13:56 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -29,7 +29,7 @@
       ]
     },
     "stats": {
-      "total_managed": 7
+      "total_managed": 8
     }
   },
   "projects": [
@@ -236,8 +236,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-02 // 20:50 PET",
-        "last_commit_log": "20:50 | feat: definir esquemas iniciales de catálogo y perfil profesional"
+        "last_update": "2026-05-02 // 22:35 PET",
+        "last_commit_log": "22:35 | feat: implementar motor de renderizado y diseño de sistema DIN"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/Helvetia-Instruments.git",
@@ -252,6 +252,40 @@
         "GitHub Pages"
       ],
       "description": "Ecosistema automatizado de instrumentación electrónica y suministro técnico de componentes."
+    },
+    {
+      "id": "10",
+      "title": "Docs",
+      "category": "Technical Documentation & Engineering Records",
+      "visibility": "PRIVATE",
+      "domain": [
+        "HARD",
+        "LEGAL",
+        "ACADEMIC"
+      ],
+      "status": {
+        "state": "ACTIVE",
+        "label": "Production-Archive"
+      },
+      "environment": {
+        "os": "Fedora 43",
+        "shell": "fish",
+        "last_update": "2026-05-05 // 13:55 PET",
+        "last_commit_log": "13:55 | docs: agregar registro de gastos mala marzo-abril 2026"
+      },
+      "links": {
+        "ssh": "git@github.com:MarcosBernardC/Docs.git",
+        "https": "https://github.com/MarcosBernardC/Docs",
+        "notice": "Repositorio privado de gestión documental, finanzas y registros de ingeniería (Tesis/DomoNode)."
+      },
+      "stack": [
+        "LaTeX",
+        "LuaLaTeX",
+        "Makefile",
+        "Fish Shell",
+        "Python"
+      ],
+      "description": "Sistema centralizado de documentación técnica que incluye expedientes ANA, gestión de contratos, finanzas personales y avances de Tesis/DomoNode."
     }
   ]
 }
