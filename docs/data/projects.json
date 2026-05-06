@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-05-05 // 13:56 PET",
+    "last_sync": "2026-05-06 // 08:14 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -48,8 +48,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-04-29 // 16:18 PET",
-        "last_commit_log": "16:18 | feat: integrar controlador de rutas para gestión de directorios de salida"
+        "last_update": "2026-05-05 // 18:12 PET",
+        "last_commit_log": "18:12 | refactor: reestructurar esquema de metadatos del proyecto"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/tui_domonode.git",
@@ -270,8 +270,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-05 // 13:55 PET",
-        "last_commit_log": "13:55 | docs: agregar registro de gastos mala marzo-abril 2026"
+        "last_update": "2026-05-06 // 08:14 PET",
+        "last_commit_log": "08:14 | feat: implementar control financiero mensual para sede surco"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/Docs.git",
