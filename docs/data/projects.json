@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-05-06 // 08:14 PET",
+    "last_sync": "2026-05-06 // 21:09 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -48,8 +48,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-05 // 18:12 PET",
-        "last_commit_log": "18:12 | refactor: reestructurar esquema de metadatos del proyecto"
+        "last_update": "2026-05-06 // 21:06 PET",
+        "last_commit_log": "21:06 | refactor(scripts): reorganizar módulos de telemetría y limpiar datos binarios"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/tui_domonode.git",
