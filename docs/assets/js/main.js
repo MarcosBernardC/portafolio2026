@@ -353,12 +353,7 @@ const initNavigation = () => {
         } else if (closestSection) {
             closestSection.classList.add('is-focused');
             document.body.setAttribute('data-focus', closestSection.id);
-            current = closestSection.getAttribute('id');
-        }
-
-        if (scrollPos < 300 && scrollPos >= 100) {
-            current = '';
-            document.body.setAttribute('data-focus', 'between');
+            current = closestSection.id === 'home' ? '' : closestSection.id;
         }
 
         navLinks.forEach(link => {
