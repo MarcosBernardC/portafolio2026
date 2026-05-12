@@ -66,7 +66,7 @@ const loadPortfolioData = async () => {
                     : null;
 
                 return `
-                    <article class="project-card animate-fade-in ${isPrivate ? 'is-private' : ''}">
+                    <article class="project-card animate-fade-in ${isPrivate ? 'is-private' : ''}" tabindex="0">
                         <div class="project-header">
                             <span class="project-id">${prefix}.${index + 1}</span>
                             <h3 class="project-title">
@@ -333,16 +333,28 @@ const initNavigation = () => {
         mainSections.forEach(section => {
             section.classList.remove('is-focused');
             const rect = section.getBoundingClientRect();
+            const viewportCenter = window.innerHeight / 2;
+            
+            // Logic: Is the viewport center inside the section? (Better for tall mobile sections)
+            const isIntersectingCenter = rect.top <= viewportCenter && rect.bottom >= viewportCenter;
+            
             const sectionCenter = rect.top + rect.height / 2;
-            const distance = Math.abs(window.innerHeight / 2 - sectionCenter);
+            const distance = Math.abs(viewportCenter - sectionCenter);
 
-            if (distance < minDistance) {
+            if (isIntersectingCenter) {
+                // If it intersects, it's a very strong candidate. 
+                // We reduce the distance significantly to prioritize it.
+                if (distance / 2 < minDistance) {
+                    minDistance = distance / 2;
+                    closestSection = section;
+                }
+            } else if (distance < minDistance) {
                 minDistance = distance;
                 closestSection = section;
             }
         });
 
-        if (scrollPos < 100) {
+        if (scrollPos < 50) { // More sensitive to top
             mainSections.forEach(s => s.classList.remove('is-focused'));
             const home = document.getElementById('home');
             if (home) {
@@ -351,6 +363,7 @@ const initNavigation = () => {
             }
             current = '';
         } else if (closestSection) {
+
             closestSection.classList.add('is-focused');
             document.body.setAttribute('data-focus', closestSection.id);
             current = closestSection.id === 'home' ? '' : closestSection.id;
@@ -373,7 +386,27 @@ const initNavigation = () => {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinksContainer = document.getElementById('nav-links');
+    
+    if (menuToggle && navLinksContainer) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinksContainer.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinksContainer.classList.remove('active');
+            });
+        });
+    }
 };
+
 
 const showNotice = (title, customNotice) => {
     if (document.querySelector('.security-notice')) return;
