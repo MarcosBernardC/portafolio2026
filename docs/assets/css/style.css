@@ -406,40 +406,15 @@ body[data-focus] .section:not(.is-focused) {
     gap: 1.5rem;
 }
 
-/* --- DIN Descending Typographic Scale --- */
-/* Section 01: EXECUTIVE SUMMARY — Primary level */
-#summary .main-header .section-title {
+/* --- Consolidated Section Header Styling --- */
+.main-header .section-title {
     font-size: 1.6rem;
     letter-spacing: 0.05em;
     font-weight: 900;
 }
-#summary .main-header .section-number {
+.main-header .section-number {
     font-size: 0.9rem;
     font-weight: 900;
-    color: var(--fg);
-}
-
-/* Section 02: REPOSITORIES — Secondary level */
-#code .main-header .section-title {
-    font-size: 1.35rem;
-    letter-spacing: 0.06em;
-    font-weight: 800;
-}
-#code .main-header .section-number {
-    font-size: 0.8rem;
-    font-weight: 800;
-    color: var(--fg);
-}
-
-/* Section 03: OPERATIONAL STACK — Tertiary level */
-#stack .main-header .section-title {
-    font-size: 1.15rem;
-    letter-spacing: 0.08em;
-    font-weight: 700;
-}
-#stack .main-header .section-number {
-    font-size: 0.7rem;
-    font-weight: 700;
     color: var(--fg);
 }
 
@@ -676,6 +651,7 @@ body[data-focus] .section:not(.is-focused) {
 }
 
 .stack-items {
+    font-family: var(--font-mono);
     font-size: 1.1rem;
     font-weight: 600;
     letter-spacing: 0;
