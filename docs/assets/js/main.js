@@ -220,23 +220,53 @@ const loadPortfolioData = async () => {
 
         // 6. Sync Footer Status
         const statusElement = document.getElementById('footer-status');
-        if (statusElement && projectsData.metadata.last_sync) {
-            statusElement.innerText = `SYNC_OK // ${projectsData.metadata.last_sync}`;
+        const isLocal = ['localhost', '127.0.0.1', ''].includes(location.hostname) || location.protocol === 'file:';
+
+        if (statusElement) {
+            if (isLocal) {
+                statusElement.innerText = 'LOCAL_DEV // OFFLINE';
+            } else if (projectsData.metadata.last_sync) {
+                statusElement.innerText = `SYNC_OK // ${projectsData.metadata.last_sync}`;
+            }
         }
 
     } catch (error) {
         console.error("Critical System Error:", error);
         const mainTitle = document.getElementById('main-title');
         if (mainTitle) mainTitle.innerText = "SYSTEM_OFFLINE";
+
+        const statusElement = document.getElementById('footer-status');
+        if (statusElement) statusElement.innerText = "SYSTEM_OFFLINE";
     }
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
     initTheme();
+    updateViewCounter(); // Inicia carga de visitas inmediatamente
     await loadPortfolioData();
     initNavigation();
     cleanupAnimations();
 });
+
+const updateViewCounter = async () => {
+    const counterElement = document.getElementById('footer-visits');
+    if (!counterElement) return;
+
+    try {
+        // Using CounterAPI.dev - Simple and reliable for static sites
+        // Namespace: marcosbernard-portafolio (to avoid collisions)
+        const response = await fetch('https://api.counterapi.dev/v1/marcosbernard-portafolio/main/up');
+        if (!response.ok) throw new Error("Counter API offline");
+        
+        const data = await response.json();
+        // Format with leading zeros for a technical/minimalist look
+        const count = String(data.count).padStart(5, '0');
+        counterElement.innerText = `VISITS // ${count}`;
+    } catch (error) {
+        console.warn("View counter unreachable:", error);
+        counterElement.innerText = 'VISITS // -----'; // Graceful fallback
+    }
+};
 
 // After entrance animations finish, neutralize them so they don't
 // block the focus/opacity system from controlling section visibility.
