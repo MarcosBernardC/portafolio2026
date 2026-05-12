@@ -250,21 +250,22 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 const updateViewCounter = async () => {
     const counterElement = document.getElementById('footer-visits');
+    console.log('[VISITS] Element found:', !!counterElement);
     if (!counterElement) return;
 
     try {
-        // Using CounterAPI.dev - Simple and reliable for static sites
-        // Namespace: marcosbernard-portafolio (to avoid collisions)
         const response = await fetch('https://api.counterapi.dev/v1/marcosbernard-portafolio/main/up');
+        console.log('[VISITS] Response status:', response.status, response.ok);
         if (!response.ok) throw new Error("Counter API offline");
         
         const data = await response.json();
-        // Format with leading zeros for a technical/minimalist look
+        console.log('[VISITS] Data received:', data);
         const count = String(data.count).padStart(5, '0');
         counterElement.innerText = `VISITS // ${count}`;
+        console.log('[VISITS] Rendered:', count);
     } catch (error) {
-        console.warn("View counter unreachable:", error);
-        counterElement.innerText = 'VISITS // -----'; // Graceful fallback
+        console.warn('[VISITS] FAILED:', error.message, error);
+        counterElement.innerText = 'VISITS // -----';
     }
 };
 
