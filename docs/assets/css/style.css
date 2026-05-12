@@ -680,22 +680,63 @@ body[data-focus] .section:not(.is-focused) {
 /* --- Footer --- */
 .footer-minimal {
     margin-top: 10rem;
-    padding: 4rem 0;
+    padding: 4rem 0 3rem;
+    margin-bottom: 0 !important;
 }
 
 .footer-line {
     width: 100%;
     height: 1px;
-    background: var(--border);
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--border) 15%,
+        var(--border) 85%,
+        transparent 100%
+    );
     margin-bottom: 2rem;
 }
 
 .footer-bottom {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     color: var(--gray);
+    letter-spacing: 0.08em;
+}
+
+.footer-copy {
+    opacity: 0.4;
+    transition: opacity 0.3s var(--ease);
+}
+
+.footer-copy:hover {
+    opacity: 0.8;
+}
+
+.footer-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-sep {
+    opacity: 0.2;
+    font-size: 0.8rem;
+    user-select: none;
+}
+
+.footer-visits,
+.footer-status {
+    opacity: 0.4;
+    transition: opacity 0.3s var(--ease);
+}
+
+.footer-visits:hover,
+.footer-status:hover {
+    opacity: 0.9;
 }
 
 /* --- Animations --- */
@@ -775,6 +816,13 @@ body[data-focus] .section:not(.is-focused) {
     .projects-grid { grid-template-columns: 1fr; padding-left: 0; }
     .section-content, .stack-grid { padding-left: 0; }
     .stack-grid { flex-direction: column; gap: 3rem; }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+    }
+    .footer-meta { gap: 0.8rem; }
 }
 
 .project-card {
