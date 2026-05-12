@@ -291,6 +291,7 @@ const initNavigation = () => {
     const logo = document.getElementById('main-logo');
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
+    let current = '';
     
     // Set current date
     const dateElement = logo.querySelector('.logo-date');

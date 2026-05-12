@@ -227,6 +227,8 @@ html:not([data-theme="dark"]) .switch-label:first-child {
 
 .nav-label {
     display: block;
+    opacity: 0.3;
+    transition: opacity 0.3s var(--ease);
 }
 
 .nav-subtitle {
@@ -241,6 +243,8 @@ html:not([data-theme="dark"]) .switch-label:first-child {
     margin-top: 2px;
 }
 
+.nav-link:hover .nav-label,
+.nav-link.active .nav-label,
 .nav-link:hover .nav-subtitle,
 .nav-link.active .nav-subtitle {
     opacity: 1;
