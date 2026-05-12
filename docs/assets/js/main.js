@@ -250,22 +250,49 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 const updateViewCounter = async () => {
     const counterElement = document.getElementById('footer-visits');
-    console.log('[VISITS] Element found:', !!counterElement);
     if (!counterElement) return;
 
+    const COUNTER_NS = 'marcosbernard-portafolio';
+    const COUNTER_KEY = 'main';
+    const API_URL = `https://api.counterapi.dev/v1/${COUNTER_NS}/${COUNTER_KEY}/up`;
+    // Fallback: This badge also serves to count the visit even if fetch is blocked
+    const BADGE_URL = `https://visitor-badge.laobi.icu/badge?page_id=${COUNTER_NS}&color=000000`;
+    const TIMEOUT_MS = 2500;
+
     try {
-        const response = await fetch('https://api.counterapi.dev/v1/marcosbernard-portafolio/main/up');
-        console.log('[VISITS] Response status:', response.status, response.ok);
-        if (!response.ok) throw new Error("Counter API offline");
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), TIMEOUT_MS);
+        
+        // Try direct fetch first (works when not blocked by Firefox/Adblockers)
+        const response = await fetch(API_URL, { 
+            signal: controller.signal,
+            cache: 'no-store'
+        });
+        clearTimeout(timeout);
+
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
         
         const data = await response.json();
-        console.log('[VISITS] Data received:', data);
         const count = String(data.count).padStart(5, '0');
         counterElement.innerText = `VISITS // ${count}`;
-        console.log('[VISITS] Rendered:', count);
+
     } catch (error) {
-        console.warn('[VISITS] FAILED:', error.message, error);
-        counterElement.innerText = 'VISITS // -----';
+        console.warn('View counter fetch blocked or failed. Using image-based tracking:', error);
+        
+        // Graceful Degradation: Load the badge as an image
+        // Custom label 'VISITS' in the badge to avoid redundancy with the footer text.
+        const BADGE_CUSTOM_URL = `https://visitor-badge.laobi.icu/badge?page_id=${COUNTER_NS}&left_text=VISITS&color=000000`;
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const imgStyle = `
+            height: 20px; 
+            vertical-align: middle; 
+            filter: grayscale(1) ${isDark ? 'invert(1)' : ''}; 
+            opacity: 0.9;
+            transform: translateY(-1px);
+        `;
+        
+        // Remove the 'VISITS //' prefix here because the badge already includes it.
+        counterElement.innerHTML = `<img src="${BADGE_CUSTOM_URL}" alt="Visits" style="${imgStyle}">`;
     }
 };
 
