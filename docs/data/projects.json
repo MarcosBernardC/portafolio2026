@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-05-21 // 09:37 PET",
+    "last_sync": "2026-05-21 // 09:45 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -334,8 +334,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-21 // 09:37 PET",
-        "last_commit_log": "09:37 | chore: registrar proyecto de reportes automáticos Nubyx en el mapa de infraestructura portafolio2026"
+        "last_update": "2026-05-21 // 09:45 PET",
+        "last_commit_log": "09:45 | docs: crear documentación detallada, flujo de instalación y guías de ejecución en README"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/reportes_automaticos_nubyx.git",
