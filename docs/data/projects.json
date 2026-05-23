@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-05-22 // 23:54 PET",
+    "last_sync": "2026-05-23 // 11:32 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -303,8 +303,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-20 // 13:01 PET",
-        "last_commit_log": "13:01 | feat(carrera): implementar clase Carrera y calcular tiempo de viaje"
+        "last_update": "2026-05-23 // 11:32 PET",
+        "last_commit_log": "11:32 | docs: finalizar tarea de interacción de dos racers en el tablero de nivel 1"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/star_wars_racer_sim.git",
