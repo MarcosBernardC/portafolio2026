@@ -57,13 +57,15 @@ const loadPortfolioData = async () => {
             const renderProject = (project, index, prefix = "02.x") => {
                 const url = project.links.https || "";
                 const isPrivate = project.visibility === 'PRIVATE';
-                const linkAction = isPrivate 
-                    ? `onclick="showNotice('${project.title}', '${project.links.notice || ''}')"` 
-                    : `href="${url}" target="_blank"`;
-                
                 const readmeUrl = !isPrivate && url.includes('github.com') 
                     ? url.replace('github.com', 'raw.githubusercontent.com') + '/main/README.md'
                     : null;
+
+                const linkAction = isPrivate 
+                    ? `onclick="showNotice('${project.title}', '${project.links.notice || ''}')"` 
+                    : (readmeUrl 
+                        ? `onclick="showReadme('${project.title}', '${readmeUrl}')" style="cursor: pointer;"` 
+                        : `href="${url}" target="_blank"`);
 
                 return `
                     <article class="project-card animate-fade-in ${isPrivate ? 'is-private' : ''}" tabindex="0">
@@ -71,7 +73,6 @@ const loadPortfolioData = async () => {
                             <span class="project-id">${prefix}.${index + 1}</span>
                             <h3 class="project-title">
                                 ${project.title.length > 27 ? project.title.substring(0, 23) + '...' : project.title}
-                                ${readmeUrl ? `<span class="readme-trigger" onclick="showReadme('${project.title}', '${readmeUrl}')">[i]</span>` : ''}
                             </h3>
                             <div class="project-cat">
                                 <span>${project.category}</span>
@@ -593,12 +594,17 @@ const attachInlineLinkHandlers = (docsContainer) => {
 const showReadme = async (title, url) => {
     if (document.querySelector('.docs-viewer')) return;
 
+    const repoUrl = url.includes('raw.githubusercontent.com') ? url.replace('raw.githubusercontent.com', 'github.com').replace('/main/README.md', '') : null;
+    
     const viewer = document.createElement('div');
     viewer.className = 'docs-viewer';
     viewer.innerHTML = `
         <div class="docs-inner">
-            <div class="docs-header">
-                <span class="docs-label">DOCS_VIEWER // ${title.toUpperCase()}</span>
+            <div class="docs-header" style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <span class="docs-label">DOCS_VIEWER // ${title.toUpperCase()}</span>
+                    ${repoUrl ? `<a href="${repoUrl}" target="_blank" style="color: var(--fg); opacity: 0.7; font-size: 0.65rem; text-decoration: none; border: 1px solid var(--border); padding: 2px 8px; font-family: var(--font-mono); transition: opacity 0.3s ease; cursor: pointer;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">VER EN GITHUB ↗</a>` : ''}
+                </div>
                 <button class="docs-close" id="close-docs-btn">EXIT (ESC)</button>
             </div>
             <div class="docs-body scroll-custom">
