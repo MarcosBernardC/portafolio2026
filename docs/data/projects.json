@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-05-26 // 17:32 PET",
+    "last_sync": "2026-05-26 // 17:45 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -365,12 +365,12 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-26 // 16:25 PET",
-        "last_commit_log": "16:25 | feat(ui): mostrar fecha de creación en las tarjetas"
+        "last_update": "2026-05-26 // 17:45 PET",
+        "last_commit_log": "17:45 | feat(meta): añadir configuración de metadata y limpiar rutas de repositorio"
       },
       "links": {
-        "ssh": "git@github.com:MarcosBernardC/kanban-tui.git",
-        "https": "https://github.com/MarcosBernardC/kanban-tui.git"
+        "ssh": "git@github.com:MarcosBernardC/kanban-tui",
+        "https": "https://github.com/MarcosBernardC/kanban-tui"
       },
       "stack": [
         "Python 3.14",
