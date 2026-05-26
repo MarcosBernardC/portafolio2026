@@ -274,10 +274,15 @@ const cleanupAnimations = () => {
 
 const initTheme = () => {
     const themeToggle = document.getElementById('theme-toggle');
-    const savedTheme = localStorage.getItem('portfolio-theme') || 'light';
+    const now = new Date();
+    const mins = now.getHours() * 60 + now.getMinutes();
     
-    // Apply theme
-    document.documentElement.setAttribute('data-theme', savedTheme);
+    // Light between 08:30 and 17:20. Dark otherwise.
+    const isLightTime = mins >= (8 * 60 + 30) && mins < (17 * 60 + 20);
+    const initialTheme = isLightTime ? 'light' : 'dark';
+    
+    // Apply theme based on time
+    document.documentElement.setAttribute('data-theme', initialTheme);
 
     themeToggle?.addEventListener('click', () => {
         const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
