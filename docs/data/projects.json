@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-05-26 // 12:59 PET",
+    "last_sync": "2026-05-26 // 17:28 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -29,7 +29,7 @@
       ]
     },
     "stats": {
-      "total_managed": 10
+      "total_managed": 11
     }
   },
   "projects": [
@@ -79,8 +79,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-26 // 11:20 PET",
-        "last_commit_log": "11:20 | refactor(core): purgar código muerto en init y filtrar ruido de entrada ANSI"
+        "last_update": "2026-05-26 // 17:20 PET",
+        "last_commit_log": "17:20 | refactor: asegurar uso de python3 y clarificar importación de rutas en sq-menu"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/synquork.git",
@@ -349,6 +349,36 @@
         "CLI"
       ],
       "description": "Sistema de captura interactiva por terminal para control de calidad técnico y motor automatizado de renderizado de informes homologados en formato PDF."
+    },
+    {
+      "id": "13",
+      "title": "Kanban-TUI",
+      "category": "Productivity",
+      "visibility": "PUBLIC",
+      "domain": [
+        "SOFT"
+      ],
+      "status": {
+        "state": "ACTIVE LABS",
+        "label": "Production-Ready"
+      },
+      "environment": {
+        "os": "Fedora 43",
+        "shell": "fish",
+        "last_update": "2026-05-26 // 16:25 PET",
+        "last_commit_log": "16:25 | feat(ui): mostrar fecha de creación en las tarjetas"
+      },
+      "links": {
+        "ssh": "git@github.com:MarcosBernardC/kanban.git",
+        "https": "https://github.com/MarcosBernardC/kanban"
+      },
+      "stack": [
+        "Python 3.14",
+        "Textual",
+        "JSON",
+        "CLI"
+      ],
+      "description": "Gestor de tareas Kanban interactivo basado en terminal, con navegación estilo Vim y persistencia local de datos."
     }
   ]
 }
