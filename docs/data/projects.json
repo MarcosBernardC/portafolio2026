@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-05-26 // 08:03 PET",
+    "last_sync": "2026-05-26 // 12:59 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -79,8 +79,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-26 // 08:03 PET",
-        "last_commit_log": "08:03 | chore(git): agregar diff.txt al gitignore para evitar tracking de temporales"
+        "last_update": "2026-05-26 // 11:20 PET",
+        "last_commit_log": "11:20 | refactor(core): purgar código muerto en init y filtrar ruido de entrada ANSI"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/synquork.git",
