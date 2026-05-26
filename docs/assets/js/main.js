@@ -297,11 +297,18 @@ const initNavigation = () => {
     // Set current date
     const dateElement = logo.querySelector('.logo-date');
     if (dateElement) {
-        const now = new Date();
-        const d = String(now.getDate()).padStart(2, '0');
-        const m = String(now.getMonth() + 1).padStart(2, '0');
-        const y = String(now.getFullYear()).slice(-2);
-        dateElement.innerText = `${d}.${m}.${y}`;
+        const updateTime = () => {
+            const now = new Date();
+            const d = String(now.getDate()).padStart(2, '0');
+            const mo = String(now.getMonth() + 1).padStart(2, '0');
+            const y = String(now.getFullYear()).slice(-2);
+            const h = String(now.getHours()).padStart(2, '0');
+            const min = String(now.getMinutes()).padStart(2, '0');
+            const s = String(now.getSeconds()).padStart(2, '0');
+            dateElement.innerHTML = `<span class="date-str">${d}.${mo}.${y}</span><span class="time-str">${h}:${min}:${s}</span>`;
+        };
+        updateTime();
+        setInterval(updateTime, 1000);
     }
 
     // Explicitly handle nav links for smooth scroll and debugging
