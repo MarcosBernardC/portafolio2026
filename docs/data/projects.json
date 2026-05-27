@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-05-26 // 19:45 PET",
+    "last_sync": "2026-05-26 // 20:01 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -365,8 +365,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-26 // 19:22 PET",
-        "last_commit_log": "19:22 | refactor: corregir formato de importaciones en kanban.py"
+        "last_update": "2026-05-26 // 20:00 PET",
+        "last_commit_log": "20:00 | docs(ui): actualizar panel de ayuda con nuevas acciones"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/kanban-tui",
