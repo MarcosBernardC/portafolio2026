@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-05-26 // 17:54 PET",
+    "last_sync": "2026-05-26 // 19:22 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -172,8 +172,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-12 // 17:20 PET",
-        "last_commit_log": "17:20 | feat: implementar sistema adaptativo dinámico y navegación móvil"
+        "last_update": "2026-05-26 // 18:52 PET",
+        "last_commit_log": "18:52 | feat: implementar cambio de tema automático basado en horario laboral"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/portafolio2026.git",
@@ -365,8 +365,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-26 // 17:54 PET",
-        "last_commit_log": "17:54 | docs: actualizar README con nuevas características y controles tipo Vim"
+        "last_update": "2026-05-26 // 19:22 PET",
+        "last_commit_log": "19:22 | refactor: corregir formato de importaciones en kanban.py"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/kanban-tui",
