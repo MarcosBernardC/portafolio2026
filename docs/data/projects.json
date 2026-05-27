@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-05-26 // 19:22 PET",
+    "last_sync": "2026-05-26 // 19:45 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -79,8 +79,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-26 // 17:20 PET",
-        "last_commit_log": "17:20 | refactor: asegurar uso de python3 y clarificar importación de rutas en sq-menu"
+        "last_update": "2026-05-26 // 19:45 PET",
+        "last_commit_log": "19:45 | feat(tui): ordenar proyectos por fecha de modificación"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/synquork.git",
