@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-05-26 // 20:01 PET",
+    "last_sync": "2026-05-27 // 12:16 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -79,8 +79,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-26 // 19:45 PET",
-        "last_commit_log": "19:45 | feat(tui): ordenar proyectos por fecha de modificación"
+        "last_update": "2026-05-27 // 12:15 PET",
+        "last_commit_log": "12:15 | style(tui): cambiar color del banner de estado a tono neutro"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/synquork.git",
@@ -303,8 +303,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-23 // 11:32 PET",
-        "last_commit_log": "11:32 | docs: finalizar tarea de interacción de dos racers en el tablero de nivel 1"
+        "last_update": "2026-05-26 // 23:02 PET",
+        "last_commit_log": "23:02 | feat: implementar persistencia de datos en CSV y estructura de directorios"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/star_wars_racer_sim.git",
@@ -365,8 +365,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-26 // 20:00 PET",
-        "last_commit_log": "20:00 | docs(ui): actualizar panel de ayuda con nuevas acciones"
+        "last_update": "2026-05-27 // 10:09 PET",
+        "last_commit_log": "10:09 | feat(ui): implementar validación de repositorio y modal de inicialización"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/kanban-tui",
