@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-05-30 // 12:28 PET",
+    "last_sync": "2026-06-04 // 22:02 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -270,8 +270,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-08 // 17:47 PET",
-        "last_commit_log": "17:47 | feat(finanzas): implementar sistema de flujo de caja crítico y estética de ingeniería"
+        "last_update": "2026-06-02 // 11:16 PET",
+        "last_commit_log": "11:16 | fix: corregir numero de documento de la arrendataria"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/Docs.git",
@@ -303,8 +303,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-05-30 // 12:28 PET",
-        "last_commit_log": "12:28 | feat(data): implementar exportación inicial y actualizar kanban"
+        "last_update": "2026-06-04 // 22:02 PET",
+        "last_commit_log": "22:02 | refactor: mejorar manejo de racers y limpiar logs de depuración"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/star_wars_racer_sim.git",
