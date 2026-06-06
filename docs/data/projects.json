@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-06-04 // 22:02 PET",
+    "last_sync": "2026-06-06 // 17:57 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -303,8 +303,8 @@
       "environment": {
         "os": "Fedora 43",
         "shell": "fish",
-        "last_update": "2026-06-04 // 22:02 PET",
-        "last_commit_log": "22:02 | refactor: mejorar manejo de racers y limpiar logs de depuración"
+        "last_update": "2026-06-06 // 17:57 PET",
+        "last_commit_log": "17:57 | chore: limpiar código muerto y estandarizar espaciado en nave.py"
       },
       "links": {
         "ssh": "git@github.com:MarcosBernardC/star_wars_racer_sim.git",
