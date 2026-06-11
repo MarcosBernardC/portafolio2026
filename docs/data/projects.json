@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-06-06 // 22:25 PET",
+    "last_sync": "2026-06-11 // 14:30 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -29,7 +29,7 @@
       ]
     },
     "stats": {
-      "total_managed": 11
+      "total_managed": 12
     }
   },
   "projects": [
@@ -379,6 +379,37 @@
         "CLI"
       ],
       "description": "Gestor de tareas Kanban interactivo basado en terminal, con navegación estilo Vim y persistencia local de datos."
+    },
+    {
+      "id": "14",
+      "title": "Reloj Digital Discreto",
+      "category": "Digital Electronics",
+      "visibility": "PUBLIC",
+      "domain": [
+        "HARD",
+        "EMB"
+      ],
+      "status": {
+        "state": "ACTIVE LABS",
+        "label": "Design-Phase"
+      },
+      "environment": {
+        "os": "Fedora 43",
+        "shell": "fish",
+        "last_update": "2026-06-11 // 14:29 PET",
+        "last_commit_log": "14:29 | feat: añadir metadatos del proyecto para indexacion en Synquork"
+      },
+      "links": {
+        "ssh": "git@github.com:MarcosBernardC/reloj_digital_discreto.git",
+        "https": "https://github.com/MarcosBernardC/reloj_digital_discreto"
+      },
+      "stack": [
+        "TTL Lógica Discreta",
+        "KiCad",
+        "Circuit Simulation",
+        "LaTeX"
+      ],
+      "description": "Diseño e implementación de un reloj digital cronológico (HH:MM:SS) utilizando contadores síncronos, lógica de desborde discreta y base de tiempo con CI 555."
     }
   ]
 }
