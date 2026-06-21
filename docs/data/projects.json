@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-06-21 // 15:11 PET",
+    "last_sync": "2026-06-21 // 16:40 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -38,14 +38,18 @@
       "title": "TUI-DomoNode",
       "category": "Automation",
       "visibility": "PRIVATE",
-      "tags": [
-        "SOFTWARE"
-      ],
+      "tags": "SOFTWARE",
       "status": {
         "activity": "ACTIVE",
         "maturity": "ALPHA",
+        "version": "0.1.0",
         "progress_pct": 50,
-        "label": "Alpha 3.14"
+        "scopes": {
+          "core": {
+            "status": "ALPHA",
+            "progress": 50
+          }
+        }
       },
       "environment": {
         "os": "Fedora 43",
@@ -53,8 +57,7 @@
       },
       "repository": {
         "ssh": "git@github.com:MarcosBernardC/tui_domonode.git",
-        "https": "https://github.com/MarcosBernardC/tui_domonode",
-        "notice": "Este repositorio contiene lógica de control propietaria y acceso a hardware restringido. Código disponible bajo solicitud formal."
+        "https": "https://github.com/MarcosBernardC/tui_domonode"
       },
       "stack": [
         "Python 3.14",
@@ -63,8 +66,15 @@
       ],
       "description": "Simulación de flujos binarios y lectura de hardware.",
       "_telemetry": {
-        "last_update": "2026-05-07 // 10:35 PET",
-        "last_commit_log": "10:35 | feat(scripts): implementar nuevo módulo para generación de datos binarios"
+        "last_update": "2026-05-07",
+        "last_commit_log": "feat(scripts): implementar nuevo módulo",
+        "changelog": [
+          {
+            "version": "0.1.0",
+            "date": "2026-05-07",
+            "summary": "Estructura inicial."
+          }
+        ]
       }
     },
     {
@@ -72,14 +82,19 @@
       "title": "Synquork",
       "category": "Productivity",
       "visibility": "PUBLIC",
-      "tags": [
-        "SOFTWARE"
-      ],
+      "tags": "SOFTWARE",
+      "domain": [],
       "status": {
         "activity": "ACTIVE",
         "maturity": "BETA",
+        "version": "0.1.0",
         "progress_pct": 50,
-        "label": "TUI v2.0"
+        "scopes": {
+          "core": {
+            "status": "BETA",
+            "progress": 50
+          }
+        }
       },
       "environment": {
         "os": "Fedora 43",
@@ -94,10 +109,10 @@
         "Fish",
         "JSON"
       ],
-      "description": "Orquestador de activos de ingeniería y motor de sincronización automatizada.",
+      "description": "Orquestador de activos de ingeniería.",
       "_telemetry": {
-        "last_update": "2026-05-27 // 12:15 PET",
-        "last_commit_log": "12:15 | style(tui): cambiar color del banner de estado a tono neutro"
+        "last_update": "2026-05-27",
+        "last_commit_log": "style(tui): cambiar color del banner de estado a tono neutro"
       }
     },
     {
@@ -105,14 +120,18 @@
       "title": "Industrial Instrumentation Standards",
       "category": "Industrial R&D",
       "visibility": "PUBLIC",
-      "tags": [
-        "DOCUMENTATION"
-      ],
+      "tags": "DOCUMENTATION",
       "status": {
         "activity": "ARCHIVED",
         "maturity": "RELEASE",
+        "version": "0.1.0",
         "progress_pct": 100,
-        "label": "ISO-9001 Compliant"
+        "scopes": {
+          "docs": {
+            "status": "RELEASE",
+            "progress": 100
+          }
+        }
       },
       "environment": {
         "os": "Fedora 43",
@@ -125,13 +144,19 @@
       "stack": [
         "LuaLaTeX",
         "TikZ/PGF",
-        "Makefile",
-        "Vector Graphics"
+        "Makefile"
       ],
-      "description": "Protocolos de optimización y estandarización de activos documentales.",
+      "description": "Protocolos de optimización y estandarización.",
       "_telemetry": {
-        "last_update": "2026-05-02 // 16:37 PET",
-        "last_commit_log": "16:37 | chore: cambiar número de imágnes de renderizado 2D a una sola (minimalismo)"
+        "last_update": "2026-05-02",
+        "last_commit_log": "chore: cambiar número de imágenes",
+        "changelog": [
+          {
+            "version": "0.1.0",
+            "date": "2026-05-02",
+            "summary": "Estructura inicial."
+          }
+        ]
       }
     },
     {
@@ -139,14 +164,18 @@
       "title": "Investigación Electoral 2026",
       "category": "Data Science",
       "visibility": "PRIVATE",
-      "tags": [
-        "SOFTWARE"
-      ],
+      "tags": "SOFTWARE",
       "status": {
         "activity": "ARCHIVED",
         "maturity": "RELEASE",
+        "version": "0.1.0",
         "progress_pct": 100,
-        "label": "Matriz de Decisión"
+        "scopes": {
+          "analysis": {
+            "status": "RELEASE",
+            "progress": 100
+          }
+        }
       },
       "environment": {
         "os": "Fedora 43",
@@ -154,19 +183,24 @@
       },
       "repository": {
         "ssh": "git@github.com:MarcosBernardC/elecciones-2026.git",
-        "https": "https://github.com/MarcosBernardC/elecciones-2026",
-        "notice": "Activo de investigación interna para análisis de datos soberanos. Acceso limitado por políticas de privacidad."
+        "https": "https://github.com/MarcosBernardC/elecciones-2026"
       },
       "stack": [
         "Python",
         "Pandas",
-        "APA 7",
         "Statistics"
       ],
-      "description": "Análisis estadístico y cuantitativo de planes de gobierno y hojas de vida.",
+      "description": "Análisis cuantitativo de planes de gobierno.",
       "_telemetry": {
-        "last_update": "2026-04-11 // 17:50 PET",
-        "last_commit_log": "17:50 | chore: actualizar ignores para excluir directorios temporales de datos"
+        "last_update": "2026-04-11",
+        "last_commit_log": "chore: actualizar ignores",
+        "changelog": [
+          {
+            "version": "0.1.0",
+            "date": "2026-04-11",
+            "summary": "Estructura inicial."
+          }
+        ]
       }
     },
     {
@@ -174,14 +208,19 @@
       "title": "Portafolio 2026",
       "category": "Brand Engine",
       "visibility": "PUBLIC",
-      "tags": [
-        "WEB"
-      ],
+      "tags": "WEB APP",
+      "domain": [],
       "status": {
         "activity": "ACTIVE",
         "maturity": "BETA",
+        "version": "0.1.0",
         "progress_pct": 50,
-        "label": "Dev-Deploy"
+        "scopes": {
+          "frontend": {
+            "status": "BETA",
+            "progress": 50
+          }
+        }
       },
       "environment": {
         "os": "Fedora 43",
@@ -194,13 +233,12 @@
       "stack": [
         "HTML5",
         "CSS3",
-        "JavaScript",
-        "JSON"
+        "JavaScript"
       ],
-      "description": "Sistema de despliegue de identidad profesional y gestión de activos.",
+      "description": "Sistema de gestión de identidad profesional.",
       "_telemetry": {
-        "last_update": "2026-06-20 // 22:20 PET",
-        "last_commit_log": "22:20 | feat(ui): implementar nueva paleta de colores y estados de proyecto"
+        "last_update": "2026-06-20",
+        "last_commit_log": "feat(ui): implementar nueva paleta de colores y estados de proyecto"
       }
     },
     {
@@ -208,14 +246,18 @@
       "title": "PIC12F675 LED Dimmer",
       "category": "Power Electronics",
       "visibility": "PUBLIC",
-      "tags": [
-        "ELECTRONICS"
-      ],
+      "tags": "ELECTRONICS",
       "status": {
         "activity": "ARCHIVED",
         "maturity": "PROD",
+        "version": "0.1.0",
         "progress_pct": 100,
-        "label": "Stable-HW"
+        "scopes": {
+          "firmware": {
+            "status": "PROD",
+            "progress": 100
+          }
+        }
       },
       "environment": {
         "os": "Fedora 43",
@@ -228,14 +270,19 @@
       "stack": [
         "C",
         "KiCad",
-        "XC8",
-        "MPLAB X",
         "LaTeX"
       ],
-      "description": "Controlador de intensidad lumínica basado en microcontrolador de 8 bits con investigación técnica documentada.",
+      "description": "Controlador de intensidad lumínica.",
       "_telemetry": {
-        "last_update": "2026-05-02 // 17:49 PET",
-        "last_commit_log": "17:49 | docs: actualizar enlace de código fuente a vista raw con apertura en pestaña nueva"
+        "last_update": "2026-05-02",
+        "last_commit_log": "docs: actualizar enlace",
+        "changelog": [
+          {
+            "version": "0.1.0",
+            "date": "2026-05-02",
+            "summary": "Estructura inicial."
+          }
+        ]
       }
     },
     {
@@ -243,14 +290,18 @@
       "title": "Helvetia-Instruments",
       "category": "Electronic Commerce",
       "visibility": "PRIVATE",
-      "tags": [
-        "WEB"
-      ],
+      "tags": "WEB APP",
       "status": {
         "activity": "ACTIVE",
         "maturity": "BETA",
+        "version": "0.1.0",
         "progress_pct": 50,
-        "label": "Beta-Infrastructure"
+        "scopes": {
+          "platform": {
+            "status": "BETA",
+            "progress": 50
+          }
+        }
       },
       "environment": {
         "os": "Fedora 43",
@@ -258,35 +309,43 @@
       },
       "repository": {
         "ssh": "git@github.com:MarcosBernardC/Helvetia-Instruments.git",
-        "https": "https://github.com/MarcosBernardC/Helvetia-Instruments",
-        "notice": "Proyecto en construcción. Despliegue público programado tras validación de módulos de automatización."
+        "https": "https://github.com/MarcosBernardC/Helvetia-Instruments"
       },
       "stack": [
         "Python",
         "JavaScript",
-        "JSON",
-        "Fish",
         "GitHub Pages"
       ],
-      "description": "Ecosistema automatizado de instrumentación electrónica y suministro técnico de componentes.",
+      "description": "Ecosistema de instrumentación electrónica.",
       "_telemetry": {
-        "last_update": "2026-05-22 // 23:53 PET",
-        "last_commit_log": "23:53 | style: reubicar y compactar barra de búsqueda en sección de catálogo"
+        "last_update": "2026-05-22",
+        "last_commit_log": "style: reubicar y compactar",
+        "changelog": [
+          {
+            "version": "0.1.0",
+            "date": "2026-05-22",
+            "summary": "Estructura inicial."
+          }
+        ]
       }
     },
     {
       "id": "10",
       "title": "Docs",
-      "category": "Technical Documentation & Engineering Records",
+      "category": "Documentation",
       "visibility": "PRIVATE",
-      "tags": [
-        "DOCUMENTATION"
-      ],
+      "tags": "DOCUMENTATION",
       "status": {
         "activity": "ACTIVE",
         "maturity": "PROD",
+        "version": "0.1.0",
         "progress_pct": 100,
-        "label": "Production-Archive"
+        "scopes": {
+          "records": {
+            "status": "PROD",
+            "progress": 100
+          }
+        }
       },
       "environment": {
         "os": "Fedora 43",
@@ -294,35 +353,42 @@
       },
       "repository": {
         "ssh": "git@github.com:MarcosBernardC/Docs.git",
-        "https": "https://github.com/MarcosBernardC/Docs",
-        "notice": "Repositorio privado de gestión documental, finanzas y registros de ingeniería (Tesis/DomoNode)."
+        "https": "https://github.com/MarcosBernardC/Docs"
       },
       "stack": [
         "LaTeX",
-        "LuaLaTeX",
-        "Makefile",
-        "Fish Shell",
-        "Python"
+        "Makefile"
       ],
-      "description": "Sistema centralizado de documentación técnica que incluye expedientes ANA, gestión de contratos, finanzas personales y avances de Tesis/DomoNode.",
+      "description": "Sistema centralizado de documentación.",
       "_telemetry": {
-        "last_update": "2026-06-02 // 11:16 PET",
-        "last_commit_log": "11:16 | fix: corregir numero de documento de la arrendataria"
+        "last_update": "2026-06-02",
+        "last_commit_log": "fix: corregir numero de documento",
+        "changelog": [
+          {
+            "version": "0.1.0",
+            "date": "2026-06-02",
+            "summary": "Estructura inicial."
+          }
+        ]
       }
     },
     {
       "id": "11",
       "title": "Star Wars Podracer Simulator",
-      "category": "Game Simulation / CS50P Final Project",
+      "category": "Game Simulation",
       "visibility": "PRIVATE",
-      "tags": [
-        "SOFTWARE"
-      ],
+      "tags": "SOFTWARE",
       "status": {
         "activity": "ACTIVE",
         "maturity": "BETA",
+        "version": "0.1.0",
         "progress_pct": 50,
-        "label": "Nivel 1: Clase Nave"
+        "scopes": {
+          "physics": {
+            "status": "BETA",
+            "progress": 50
+          }
+        }
       },
       "environment": {
         "os": "Fedora 43",
@@ -330,19 +396,23 @@
       },
       "repository": {
         "ssh": "git@github.com:MarcosBernardC/star_wars_racer_sim.git",
-        "https": "https://github.com/MarcosBernardC/star_wars_racer_sim",
-        "notice": "Proyecto académico del curso CS50P. Acceso restringido por políticas de integridad académica."
+        "https": "https://github.com/MarcosBernardC/star_wars_racer_sim"
       },
       "stack": [
         "Python 3.14",
-        "OOP",
-        "Vimwiki",
-        "CLI"
+        "OOP"
       ],
-      "description": "Simulador en consola iterativo basado en POO pura que emula físicas de tracción, motores independientes y gestión térmica de Podracers.",
+      "description": "Simulador de físicas de Podracers.",
       "_telemetry": {
-        "last_update": "2026-06-16 // 16:13 PET",
-        "last_commit_log": "16:13 | refactor: implementar dunder methods __str__ y limpiar arquitectura de reportes"
+        "last_update": "2026-06-16",
+        "last_commit_log": "refactor: implementar dunder methods",
+        "changelog": [
+          {
+            "version": "0.1.0",
+            "date": "2026-06-16",
+            "summary": "Estructura inicial."
+          }
+        ]
       }
     },
     {
@@ -350,14 +420,18 @@
       "title": "Reportes Automáticos Nubyx",
       "category": "Automation",
       "visibility": "PUBLIC",
-      "tags": [
-        "SOFTWARE"
-      ],
+      "tags": "SOFTWARE",
       "status": {
         "activity": "ACTIVE",
         "maturity": "PROD",
+        "version": "0.1.0",
         "progress_pct": 50,
-        "label": "Production-Ready"
+        "scopes": {
+          "pdf_engine": {
+            "status": "PROD",
+            "progress": 50
+          }
+        }
       },
       "environment": {
         "os": "Fedora 43",
@@ -369,15 +443,19 @@
       },
       "stack": [
         "Python 3.14",
-        "ReportLab",
-        "Rich",
-        "CSV",
-        "CLI"
+        "ReportLab"
       ],
-      "description": "Sistema de captura interactiva por terminal para control de calidad técnico y motor automatizado de renderizado de informes homologados en formato PDF.",
+      "description": "Sistema de captura y renderizado PDF.",
       "_telemetry": {
-        "last_update": "2026-05-21 // 09:45 PET",
-        "last_commit_log": "09:45 | docs: crear documentación detallada, flujo de instalación y guías de ejecución en README"
+        "last_update": "2026-05-21",
+        "last_commit_log": "docs: crear documentación detallada",
+        "changelog": [
+          {
+            "version": "0.1.0",
+            "date": "2026-05-21",
+            "summary": "Estructura inicial."
+          }
+        ]
       }
     },
     {
@@ -385,14 +463,18 @@
       "title": "Kanban-TUI",
       "category": "Productivity",
       "visibility": "PUBLIC",
-      "tags": [
-        "SOFTWARE"
-      ],
+      "tags": "SOFTWARE",
       "status": {
         "activity": "ACTIVE",
         "maturity": "PROD",
+        "version": "0.1.0",
         "progress_pct": 50,
-        "label": "Production-Ready"
+        "scopes": {
+          "ui": {
+            "status": "PROD",
+            "progress": 50
+          }
+        }
       },
       "environment": {
         "os": "Fedora 43",
@@ -404,14 +486,19 @@
       },
       "stack": [
         "Python 3.14",
-        "Textual",
-        "JSON",
-        "CLI"
+        "Textual"
       ],
-      "description": "Gestor de tareas Kanban interactivo basado en terminal, con navegación estilo Vim y persistencia local de datos.",
+      "description": "Gestor de tareas Kanban interactivo.",
       "_telemetry": {
-        "last_update": "2026-05-27 // 10:09 PET",
-        "last_commit_log": "10:09 | feat(ui): implementar validación de repositorio y modal de inicialización"
+        "last_update": "2026-05-27",
+        "last_commit_log": "feat(ui): implementar validación",
+        "changelog": [
+          {
+            "version": "0.1.0",
+            "date": "2026-05-27",
+            "summary": "Estructura inicial."
+          }
+        ]
       }
     },
     {
@@ -419,14 +506,18 @@
       "title": "Reloj Digital Discreto",
       "category": "Digital Electronics",
       "visibility": "PUBLIC",
-      "tags": [
-        "ELECTRONICS"
-      ],
+      "tags": "ELECTRONICS",
       "status": {
         "activity": "ACTIVE",
         "maturity": "BETA",
+        "version": "0.1.0",
         "progress_pct": 50,
-        "label": "Design-Phase"
+        "scopes": {
+          "logic": {
+            "status": "BETA",
+            "progress": 50
+          }
+        }
       },
       "environment": {
         "os": "Fedora 43",
@@ -437,15 +528,20 @@
         "https": "https://github.com/MarcosBernardC/reloj_digital_discreto"
       },
       "stack": [
-        "TTL Lógica Discreta",
-        "KiCad",
-        "Circuit Simulation",
-        "LaTeX"
+        "TTL",
+        "KiCad"
       ],
-      "description": "Diseño e implementación de un reloj digital cronológico (HH:MM:SS) utilizando contadores síncronos, lógica de desborde discreta y base de tiempo con CI 555.",
+      "description": "Diseño de reloj con lógica discreta.",
       "_telemetry": {
-        "last_update": "2026-06-11 // 22:25 PET",
-        "last_commit_log": "22:25 | feat(sim): implementar lógica base de reloj digital con conteo en cascada"
+        "last_update": "2026-06-11",
+        "last_commit_log": "feat(sim): implementar lógica",
+        "changelog": [
+          {
+            "version": "0.1.0",
+            "date": "2026-06-11",
+            "summary": "Estructura inicial."
+          }
+        ]
       }
     },
     {
@@ -456,12 +552,12 @@
       "tags": [
         "SOFTWARE"
       ],
+      "domain": [],
       "status": {
         "activity": "ACTIVE",
         "maturity": "ALPHA",
-        "progress_pct": 40,
-        "label": "Alpha",
         "version": "0.1.0",
+        "progress_pct": 40,
         "scopes": {
           "model": {
             "status": "PROTOTYPE",
@@ -501,15 +597,8 @@
       ],
       "description": "Simulador computacional de transitorios RC y modos de operación del temporizador 555.",
       "_telemetry": {
-        "last_update": "2026-06-20 // 06:34 PET",
-        "last_commit_log": "06:34 | chore(cli): reordenar bloques de código y mejorar prompt de TUI",
-        "changelog": [
-          {
-            "version": "0.1.0",
-            "date": "2026-06-17",
-            "summary": "Estructura base, dataclasses, inicio de setup y CLI."
-          }
-        ]
+        "last_update": "2026-06-20",
+        "last_commit_log": "chore(cli): reordenar bloques de código y mejorar prompt de TUI"
       }
     }
   ]
