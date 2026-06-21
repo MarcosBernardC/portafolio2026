@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-06-21 // 17:10 PET",
+    "last_sync": "2026-06-21 // 18:34 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -29,7 +29,7 @@
       ]
     },
     "stats": {
-      "total_managed": 3
+      "total_managed": 5
     }
   },
   "projects": [
@@ -44,11 +44,23 @@
         "activity": "ACTIVE",
         "maturity": "BETA",
         "version": "0.1.0",
-        "progress_pct": 50,
+        "progress_pct": 96,
         "scopes": {
-          "core": {
+          "TUI_Orchestrator": {
+            "status": "STABLE",
+            "progress": 100
+          },
+          "Scanner_Engine": {
+            "status": "STABLE",
+            "progress": 100
+          },
+          "Sync_Metrics": {
             "status": "BETA",
-            "progress": 50
+            "progress": 80
+          },
+          "Telemetry_Git": {
+            "status": "STABLE",
+            "progress": 100
           }
         }
       },
@@ -67,8 +79,8 @@
       ],
       "description": "Orquestador de activos de ingeniería.",
       "_telemetry": {
-        "last_update": "2026-05-27",
-        "last_commit_log": "style(tui): cambiar color del banner de estado a tono neutro"
+        "last_update": "2026-06-21",
+        "last_commit_log": "docs: añadir bitácora de desarrollo JOURNAL.md"
       }
     },
     {
@@ -105,8 +117,91 @@
       ],
       "description": "Sistema de gestión de identidad profesional.",
       "_telemetry": {
-        "last_update": "2026-06-20",
-        "last_commit_log": "feat(ui): implementar nueva paleta de colores y estados de proyecto"
+        "last_update": "2026-06-21",
+        "last_commit_log": "feat(ui): implementar renderizado por scopes y unificar etiquetas de filtrado"
+      }
+    },
+    {
+      "id": "09",
+      "title": "Helvetia-Instruments",
+      "category": "Electronic Commerce",
+      "visibility": "PRIVATE",
+      "tags": "WEB APP",
+      "domain": [],
+      "status": {
+        "activity": "ACTIVE",
+        "maturity": "BETA",
+        "version": "0.1.0",
+        "progress_pct": 50,
+        "scopes": {
+          "platform": {
+            "status": "BETA",
+            "progress": 50
+          }
+        }
+      },
+      "environment": {
+        "os": "Fedora 43",
+        "shell": "fish"
+      },
+      "repository": {
+        "ssh": "git@github.com:MarcosBernardC/Helvetia-Instruments.git",
+        "https": "https://github.com/MarcosBernardC/Helvetia-Instruments"
+      },
+      "stack": [
+        "Python",
+        "JavaScript",
+        "GitHub Pages"
+      ],
+      "description": "Ecosistema de instrumentación electrónica.",
+      "_telemetry": {
+        "last_update": "2026-05-22",
+        "last_commit_log": "style: reubicar y compactar barra de búsqueda en sección de catálogo"
+      }
+    },
+    {
+      "id": "13",
+      "title": "Kanban-TUI",
+      "category": "Productivity",
+      "visibility": "PUBLIC",
+      "tags": "SOFTWARE",
+      "domain": [],
+      "status": {
+        "activity": "ACTIVE",
+        "maturity": "STABLE",
+        "version": "0.1.0",
+        "progress_pct": 96,
+        "scopes": {
+          "ui-core": {
+            "status": "STABLE",
+            "progress": 100
+          },
+          "modals-vim": {
+            "status": "BETA",
+            "progress": 85
+          },
+          "storage": {
+            "status": "STABLE",
+            "progress": 100
+          }
+        }
+      },
+      "environment": {
+        "os": "Fedora 43",
+        "shell": "fish"
+      },
+      "repository": {
+        "ssh": "git@github.com:MarcosBernardC/kanban-tui.git",
+        "https": "https://github.com/MarcosBernardC/kanban-tui"
+      },
+      "stack": [
+        "Python 3.14",
+        "Textual"
+      ],
+      "description": "Gestor de tareas Kanban interactivo con bindings estilo Vim.",
+      "_telemetry": {
+        "last_update": "2026-05-27",
+        "last_commit_log": "feat(ui): implementar validación de repositorio y modal de inicialización"
       }
     },
     {
