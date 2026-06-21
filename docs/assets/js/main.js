@@ -57,6 +57,9 @@ const loadPortfolioData = async () => {
             const renderProject = (project, index, prefix = "02.x") => {
                 const url = project.links.https || "";
                 const isPrivate = project.visibility === 'PRIVATE';
+                const isActiveLabs = project.status.state === 'ACTIVE LABS';
+                const pct = project.status.progress ?? 100;
+                const isComplete = pct === 100;
                 const readmeUrl = !isPrivate && url.includes('github.com') 
                     ? url.replace('github.com', 'raw.githubusercontent.com') + '/main/README.md'
                     : null;
@@ -67,8 +70,14 @@ const loadPortfolioData = async () => {
                         ? `onclick="showReadme('${project.title}', '${readmeUrl}')" style="cursor: pointer;"` 
                         : `href="${url}" target="_blank"`);
 
+                const stateClasses = [
+                    isPrivate ? 'is-private' : '',
+                    isActiveLabs ? 'is-active-labs' : 'is-archive',
+                    isComplete ? 'is-complete' : ''
+                ].filter(Boolean).join(' ');
+
                 return `
-                    <article class="project-card animate-fade-in ${isPrivate ? 'is-private' : ''}" tabindex="0">
+                    <article class="project-card animate-fade-in ${stateClasses}" tabindex="0">
                         <div class="project-header">
                             <span class="project-id">${prefix}.${index + 1}</span>
                             <h3 class="project-title">
@@ -81,17 +90,13 @@ const loadPortfolioData = async () => {
                             </div>
                         </div>
                         <p class="project-desc">${project.description}</p>
-                        ${(() => {
-                            const pct = project.status.progress ?? 100;
-                            return `
                         <div class="project-progress">
                             <span class="project-progress-header">PROGRESS</span>
                             <div class="project-progress-track">
                                 <div class="project-progress-fill" style="--pct: ${pct / 100}; width: 100%;"></div>
                             </div>
                             <span class="project-progress-label">${pct}%</span>
-                        </div>`;
-                        })()}
+                        </div>
                         <div class="project-footer">
                             <div class="project-stack">
                                 <span class="stack-label">STACK: [</span>

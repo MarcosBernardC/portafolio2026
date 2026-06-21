@@ -1,11 +1,19 @@
 :root {
-    --bg: #ffffff;
-    --fg: #000000;
-    --acc: #1a1a1a;
-    --gray: #888888;
-    --light-gray: #f5f5f5;
-    --glass: rgba(255, 255, 255, 0.8);
-    --border: rgba(0, 0, 0, 0.05);
+    --bg: #f2e5bc;
+    --fg: #3c3836;
+    --acc: #458588;
+    --gray: #928374;
+    --light-gray: #ebdbb2;
+    --glass: rgba(242, 229, 188, 0.88);
+    --border: rgba(60, 56, 54, 0.15);
+
+    /* Gruvbox Light Soft accent palette */
+    /* (Mapped exactly as the Python syntax logic) */
+    --tn-cyan:   #689d6a; /* Aqua/Cyan for methods */
+    --tn-orange: #d79921; /* Yellow for classes */
+    --tn-green:  #98971a; /* Green for strings/complete */
+    --tn-purple: #b16286; /* Magenta for numbers */
+    --tn-red:    #cc241d; /* Red for private/alerts */
     
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
@@ -16,13 +24,117 @@
 }
 
 [data-theme="dark"] {
-    --bg: #000000;
-    --fg: #ffffff;
-    --acc: #e0e0e0;
-    --gray: #707070;
-    --light-gray: #0d0d0d;
-    --glass: rgba(0, 0, 0, 0.85);
-    --border: rgba(255, 255, 255, 0.1);
+    --bg: #282828;
+    --fg: #eeeeee;
+    --acc: #b3deef;
+    --gray: #777777;
+    --light-gray: #303030;
+    --glass: rgba(40, 40, 40, 0.88);
+    --border: rgba(238, 238, 238, 0.08);
+
+    /* Tender accent palette */
+    --tn-cyan:   #73cef4;
+    --tn-orange: #ffc24b;
+    --tn-green:  #c9d05c;
+    --tn-purple: #d3b987;
+    --tn-red:    #f43753;
+}
+
+/* ================================================
+   Tokyo Night — Accent Applications (both themes)
+   ================================================ */
+
+/* Nav link active → Like a class/type definition (Yellow) */
+.nav-link.active {
+    color: var(--tn-orange);
+    border-bottom-color: var(--tn-orange);
+}
+
+/* Main Section Title → Like a Class name (Yellow) */
+.main-header .section-title {
+    color: var(--tn-orange);
+}
+
+/* Sub Section Title → Like a Def/Function (Cyan) */
+.sub-section .section-title {
+    color: var(--tn-cyan);
+}
+
+/* Section main and sub numbers → Like Python Integers (Magenta) */
+.main-header .section-number,
+.sub-section .section-number {
+    color: var(--tn-purple);
+}
+
+/* Domain btn active → cyan bg */
+.domain-btn.active {
+    background: var(--tn-cyan);
+    color: var(--bg);
+    border-color: var(--tn-cyan);
+}
+
+.domain-btn:hover {
+    color: var(--tn-cyan);
+    border-color: color-mix(in srgb, var(--tn-cyan) 40%, transparent);
+}
+
+/* Pillar border-left → purple */
+.pillar-title {
+    border-left-color: var(--tn-purple);
+    color: var(--tn-purple);
+}
+
+/* Stack mono labels → subtle purple tint */
+.stack-label {
+    color: var(--tn-purple);
+    opacity: 0.8;
+}
+
+/* Status badge: ACTIVE LABS → orange */
+.status-badge {
+    background: color-mix(in srgb, var(--tn-orange) 15%, transparent);
+    color: var(--tn-orange);
+    border: 1px solid color-mix(in srgb, var(--tn-orange) 35%, transparent);
+}
+
+/* Override para proyectos ARCHIVE: green badge */
+.project-card.is-archive .status-badge {
+    background: color-mix(in srgb, var(--tn-green) 15%, transparent);
+    color: var(--tn-green);
+    border: 1px solid color-mix(in srgb, var(--tn-green) 35%, transparent);
+}
+
+/* Progress fill: in-progress (50%) → orange, complete (100%) → green */
+.project-card.is-active-labs .project-progress-fill {
+    background: var(--tn-orange);
+}
+
+.project-card.is-complete .project-progress-fill {
+    background: var(--tn-green);
+}
+
+/* Progress label color on hover → match fill color */
+.project-card.is-active-labs:hover .project-progress-label,
+.project-card.is-active-labs:focus-within .project-progress-label {
+    color: var(--tn-orange);
+}
+
+.project-card.is-complete:hover .project-progress-label,
+.project-card.is-complete:focus-within .project-progress-label {
+    color: var(--tn-green);
+}
+
+/* is-private hover border → TN red */
+.project-card.is-private:hover {
+    border-bottom-color: var(--tn-red);
+}
+
+/* Project link btn hover → cyan */
+.project-link-btn:hover,
+.project-link-btn:focus {
+    background: var(--tn-cyan);
+    color: var(--bg);
+    border-color: var(--tn-cyan);
 }
 
 * {
@@ -659,6 +771,7 @@ body[data-focus] .section:not(.is-focused) {
     font-size: 0.9rem;
     color: var(--gray);
     line-height: 1.6;
+    opacity: 0.55;
 }
 
 @media (max-width: 1024px) {
@@ -756,7 +869,7 @@ body[data-focus] .section:not(.is-focused) {
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.05em;
-    opacity: 0.9;
+    opacity: 0.45;
 }
 
 .project-item::before {
@@ -1195,7 +1308,7 @@ body[data-focus] .section:not(.is-focused) {
     left: -60%;
     width: 40%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--fg) 50%, transparent), transparent);
     opacity: 0;
     transition: opacity 0.3s var(--ease);
 }
@@ -1256,7 +1369,7 @@ body[data-focus] .section:not(.is-focused) {
     font-size: 0.65rem;
     color: var(--gray);
     max-width: 60%;
-    opacity: 0.7;
+    opacity: 0.45;
     transition: all 0.4s var(--ease);
 }
 
