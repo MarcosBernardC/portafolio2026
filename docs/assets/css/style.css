@@ -1146,6 +1146,104 @@ body[data-focus] .section:not(.is-focused) {
     transition: all 0.4s var(--ease);
 }
 
+/* --- Progress Bar --- */
+.project-progress {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-bottom: 1.25rem;
+    margin-top: 0.25rem;
+}
+
+.project-progress-header {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    color: var(--gray);
+    opacity: 0.6;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: opacity 0.3s var(--ease);
+}
+
+.project-progress-track {
+    flex: 1;
+    height: 3px;
+    background: var(--border);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--fg);
+    transform-origin: left;
+    /* Always visible at resting state */
+    transform: scaleX(var(--pct, 1));
+    opacity: 0.35;
+    transition: opacity 0.4s var(--ease), transform 0s;
+}
+
+/* Shimmer for in-progress items */
+.project-progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+    opacity: 0;
+    transition: opacity 0.3s var(--ease);
+}
+
+.project-card:hover .project-progress-fill,
+.project-card:focus .project-progress-fill,
+.project-card:focus-within .project-progress-fill {
+    opacity: 1;
+}
+
+.project-card:hover .project-progress-fill::after,
+.project-card:focus .project-progress-fill::after,
+.project-card:focus-within .project-progress-fill::after {
+    opacity: 1;
+    animation: progressShimmer 1.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s forwards;
+}
+
+@keyframes progressShimmer {
+    0%   { left: -60%; }
+    100% { left: 110%; }
+}
+
+.project-progress-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--gray);
+    opacity: 0.6;
+    min-width: 3.5ch;
+    text-align: right;
+    transition: color 0.3s var(--ease), opacity 0.3s var(--ease);
+}
+
+.project-card:hover .project-progress-label,
+.project-card:focus .project-progress-label,
+.project-card:focus-within .project-progress-label {
+    opacity: 1;
+    color: var(--fg);
+}
+
+.project-card:hover .project-progress-header,
+.project-card:focus .project-progress-header,
+.project-card:focus-within .project-progress-header {
+    opacity: 1;
+    color: var(--fg);
+}
+
 .project-footer {
     display: flex;
     justify-content: space-between;

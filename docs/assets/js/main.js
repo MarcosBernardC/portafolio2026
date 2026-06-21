@@ -81,6 +81,17 @@ const loadPortfolioData = async () => {
                             </div>
                         </div>
                         <p class="project-desc">${project.description}</p>
+                        ${(() => {
+                            const pct = project.status.progress ?? 100;
+                            return `
+                        <div class="project-progress">
+                            <span class="project-progress-header">PROGRESS</span>
+                            <div class="project-progress-track">
+                                <div class="project-progress-fill" style="--pct: ${pct / 100}; width: 100%;"></div>
+                            </div>
+                            <span class="project-progress-label">${pct}%</span>
+                        </div>`;
+                        })()}
                         <div class="project-footer">
                             <div class="project-stack">
                                 <span class="stack-label">STACK: [</span>

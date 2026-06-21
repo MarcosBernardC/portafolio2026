@@ -43,7 +43,8 @@
       ],
       "status": {
         "state": "ACTIVE LABS",
-        "label": "Alpha 3.14"
+        "label": "Alpha 3.14",
+        "progress": 50
       },
       "environment": {
         "os": "Fedora 43",
@@ -74,7 +75,8 @@
       ],
       "status": {
         "state": "ACTIVE LABS",
-        "label": "TUI v2.0"
+        "label": "TUI v2.0",
+        "progress": 50
       },
       "environment": {
         "os": "Fedora 43",
@@ -104,7 +106,8 @@
       ],
       "status": {
         "state": "ARCHIVE",
-        "label": "ISO-9001 Compliant"
+        "label": "ISO-9001 Compliant",
+        "progress": 100
       },
       "environment": {
         "os": "Fedora 43",
@@ -135,7 +138,8 @@
       ],
       "status": {
         "state": "ARCHIVE",
-        "label": "Matriz de Decisión"
+        "label": "Matriz de Decisión",
+        "progress": 100
       },
       "environment": {
         "os": "Fedora 43",
@@ -167,7 +171,8 @@
       ],
       "status": {
         "state": "ACTIVE LABS",
-        "label": "Dev-Deploy"
+        "label": "Dev-Deploy",
+        "progress": 50
       },
       "environment": {
         "os": "Fedora 43",
@@ -198,7 +203,8 @@
       ],
       "status": {
         "state": "ARCHIVE",
-        "label": "Stable-HW"
+        "label": "Stable-HW",
+        "progress": 100
       },
       "environment": {
         "os": "Fedora 43",
@@ -231,7 +237,8 @@
       ],
       "status": {
         "state": "ACTIVE LABS",
-        "label": "Beta-Infrastructure"
+        "label": "Beta-Infrastructure",
+        "progress": 50
       },
       "environment": {
         "os": "Fedora 43",
@@ -265,7 +272,8 @@
       ],
       "status": {
         "state": "ACTIVE",
-        "label": "Production-Archive"
+        "label": "Production-Archive",
+        "progress": 100
       },
       "environment": {
         "os": "Fedora 43",
@@ -298,7 +306,8 @@
       ],
       "status": {
         "state": "ACTIVE LABS",
-        "label": "Nivel 1: Clase Nave"
+        "label": "Nivel 1: Clase Nave",
+        "progress": 50
       },
       "environment": {
         "os": "Fedora 43",
@@ -329,7 +338,8 @@
       ],
       "status": {
         "state": "ACTIVE LABS",
-        "label": "Production-Ready"
+        "label": "Production-Ready",
+        "progress": 50
       },
       "environment": {
         "os": "Fedora 43",
@@ -360,7 +370,8 @@
       ],
       "status": {
         "state": "ACTIVE LABS",
-        "label": "Production-Ready"
+        "label": "Production-Ready",
+        "progress": 50
       },
       "environment": {
         "os": "Fedora 43",
@@ -391,7 +402,8 @@
       ],
       "status": {
         "state": "ACTIVE LABS",
-        "label": "Design-Phase"
+        "label": "Design-Phase",
+        "progress": 50
       },
       "environment": {
         "os": "Fedora 43",
@@ -423,7 +435,8 @@
       ],
       "status": {
         "state": "ACTIVE LABS",
-        "label": "Alpha-Simulation"
+        "label": "Alpha-Simulation",
+        "progress": 50
       },
       "environment": {
         "os": "Fedora 43",
