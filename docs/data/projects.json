@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-06-17 // 17:24 PET",
+    "last_sync": "2026-06-21 // 15:11 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -38,21 +38,20 @@
       "title": "TUI-DomoNode",
       "category": "Automation",
       "visibility": "PRIVATE",
-      "domain": [
-        "SOFT"
+      "tags": [
+        "SOFTWARE"
       ],
       "status": {
-        "state": "ACTIVE LABS",
-        "label": "Alpha 3.14",
-        "progress": 50
+        "activity": "ACTIVE",
+        "maturity": "ALPHA",
+        "progress_pct": 50,
+        "label": "Alpha 3.14"
       },
       "environment": {
         "os": "Fedora 43",
-        "shell": "fish",
-        "last_update": "2026-05-07 // 10:35 PET",
-        "last_commit_log": "10:35 | feat(scripts): implementar nuevo módulo para generación de datos binarios"
+        "shell": "fish"
       },
-      "links": {
+      "repository": {
         "ssh": "git@github.com:MarcosBernardC/tui_domonode.git",
         "https": "https://github.com/MarcosBernardC/tui_domonode",
         "notice": "Este repositorio contiene lógica de control propietaria y acceso a hardware restringido. Código disponible bajo solicitud formal."
@@ -62,29 +61,31 @@
         "TUI",
         "TOML"
       ],
-      "description": "Simulación de flujos binarios y lectura de hardware."
+      "description": "Simulación de flujos binarios y lectura de hardware.",
+      "_telemetry": {
+        "last_update": "2026-05-07 // 10:35 PET",
+        "last_commit_log": "10:35 | feat(scripts): implementar nuevo módulo para generación de datos binarios"
+      }
     },
     {
       "id": "02",
       "title": "Synquork",
       "category": "Productivity",
       "visibility": "PUBLIC",
-      "domain": [
-        "SOFT",
-        "CLOUD"
+      "tags": [
+        "SOFTWARE"
       ],
       "status": {
-        "state": "ACTIVE LABS",
-        "label": "TUI v2.0",
-        "progress": 50
+        "activity": "ACTIVE",
+        "maturity": "BETA",
+        "progress_pct": 50,
+        "label": "TUI v2.0"
       },
       "environment": {
         "os": "Fedora 43",
-        "shell": "fish",
-        "last_update": "2026-05-27 // 12:15 PET",
-        "last_commit_log": "12:15 | style(tui): cambiar color del banner de estado a tono neutro"
+        "shell": "fish"
       },
-      "links": {
+      "repository": {
         "ssh": "git@github.com:MarcosBernardC/synquork.git",
         "https": "https://github.com/MarcosBernardC/synquork"
       },
@@ -93,29 +94,31 @@
         "Fish",
         "JSON"
       ],
-      "description": "Orquestador de activos de ingeniería y motor de sincronización automatizada."
+      "description": "Orquestador de activos de ingeniería y motor de sincronización automatizada.",
+      "_telemetry": {
+        "last_update": "2026-05-27 // 12:15 PET",
+        "last_commit_log": "12:15 | style(tui): cambiar color del banner de estado a tono neutro"
+      }
     },
     {
       "id": "03",
       "title": "Industrial Instrumentation Standards",
       "category": "Industrial R&D",
       "visibility": "PUBLIC",
-      "domain": [
-        "DOCS",
-        "STAND"
+      "tags": [
+        "DOCUMENTATION"
       ],
       "status": {
-        "state": "ARCHIVE",
-        "label": "ISO-9001 Compliant",
-        "progress": 100
+        "activity": "ARCHIVED",
+        "maturity": "RELEASE",
+        "progress_pct": 100,
+        "label": "ISO-9001 Compliant"
       },
       "environment": {
         "os": "Fedora 43",
-        "shell": "fish",
-        "last_update": "2026-05-02 // 16:37 PET",
-        "last_commit_log": "16:37 | chore: cambiar número de imágnes de renderizado 2D a una sola (minimalismo)"
+        "shell": "fish"
       },
-      "links": {
+      "repository": {
         "ssh": "git@github.com:MarcosBernardC/instrumentation-manuals-pro.git",
         "https": "https://github.com/MarcosBernardC/instrumentation-manuals-pro"
       },
@@ -125,29 +128,31 @@
         "Makefile",
         "Vector Graphics"
       ],
-      "description": "Protocolos de optimización y estandarización de activos documentales."
+      "description": "Protocolos de optimización y estandarización de activos documentales.",
+      "_telemetry": {
+        "last_update": "2026-05-02 // 16:37 PET",
+        "last_commit_log": "16:37 | chore: cambiar número de imágnes de renderizado 2D a una sola (minimalismo)"
+      }
     },
     {
       "id": "04",
       "title": "Investigación Electoral 2026",
       "category": "Data Science",
       "visibility": "PRIVATE",
-      "domain": [
-        "DATA",
-        "RESEARCH"
+      "tags": [
+        "SOFTWARE"
       ],
       "status": {
-        "state": "ARCHIVE",
-        "label": "Matriz de Decisión",
-        "progress": 100
+        "activity": "ARCHIVED",
+        "maturity": "RELEASE",
+        "progress_pct": 100,
+        "label": "Matriz de Decisión"
       },
       "environment": {
         "os": "Fedora 43",
-        "shell": "fish",
-        "last_update": "2026-04-11 // 17:50 PET",
-        "last_commit_log": "17:50 | chore: actualizar ignores para excluir directorios temporales de datos"
+        "shell": "fish"
       },
-      "links": {
+      "repository": {
         "ssh": "git@github.com:MarcosBernardC/elecciones-2026.git",
         "https": "https://github.com/MarcosBernardC/elecciones-2026",
         "notice": "Activo de investigación interna para análisis de datos soberanos. Acceso limitado por políticas de privacidad."
@@ -158,29 +163,31 @@
         "APA 7",
         "Statistics"
       ],
-      "description": "Análisis estadístico y cuantitativo de planes de gobierno y hojas de vida."
+      "description": "Análisis estadístico y cuantitativo de planes de gobierno y hojas de vida.",
+      "_telemetry": {
+        "last_update": "2026-04-11 // 17:50 PET",
+        "last_commit_log": "17:50 | chore: actualizar ignores para excluir directorios temporales de datos"
+      }
     },
     {
       "id": "07",
       "title": "Portafolio 2026",
       "category": "Brand Engine",
       "visibility": "PUBLIC",
-      "domain": [
-        "SOFT",
+      "tags": [
         "WEB"
       ],
       "status": {
-        "state": "ACTIVE LABS",
-        "label": "Dev-Deploy",
-        "progress": 50
+        "activity": "ACTIVE",
+        "maturity": "BETA",
+        "progress_pct": 50,
+        "label": "Dev-Deploy"
       },
       "environment": {
         "os": "Fedora 43",
-        "shell": "fish",
-        "last_update": "2026-05-26 // 18:52 PET",
-        "last_commit_log": "18:52 | feat: implementar cambio de tema automático basado en horario laboral"
+        "shell": "fish"
       },
-      "links": {
+      "repository": {
         "ssh": "git@github.com:MarcosBernardC/portafolio2026.git",
         "https": "https://github.com/MarcosBernardC/portafolio2026"
       },
@@ -190,29 +197,31 @@
         "JavaScript",
         "JSON"
       ],
-      "description": "Sistema de despliegue de identidad profesional y gestión de activos."
+      "description": "Sistema de despliegue de identidad profesional y gestión de activos.",
+      "_telemetry": {
+        "last_update": "2026-06-20 // 22:20 PET",
+        "last_commit_log": "22:20 | feat(ui): implementar nueva paleta de colores y estados de proyecto"
+      }
     },
     {
       "id": "08",
       "title": "PIC12F675 LED Dimmer",
       "category": "Power Electronics",
       "visibility": "PUBLIC",
-      "domain": [
-        "HARD",
-        "EMB"
+      "tags": [
+        "ELECTRONICS"
       ],
       "status": {
-        "state": "ARCHIVE",
-        "label": "Stable-HW",
-        "progress": 100
+        "activity": "ARCHIVED",
+        "maturity": "PROD",
+        "progress_pct": 100,
+        "label": "Stable-HW"
       },
       "environment": {
         "os": "Fedora 43",
-        "shell": "fish",
-        "last_update": "2026-05-02 // 17:49 PET",
-        "last_commit_log": "17:49 | docs: actualizar enlace de código fuente a vista raw con apertura en pestaña nueva"
+        "shell": "fish"
       },
-      "links": {
+      "repository": {
         "ssh": "git@github.com:MarcosBernardC/pic12f675-led-dimmer.git",
         "https": "https://github.com/MarcosBernardC/pic12f675-led-dimmer"
       },
@@ -223,30 +232,31 @@
         "MPLAB X",
         "LaTeX"
       ],
-      "description": "Controlador de intensidad lumínica basado en microcontrolador de 8 bits con investigación técnica documentada."
+      "description": "Controlador de intensidad lumínica basado en microcontrolador de 8 bits con investigación técnica documentada.",
+      "_telemetry": {
+        "last_update": "2026-05-02 // 17:49 PET",
+        "last_commit_log": "17:49 | docs: actualizar enlace de código fuente a vista raw con apertura en pestaña nueva"
+      }
     },
     {
       "id": "09",
       "title": "Helvetia-Instruments",
       "category": "Electronic Commerce",
       "visibility": "PRIVATE",
-      "domain": [
-        "SOFT",
-        "WEB",
-        "HARD"
+      "tags": [
+        "WEB"
       ],
       "status": {
-        "state": "ACTIVE LABS",
-        "label": "Beta-Infrastructure",
-        "progress": 50
+        "activity": "ACTIVE",
+        "maturity": "BETA",
+        "progress_pct": 50,
+        "label": "Beta-Infrastructure"
       },
       "environment": {
         "os": "Fedora 43",
-        "shell": "fish",
-        "last_update": "2026-05-22 // 23:53 PET",
-        "last_commit_log": "23:53 | style: reubicar y compactar barra de búsqueda en sección de catálogo"
+        "shell": "fish"
       },
-      "links": {
+      "repository": {
         "ssh": "git@github.com:MarcosBernardC/Helvetia-Instruments.git",
         "https": "https://github.com/MarcosBernardC/Helvetia-Instruments",
         "notice": "Proyecto en construcción. Despliegue público programado tras validación de módulos de automatización."
@@ -258,30 +268,31 @@
         "Fish",
         "GitHub Pages"
       ],
-      "description": "Ecosistema automatizado de instrumentación electrónica y suministro técnico de componentes."
+      "description": "Ecosistema automatizado de instrumentación electrónica y suministro técnico de componentes.",
+      "_telemetry": {
+        "last_update": "2026-05-22 // 23:53 PET",
+        "last_commit_log": "23:53 | style: reubicar y compactar barra de búsqueda en sección de catálogo"
+      }
     },
     {
       "id": "10",
       "title": "Docs",
       "category": "Technical Documentation & Engineering Records",
       "visibility": "PRIVATE",
-      "domain": [
-        "HARD",
-        "LEGAL",
-        "ACADEMIC"
+      "tags": [
+        "DOCUMENTATION"
       ],
       "status": {
-        "state": "ACTIVE",
-        "label": "Production-Archive",
-        "progress": 100
+        "activity": "ACTIVE",
+        "maturity": "PROD",
+        "progress_pct": 100,
+        "label": "Production-Archive"
       },
       "environment": {
         "os": "Fedora 43",
-        "shell": "fish",
-        "last_update": "2026-06-02 // 11:16 PET",
-        "last_commit_log": "11:16 | fix: corregir numero de documento de la arrendataria"
+        "shell": "fish"
       },
-      "links": {
+      "repository": {
         "ssh": "git@github.com:MarcosBernardC/Docs.git",
         "https": "https://github.com/MarcosBernardC/Docs",
         "notice": "Repositorio privado de gestión documental, finanzas y registros de ingeniería (Tesis/DomoNode)."
@@ -293,29 +304,31 @@
         "Fish Shell",
         "Python"
       ],
-      "description": "Sistema centralizado de documentación técnica que incluye expedientes ANA, gestión de contratos, finanzas personales y avances de Tesis/DomoNode."
+      "description": "Sistema centralizado de documentación técnica que incluye expedientes ANA, gestión de contratos, finanzas personales y avances de Tesis/DomoNode.",
+      "_telemetry": {
+        "last_update": "2026-06-02 // 11:16 PET",
+        "last_commit_log": "11:16 | fix: corregir numero de documento de la arrendataria"
+      }
     },
     {
       "id": "11",
       "title": "Star Wars Podracer Simulator",
       "category": "Game Simulation / CS50P Final Project",
       "visibility": "PRIVATE",
-      "domain": [
-        "SOFT",
-        "RESEARCH"
+      "tags": [
+        "SOFTWARE"
       ],
       "status": {
-        "state": "ACTIVE LABS",
-        "label": "Nivel 1: Clase Nave",
-        "progress": 50
+        "activity": "ACTIVE",
+        "maturity": "BETA",
+        "progress_pct": 50,
+        "label": "Nivel 1: Clase Nave"
       },
       "environment": {
         "os": "Fedora 43",
-        "shell": "fish",
-        "last_update": "2026-06-16 // 16:13 PET",
-        "last_commit_log": "16:13 | refactor: implementar dunder methods __str__ y limpiar arquitectura de reportes"
+        "shell": "fish"
       },
-      "links": {
+      "repository": {
         "ssh": "git@github.com:MarcosBernardC/star_wars_racer_sim.git",
         "https": "https://github.com/MarcosBernardC/star_wars_racer_sim",
         "notice": "Proyecto académico del curso CS50P. Acceso restringido por políticas de integridad académica."
@@ -326,28 +339,31 @@
         "Vimwiki",
         "CLI"
       ],
-      "description": "Simulador en consola iterativo basado en POO pura que emula físicas de tracción, motores independientes y gestión térmica de Podracers."
+      "description": "Simulador en consola iterativo basado en POO pura que emula físicas de tracción, motores independientes y gestión térmica de Podracers.",
+      "_telemetry": {
+        "last_update": "2026-06-16 // 16:13 PET",
+        "last_commit_log": "16:13 | refactor: implementar dunder methods __str__ y limpiar arquitectura de reportes"
+      }
     },
     {
       "id": "12",
       "title": "Reportes Automáticos Nubyx",
       "category": "Automation",
       "visibility": "PUBLIC",
-      "domain": [
-        "SOFT"
+      "tags": [
+        "SOFTWARE"
       ],
       "status": {
-        "state": "ACTIVE LABS",
-        "label": "Production-Ready",
-        "progress": 50
+        "activity": "ACTIVE",
+        "maturity": "PROD",
+        "progress_pct": 50,
+        "label": "Production-Ready"
       },
       "environment": {
         "os": "Fedora 43",
-        "shell": "fish",
-        "last_update": "2026-05-21 // 09:45 PET",
-        "last_commit_log": "09:45 | docs: crear documentación detallada, flujo de instalación y guías de ejecución en README"
+        "shell": "fish"
       },
-      "links": {
+      "repository": {
         "ssh": "git@github.com:MarcosBernardC/reportes_automaticos_nubyx.git",
         "https": "https://github.com/MarcosBernardC/reportes_automaticos_nubyx"
       },
@@ -358,28 +374,31 @@
         "CSV",
         "CLI"
       ],
-      "description": "Sistema de captura interactiva por terminal para control de calidad técnico y motor automatizado de renderizado de informes homologados en formato PDF."
+      "description": "Sistema de captura interactiva por terminal para control de calidad técnico y motor automatizado de renderizado de informes homologados en formato PDF.",
+      "_telemetry": {
+        "last_update": "2026-05-21 // 09:45 PET",
+        "last_commit_log": "09:45 | docs: crear documentación detallada, flujo de instalación y guías de ejecución en README"
+      }
     },
     {
       "id": "13",
       "title": "Kanban-TUI",
       "category": "Productivity",
       "visibility": "PUBLIC",
-      "domain": [
-        "SOFT"
+      "tags": [
+        "SOFTWARE"
       ],
       "status": {
-        "state": "ACTIVE LABS",
-        "label": "Production-Ready",
-        "progress": 50
+        "activity": "ACTIVE",
+        "maturity": "PROD",
+        "progress_pct": 50,
+        "label": "Production-Ready"
       },
       "environment": {
         "os": "Fedora 43",
-        "shell": "fish",
-        "last_update": "2026-05-27 // 10:09 PET",
-        "last_commit_log": "10:09 | feat(ui): implementar validación de repositorio y modal de inicialización"
+        "shell": "fish"
       },
-      "links": {
+      "repository": {
         "ssh": "git@github.com:MarcosBernardC/kanban-tui",
         "https": "https://github.com/MarcosBernardC/kanban-tui"
       },
@@ -389,29 +408,31 @@
         "JSON",
         "CLI"
       ],
-      "description": "Gestor de tareas Kanban interactivo basado en terminal, con navegación estilo Vim y persistencia local de datos."
+      "description": "Gestor de tareas Kanban interactivo basado en terminal, con navegación estilo Vim y persistencia local de datos.",
+      "_telemetry": {
+        "last_update": "2026-05-27 // 10:09 PET",
+        "last_commit_log": "10:09 | feat(ui): implementar validación de repositorio y modal de inicialización"
+      }
     },
     {
       "id": "14",
       "title": "Reloj Digital Discreto",
       "category": "Digital Electronics",
       "visibility": "PUBLIC",
-      "domain": [
-        "HARD",
-        "EMB"
+      "tags": [
+        "ELECTRONICS"
       ],
       "status": {
-        "state": "ACTIVE LABS",
-        "label": "Design-Phase",
-        "progress": 50
+        "activity": "ACTIVE",
+        "maturity": "BETA",
+        "progress_pct": 50,
+        "label": "Design-Phase"
       },
       "environment": {
         "os": "Fedora 43",
-        "shell": "fish",
-        "last_update": "2026-06-11 // 22:25 PET",
-        "last_commit_log": "22:25 | feat(sim): implementar lógica base de reloj digital con conteo en cascada"
+        "shell": "fish"
       },
-      "links": {
+      "repository": {
         "ssh": "git@github.com:MarcosBernardC/reloj_digital_discreto.git",
         "https": "https://github.com/MarcosBernardC/reloj_digital_discreto"
       },
@@ -421,33 +442,56 @@
         "Circuit Simulation",
         "LaTeX"
       ],
-      "description": "Diseño e implementación de un reloj digital cronológico (HH:MM:SS) utilizando contadores síncronos, lógica de desborde discreta y base de tiempo con CI 555."
+      "description": "Diseño e implementación de un reloj digital cronológico (HH:MM:SS) utilizando contadores síncronos, lógica de desborde discreta y base de tiempo con CI 555.",
+      "_telemetry": {
+        "last_update": "2026-06-11 // 22:25 PET",
+        "last_commit_log": "22:25 | feat(sim): implementar lógica base de reloj digital con conteo en cascada"
+      }
     },
     {
       "id": "15",
       "title": "NE555 RC Circuit Simulator",
       "category": "Electronic Simulation / CS50P Final Project",
       "visibility": "PRIVATE",
-      "domain": [
-        "SOFT",
-        "HARD",
-        "RESEARCH"
+      "tags": [
+        "SOFTWARE"
       ],
       "status": {
-        "state": "ACTIVE LABS",
-        "label": "Alpha-Simulation",
-        "progress": 50
+        "activity": "ACTIVE",
+        "maturity": "ALPHA",
+        "progress_pct": 40,
+        "label": "Alpha",
+        "version": "0.1.0",
+        "scopes": {
+          "model": {
+            "status": "PROTOTYPE",
+            "progress": 0
+          },
+          "cli": {
+            "status": "BETA",
+            "progress": 50
+          },
+          "setup": {
+            "status": "ALPHA",
+            "progress": 50
+          },
+          "core": {
+            "status": "ALPHA",
+            "progress": 25
+          },
+          "data": {
+            "status": "PROTOTYPE",
+            "progress": 50
+          }
+        }
       },
       "environment": {
         "os": "Fedora 43",
-        "shell": "fish",
-        "last_update": "2026-06-17 // 17:20 PET",
-        "last_commit_log": "17:20 | feat(setup): crear la función inicial de  obtención de columnas"
+        "shell": "fish"
       },
-      "links": {
+      "repository": {
         "ssh": "git@github.com:MarcosBernardC/ne555-rc-simulator.git",
-        "https": "https://github.com/MarcosBernardC/ne555-rc-simulator",
-        "notice": "Proyecto académico del curso CS50P. Acceso restringido por políticas de integridad académica."
+        "https": "https://github.com/MarcosBernardC/ne555-rc-simulator"
       },
       "stack": [
         "Python 3.14",
@@ -455,7 +499,18 @@
         "Matplotlib",
         "CLI"
       ],
-      "description": "Simulador computacional de transitorios RC y modos de operación del temporizador 555, enfocado en la validación numérica de constantes de tiempo y ciclos de trabajo."
+      "description": "Simulador computacional de transitorios RC y modos de operación del temporizador 555.",
+      "_telemetry": {
+        "last_update": "2026-06-20 // 06:34 PET",
+        "last_commit_log": "06:34 | chore(cli): reordenar bloques de código y mejorar prompt de TUI",
+        "changelog": [
+          {
+            "version": "0.1.0",
+            "date": "2026-06-17",
+            "summary": "Estructura base, dataclasses, inicio de setup y CLI."
+          }
+        ]
+      }
     }
   ]
 }
