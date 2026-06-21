@@ -1,22 +1,13 @@
 {
-      "id": "07",
-      "title": "Portafolio 2026",
-      "category": "Brand Engine",
-      "visibility": "PUBLIC",
-      "domain": ["SOFT", "WEB"],
-      "status": {
-        "state": "ACTIVE LABS",
-        "label": "Dev-Deploy"
-      },
-      "environment": {
-        "os": "Fedora 43",
-        "shell": "fish",
-        "last_update": "2026-04-30 // 22:35 PET"
-      },
-      "links": {
-        "ssh": "git@github.com:MarcosBernardC/portafolio2026.git",
-        "https": "https://github.com/MarcosBernardC/portafolio2026"
-      },
-      "stack": ["HTML5", "CSS3", "JavaScript", "JSON"],
-      "description": "Sistema de despliegue de identidad profesional y gestión de activos."
+    "id": "07",
+    "title": "Portafolio 2026",
+    "category": "Brand Engine",
+    "visibility": "PUBLIC",
+    "tags": "WEB APP",
+    "status": { "activity": "ACTIVE", "maturity": "BETA", "version": "0.1.0", "progress_pct": 50, "scopes": { "frontend": { "status": "BETA", "progress": 50 } } },
+    "environment": { "os": "Fedora 43", "shell": "fish" },
+    "repository": { "ssh": "git@github.com:MarcosBernardC/portafolio2026.git", "https": "https://github.com/MarcosBernardC/portafolio2026" },
+    "stack": ["HTML5", "CSS3", "JavaScript"],
+    "description": "Sistema de gestión de identidad profesional.",
+    "_telemetry": { "last_update": "2026-05-26", "last_commit_log": "feat: implementar cambio de tema", "changelog": [{ "version": "0.1.0", "date": "2026-05-26", "summary": "Estructura inicial." }] }
 }

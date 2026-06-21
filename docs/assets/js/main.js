@@ -52,20 +52,46 @@ const loadPortfolioData = async () => {
 
             const filteredProjects = filterDomain === 'ALL' 
                 ? projectsData.projects 
-                : projectsData.projects.filter(p => p.domain.includes(filterDomain));
+                : projectsData.projects.filter(p => p.tags && p.tags.includes(filterDomain));
 
             const renderProject = (project, index, prefix = "02.x") => {
-                const url = project.links.https || "";
+                const url = project.repository?.https || "";
                 const isPrivate = project.visibility === 'PRIVATE';
-                const isActiveLabs = project.status.state === 'ACTIVE LABS';
-                const pct = project.status.progress ?? 100;
+                const isActiveLabs = project.status.activity === 'ACTIVE';
+                
+                let pct = project.status.progress_pct ?? 100;
+
+                if (project.status.scopes) {
+                    const scopesKeys = Object.keys(project.status.scopes);
+                    if (scopesKeys.length > 0) {
+                        const weightMap = {
+                            'prototype': 0.5,
+                            'alpha': 1.0,
+                            'beta': 2.0,
+                            'stable': 3.0
+                        };
+                        let sumWeightedProgress = 0;
+                        let sumWeights = 0;
+                        scopesKeys.forEach(key => {
+                            const sc = project.status.scopes[key];
+                            const stType = sc.status.toLowerCase();
+                            const w = weightMap[stType] || 1.0;
+                            sumWeightedProgress += (sc.progress * w);
+                            sumWeights += w;
+                        });
+                        if (sumWeights > 0) {
+                            pct = Math.round(sumWeightedProgress / sumWeights);
+                        }
+                    }
+                }
+
                 const isComplete = pct === 100;
                 const readmeUrl = !isPrivate && url.includes('github.com') 
                     ? url.replace('github.com', 'raw.githubusercontent.com') + '/main/README.md'
                     : null;
 
                 const linkAction = isPrivate 
-                    ? `onclick="showNotice('${project.title}', '${project.links.notice || ''}')"` 
+                    ? `onclick="showNotice('${project.title}', '${project.repository?.notice || ''}')"` 
                     : (readmeUrl 
                         ? `onclick="showReadme('${project.title}', '${readmeUrl}')" style="cursor: pointer;"` 
                         : `href="${url}" target="_blank"`);
@@ -76,6 +102,44 @@ const loadPortfolioData = async () => {
                     isComplete ? 'is-complete' : ''
                 ].filter(Boolean).join(' ');
 
+                let badgeHTML = '';
+                if (project.status.version) {
+                    badgeHTML = `<span class="status-badge" style="background:var(--tn-cyan); color:var(--bg); border:none;">v${project.status.version}</span>`;
+                } else if (project.status.label) {
+                    badgeHTML = `<span class="status-badge">${project.status.label}</span>`;
+                }
+
+                let scopesHTML = '';
+                if (project.status.scopes) {
+                    const scopesKeys = Object.keys(project.status.scopes);
+                    if (scopesKeys.length > 0) {
+                        scopesHTML = `
+                            <div class="project-scopes" style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px dashed var(--border);">
+                                <div style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--gray); margin-bottom: 1rem; letter-spacing: 0.1em;">MODULE SCOPES</div>
+                                ${scopesKeys.map(key => {
+                                    const sc = project.status.scopes[key];
+                                    const stType = sc.status.toLowerCase();
+                                    const colorVar = stType === 'stable' ? 'green' 
+                                                   : stType === 'beta' ? 'orange' 
+                                                   : stType === 'alpha' ? 'red' 
+                                                   : 'purple';
+                                    return `
+                                        <div class="scope-item" style="margin-bottom: 0.6rem;">
+                                            <div class="scope-header" style="display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:0.6rem; margin-bottom:0.3rem">
+                                                <span class="scope-name" style="color:var(--fg); font-weight:700;">${key.toUpperCase()}</span>
+                                                <span class="scope-status" style="color:var(--tn-${colorVar}); opacity: 0.9;">${sc.status} [${sc.progress}%]</span>
+                                            </div>
+                                            <div class="project-progress-track" style="margin-bottom:0; height:2px; background: color-mix(in srgb, var(--tn-${colorVar}) 15%, transparent);">
+                                                <div class="project-progress-fill" style="--pct: ${sc.progress / 100}; width: 100%; height: 100%; background: var(--tn-${colorVar});"></div>
+                                            </div>
+                                        </div>
+                                    `;
+                                }).join('')}
+                            </div>
+                        `;
+                    }
+                }
+
                 return `
                     <article class="project-card animate-fade-in ${stateClasses}" tabindex="0">
                         <div class="project-header">
@@ -85,19 +149,22 @@ const loadPortfolioData = async () => {
                             </h3>
                             <div class="project-cat">
                                 <span>${project.category}</span>
-                                <span class="status-badge">${project.status.label}</span>
-                                <span class="project-date">DATE: ${project.environment.last_update.split(' // ')[0]}</span>
+                                ${badgeHTML}
+                                <span class="project-date">DATE: ${project._telemetry?.last_update?.split(' // ')[0] || ''}</span>
                             </div>
                         </div>
                         <p class="project-desc">${project.description}</p>
                         <div class="project-progress">
-                            <span class="project-progress-header">PROGRESS</span>
+                            <span class="project-progress-header">GLOBAL PROGRESS</span>
                             <div class="project-progress-track">
                                 <div class="project-progress-fill" style="--pct: ${pct / 100}; width: 100%;"></div>
                             </div>
                             <span class="project-progress-label">${pct}%</span>
                         </div>
-                        <div class="project-footer">
+                        
+                        ${scopesHTML}
+
+                        <div class="project-footer" style="${scopesHTML ? 'margin-top: 1.5rem;' : ''}">
                             <div class="project-stack">
                                 <span class="stack-label">STACK: [</span>
                                 <span class="stack-values">${project.stack.join(' // ')}</span>
@@ -118,11 +185,11 @@ const loadPortfolioData = async () => {
             };
 
             const activeProjects = filteredProjects
-                .filter(p => p.status.state === 'ACTIVE LABS')
+                .filter(p => p.status.activity === 'ACTIVE')
                 .sort(sortByVisibility);
 
             const legacyProjects = filteredProjects
-                .filter(p => p.status.state === 'ARCHIVE')
+                .filter(p => p.status.activity === 'ARCHIVED')
                 .sort(sortByVisibility);
 
             const updateSection = (sectionId, gridId, countId, projects, prefix) => {
