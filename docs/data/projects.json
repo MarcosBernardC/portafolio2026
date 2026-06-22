@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-06-22 // 10:37 PET",
+    "last_sync": "2026-06-22 // 10:43 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -283,7 +283,7 @@
       "title": "Docs-Central",
       "category": "Technical Documentation & Management",
       "visibility": "PRIVATE",
-      "tags": "LATEX, AUTOMATION, MANAGEMENT",
+      "tags": "DOCUMENTATION",
       "domain": [
         "LEGAL",
         "FINANCIAL",
@@ -297,7 +297,7 @@
         "progress_pct": 100,
         "scopes": {
           "documentation": {
-            "status": "MAINTAINED",
+            "status": "STABLE",
             "progress": 100
           },
           "automation": {
@@ -324,7 +324,7 @@
       "description": "Sistema centralizado de gestión documental: abarca expedientes técnicos (ANA), contratos, CVs, finanzas personales, tesis y automatización de planos hidráulicos.",
       "_telemetry": {
         "last_update": "2026-06-22",
-        "last_commit_log": "feat(carteles): añadir nuevos diseños y limpiar configuración"
+        "last_commit_log": "feat: agregar meta.json para gestión de metadatos en portafolio"
       }
     },
     {
