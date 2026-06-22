@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-06-21 // 18:34 PET",
+    "last_sync": "2026-06-21 // 19:07 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -29,7 +29,7 @@
       ]
     },
     "stats": {
-      "total_managed": 5
+      "total_managed": 7
     }
   },
   "projects": [
@@ -84,21 +84,32 @@
       }
     },
     {
-      "id": "07",
-      "title": "Portafolio 2026",
-      "category": "Brand Engine",
+      "id": "03",
+      "title": "Industrial Instrumentation Standards",
+      "category": "Industrial R&D",
       "visibility": "PUBLIC",
-      "tags": "WEB APP",
-      "domain": [],
+      "tags": "DOCUMENTATION",
+      "domain": [
+        "Metrology",
+        "Industrial Automation"
+      ],
       "status": {
-        "activity": "ACTIVE",
-        "maturity": "BETA",
+        "activity": "ARCHIVED",
+        "maturity": "STABLE",
         "version": "0.1.0",
-        "progress_pct": 50,
+        "progress_pct": 100,
         "scopes": {
-          "frontend": {
-            "status": "BETA",
-            "progress": 50
+          "Template_Design": {
+            "status": "STABLE",
+            "progress": 100
+          },
+          "Asset_Processing": {
+            "status": "STABLE",
+            "progress": 100
+          },
+          "Automation_Build": {
+            "status": "STABLE",
+            "progress": 100
           }
         }
       },
@@ -107,18 +118,126 @@
         "shell": "fish"
       },
       "repository": {
-        "ssh": "git@github.com:MarcosBernardC/portafolio2026.git",
-        "https": "https://github.com/MarcosBernardC/portafolio2026"
+        "ssh": "git@github.com:MarcosBernardC/instrumentation-manuals-pro.git",
+        "https": "https://github.com/MarcosBernardC/instrumentation-manuals-pro"
+      },
+      "stack": [
+        "LuaLaTeX",
+        "TikZ/PGF",
+        "Makefile"
+      ],
+      "description": "Protocolos de optimización y estandarización.",
+      "_telemetry": {
+        "last_update": "2026-05-02",
+        "last_commit_log": "chore: cambiar número de imágnes de renderizado 2D a una sola (minimalismo)"
+      }
+    },
+    {
+      "id": "07",
+      "title": "Portfolio 2026",
+      "category": "Web App",
+      "visibility": "PUBLIC",
+      "tags": "SOFTWARE",
+      "domain": [
+        "Frontend Engineering",
+        "DevOps"
+      ],
+      "status": {
+        "activity": "ACTIVE",
+        "maturity": "BETA",
+        "version": "2.0.0",
+        "progress_pct": 93,
+        "scopes": {
+          "UI_Core_SPA": {
+            "status": "STABLE",
+            "progress": 100
+          },
+          "Filter_Engine": {
+            "status": "STABLE",
+            "progress": 100
+          },
+          "Supabase_Integration": {
+            "status": "BETA",
+            "progress": 60
+          },
+          "Data_Hydration": {
+            "status": "STABLE",
+            "progress": 100
+          }
+        }
+      },
+      "environment": {
+        "os": "Fedora 43",
+        "shell": "fish"
+      },
+      "repository": {
+        "ssh": "git@github.com:MarcosBernardC/portfolio2026.git",
+        "https": "https://github.com/MarcosBernardC/portfolio2026"
       },
       "stack": [
         "HTML5",
         "CSS3",
-        "JavaScript"
+        "JavaScript",
+        "Supabase",
+        "JSON"
       ],
-      "description": "Sistema de gestión de identidad profesional.",
+      "description": "Sistema de gestión de identidad profesional y visualización de activos de ingeniería.",
       "_telemetry": {
         "last_update": "2026-06-21",
         "last_commit_log": "feat(ui): implementar renderizado por scopes y unificar etiquetas de filtrado"
+      }
+    },
+    {
+      "id": "08",
+      "title": "PIC12F675 LED Dimmer",
+      "category": "Power Electronics",
+      "visibility": "PUBLIC",
+      "tags": "ELECTRONICS",
+      "domain": [
+        "Embedded Systems",
+        "Hardware Design"
+      ],
+      "status": {
+        "activity": "ARCHIVED",
+        "maturity": "STABLE",
+        "version": "0.1.0",
+        "progress_pct": 100,
+        "scopes": {
+          "Firmware": {
+            "status": "STABLE",
+            "progress": 100
+          },
+          "Hardware_EDA": {
+            "status": "STABLE",
+            "progress": 100
+          },
+          "Simulation": {
+            "status": "STABLE",
+            "progress": 100
+          },
+          "Documentation": {
+            "status": "STABLE",
+            "progress": 100
+          }
+        }
+      },
+      "environment": {
+        "os": "Fedora 43",
+        "shell": "fish"
+      },
+      "repository": {
+        "ssh": "git@github.com:MarcosBernardC/pic12f675-led-dimmer.git",
+        "https": "https://github.com/MarcosBernardC/pic12f675-led-dimmer"
+      },
+      "stack": [
+        "C",
+        "KiCad",
+        "LaTeX"
+      ],
+      "description": "Controlador de intensidad lumínica.",
+      "_telemetry": {
+        "last_update": "2026-05-02",
+        "last_commit_log": "docs: actualizar enlace de código fuente a vista raw con apertura en pestaña nueva"
       }
     },
     {
