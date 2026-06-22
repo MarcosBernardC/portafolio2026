@@ -1,13 +1,48 @@
 {
-    "id": "07",
-    "title": "Portafolio 2026",
-    "category": "Brand Engine",
-    "visibility": "PUBLIC",
-    "tags": "WEB APP",
-    "status": { "activity": "ACTIVE", "maturity": "BETA", "version": "0.1.0", "progress_pct": 50, "scopes": { "frontend": { "status": "BETA", "progress": 50 } } },
-    "environment": { "os": "Fedora 43", "shell": "fish" },
-    "repository": { "ssh": "git@github.com:MarcosBernardC/portafolio2026.git", "https": "https://github.com/MarcosBernardC/portafolio2026" },
-    "stack": ["HTML5", "CSS3", "JavaScript"],
-    "description": "Sistema de gestión de identidad profesional.",
-    "_telemetry": { "last_update": "2026-05-26", "last_commit_log": "feat: implementar cambio de tema", "changelog": [{ "version": "0.1.0", "date": "2026-05-26", "summary": "Estructura inicial." }] }
+  "id": "07",
+  "title": "Portfolio 2026",
+  "category": "Web App",
+  "visibility": "PUBLIC",
+  "tags": "SOFTWARE",
+  "domain": ["Frontend Engineering", "DevOps"],
+  "status": {
+    "activity": "ACTIVE",
+    "maturity": "BETA",
+    "version": "2.0.0",
+    "progress_pct": 85,
+    "scopes": {
+      "UI_Core_SPA": {
+        "status": "STABLE",
+        "progress": 100
+      },
+      "Filter_Engine": {
+        "status": "STABLE",
+        "progress": 100
+      },
+      "Supabase_Integration": {
+        "status": "BETA",
+        "progress": 60
+      },
+      "Data_Hydration": {
+        "status": "STABLE",
+        "progress": 100
+      }
+    }
+  },
+  "environment": {
+    "os": "Fedora 43",
+    "shell": "fish"
+  },
+  "repository": {
+    "ssh": "git@github.com:MarcosBernardC/portfolio2026.git",
+    "https": "https://github.com/MarcosBernardC/portfolio2026"
+  },
+  "stack": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Supabase",
+    "JSON"
+  ],
+  "description": "Sistema de gestión de identidad profesional y visualización de activos de ingeniería."
 }
