@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-06-21 // 19:23 PET",
+    "last_sync": "2026-06-22 // 10:37 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -29,7 +29,7 @@
       ]
     },
     "stats": {
-      "total_managed": 7
+      "total_managed": 9
     }
   },
   "projects": [
@@ -279,6 +279,55 @@
       }
     },
     {
+      "id": "10",
+      "title": "Docs-Central",
+      "category": "Technical Documentation & Management",
+      "visibility": "PRIVATE",
+      "tags": "LATEX, AUTOMATION, MANAGEMENT",
+      "domain": [
+        "LEGAL",
+        "FINANCIAL",
+        "ENGINEERING",
+        "ACADEMIC"
+      ],
+      "status": {
+        "activity": "ACTIVE",
+        "maturity": "PRODUCTION",
+        "version": "1.0.0",
+        "progress_pct": 100,
+        "scopes": {
+          "documentation": {
+            "status": "MAINTAINED",
+            "progress": 100
+          },
+          "automation": {
+            "status": "STABLE",
+            "progress": 90
+          }
+        }
+      },
+      "environment": {
+        "os": "Fedora 43",
+        "shell": "fish"
+      },
+      "repository": {
+        "ssh": "git@github.com:MarcosBernardC/Docs.git",
+        "https": "https://github.com/MarcosBernardC/Docs"
+      },
+      "stack": [
+        "LaTeX",
+        "LuaLaTeX",
+        "Make",
+        "Python",
+        "Fish Shell"
+      ],
+      "description": "Sistema centralizado de gestión documental: abarca expedientes técnicos (ANA), contratos, CVs, finanzas personales, tesis y automatización de planos hidráulicos.",
+      "_telemetry": {
+        "last_update": "2026-06-22",
+        "last_commit_log": "feat(carteles): añadir nuevos diseños y limpiar configuración"
+      }
+    },
+    {
       "id": "13",
       "title": "Kanban-TUI",
       "category": "Productivity",
@@ -378,6 +427,57 @@
       "_telemetry": {
         "last_update": "2026-06-20",
         "last_commit_log": "chore(cli): reordenar bloques de código y mejorar prompt de TUI"
+      }
+    },
+    {
+      "id": "16",
+      "title": "Smart City Nexus",
+      "category": "Urban Automation",
+      "visibility": "PUBLIC",
+      "tags": "ELECTRONICS",
+      "domain": [
+        "Embedded Systems",
+        "Industrial Design",
+        "Hardware Design"
+      ],
+      "status": {
+        "activity": "ACTIVE",
+        "maturity": "PROTOTYPE",
+        "version": "0.1.0",
+        "progress_pct": 0,
+        "scopes": {
+          "Schematic": {
+            "status": "PROTOTYPE",
+            "progress": 0
+          },
+          "Firmware": {
+            "status": "PROTOTYPE",
+            "progress": 0
+          },
+          "CAD_web": {
+            "status": "PROTOTYPE",
+            "progress": 0
+          }
+        }
+      },
+      "environment": {
+        "os": "Fedora 43",
+        "shell": "fish"
+      },
+      "repository": {
+        "ssh": "git@github.com:MarcosBernardC/smart-city-nexus.git",
+        "https": "https://github.com/MarcosBernardC/smart-city-nexus"
+      },
+      "stack": [
+        "C++",
+        "JavaScript",
+        "CAD",
+        "Arduino"
+      ],
+      "description": "Sistema automatizado de gestión urbana con control centralizado y cableado estructurado tipo arnés.",
+      "_telemetry": {
+        "last_update": "2026-01-01",
+        "last_commit_log": "⚠️ Sin registros de actividad"
       }
     }
   ]
