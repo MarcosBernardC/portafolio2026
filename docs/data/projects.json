@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-06-21 // 19:17 PET",
+    "last_sync": "2026-06-21 // 19:23 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -44,7 +44,7 @@
         "activity": "ACTIVE",
         "maturity": "BETA",
         "version": "0.1.0",
-        "progress_pct": 96,
+        "progress_pct": 50,
         "scopes": {
           "TUI_Orchestrator": {
             "status": "STABLE",
@@ -80,7 +80,7 @@
       "description": "Orquestador de activos de ingeniería.",
       "_telemetry": {
         "last_update": "2026-06-21",
-        "last_commit_log": "docs: añadir bitácora de desarrollo JOURNAL.md"
+        "last_commit_log": "feat(core): forzar inyección de progresos en RAM y reestructurar meta.json"
       }
     },
     {
@@ -146,7 +146,7 @@
         "activity": "ACTIVE",
         "maturity": "BETA",
         "version": "2.0.0",
-        "progress_pct": 93,
+        "progress_pct": 85,
         "scopes": {
           "UI_Core_SPA": {
             "status": "STABLE",
@@ -184,7 +184,7 @@
       "description": "Sistema de gestión de identidad profesional y visualización de activos de ingeniería.",
       "_telemetry": {
         "last_update": "2026-06-21",
-        "last_commit_log": "feat(ui): implementar renderizado por scopes y unificar etiquetas de filtrado"
+        "last_commit_log": "feat(Data_Hydration): mejorado meta.json a la versión 2.0"
       }
     },
     {
