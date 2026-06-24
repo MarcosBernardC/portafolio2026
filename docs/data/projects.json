@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-06-23 // 20:19 PET",
+    "last_sync": "2026-06-23 // 21:25 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -477,7 +477,7 @@
       "description": "Sistema automatizado de gestión urbana con control centralizado y cableado estructurado tipo arnés.",
       "_telemetry": {
         "last_update": "2026-06-23",
-        "last_commit_log": "refactor: modificar meta.json para corregir el enlace de github"
+        "last_commit_log": "docs(readme): añadir documentación inicial y recursos visuales del diseño"
       }
     }
   ]
