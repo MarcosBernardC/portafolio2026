@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-06-23 // 20:12 PET",
+    "last_sync": "2026-06-23 // 20:19 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -183,8 +183,8 @@
       ],
       "description": "Sistema de gestión de identidad profesional y visualización de activos de ingeniería.",
       "_telemetry": {
-        "last_update": "2026-06-21",
-        "last_commit_log": "feat(Data_Hydration): mejorado meta.json a la versión 2.0"
+        "last_update": "2026-06-23",
+        "last_commit_log": "chore: agregar .vscode/ al gitignore"
       }
     },
     {
@@ -431,7 +431,7 @@
     },
     {
       "id": "16",
-      "title": "Smart City Nexus",
+      "title": "Smart City",
       "category": "Urban Automation",
       "visibility": "PUBLIC",
       "tags": "ELECTRONICS",
@@ -465,8 +465,8 @@
         "shell": "fish"
       },
       "repository": {
-        "ssh": "git@github.com:MarcosBernardC/smart-city-nexus.git",
-        "https": "https://github.com/MarcosBernardC/smart-city-nexus"
+        "ssh": "git@github.com:MarcosBernardC/smart-city.git",
+        "https": "https://github.com/MarcosBernardC/smart-city"
       },
       "stack": [
         "C++",
@@ -477,7 +477,7 @@
       "description": "Sistema automatizado de gestión urbana con control centralizado y cableado estructurado tipo arnés.",
       "_telemetry": {
         "last_update": "2026-06-23",
-        "last_commit_log": "feat(CAD_web): terminar el primer diseño CAD-3D web v0.1.0"
+        "last_commit_log": "refactor: modificar meta.json para corregir el enlace de github"
       }
     }
   ]
