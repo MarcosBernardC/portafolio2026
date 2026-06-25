@@ -1,3 +1,44 @@
+// Global state for filters and navigation
+let currentDomain = 'ALL';
+let currentVisibility = 'ALL';
+let currentActivity = 'ALL';
+let activeSection = 'home';
+
+const updateDynamicLogoText = (sectionId) => {
+    if (sectionId) activeSection = sectionId;
+    const logoLabel = document.querySelector('#main-logo .logo-text');
+    if (logoLabel) {
+        const labels = {
+            'home': 'HOME',
+            'summary': 'EXECUTIVE SUMMARY',
+            'code': 'REPOSITORIES',
+            'stack': 'OPERATIONAL STACK'
+        };
+        
+        let baseText = labels[activeSection] || 'HOME';
+        
+        // Append filters if in repositories section
+        if (activeSection === 'code') {
+            const filters = [];
+            if (currentDomain !== 'ALL') filters.push(currentDomain);
+            if (currentVisibility !== 'ALL') filters.push(currentVisibility);
+            if (currentActivity !== 'ALL') filters.push(currentActivity);
+            
+            if (filters.length > 0) {
+                baseText += ` ${filters.join(' | ')}`;
+            }
+        }
+
+        if (logoLabel.innerText !== baseText) {
+            logoLabel.style.opacity = '0';
+            setTimeout(() => {
+                logoLabel.innerText = baseText;
+                logoLabel.style.opacity = '1';
+            }, 200);
+        }
+    }
+};
+
 const loadPortfolioData = async () => {
     try {
         // Fetch both profile and projects in parallel
@@ -45,46 +86,62 @@ const loadPortfolioData = async () => {
             `).join('');
         }
 
-        // State for filters
-        let currentDomain = 'ALL';
-        let currentVisibility = 'ALL';
-        let currentActivity = 'ALL';
 
-        // ── Drum Picker Engine ──────────────────────────────────────────────
-        const initDrumPicker = (pickerId, items, onChange) => {
-            const picker  = document.getElementById(pickerId);
-            if (!picker) return;
 
-            const track    = picker.querySelector('.drum-track');
-            const allItems = picker.querySelectorAll('.drum-item');
-            const prevBtn  = picker.querySelector('.drum-prev');
-            const nextBtn  = picker.querySelector('.drum-next');
-            const itemH    = 1.6 * parseFloat(getComputedStyle(document.documentElement).fontSize);
-
-            let idx = 0; // always starts at 0 → "ALL"
-
-            const update = () => {
-                track.style.transform = `translateY(-${idx * itemH}px)`;
-                allItems.forEach((el, i) => {
-                    el.classList.toggle('is-active', i === idx);
-                    el.classList.toggle('is-all', i === idx && i === 0);
+        // ── Grid Filter Engine ──────────────────────────────────────────────
+        const initGridFilters = () => {
+            const tagGrids = document.querySelectorAll('.tag-grid');
+            
+            tagGrids.forEach(grid => {
+                const filterType = grid.dataset.filter;
+                const buttons = grid.querySelectorAll('.tag-btn');
+                
+                buttons.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        buttons.forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        
+                        const value = btn.dataset.value;
+                        if (filterType === 'tag') currentDomain = value;
+                        if (filterType === 'visibility') currentVisibility = value;
+                        if (filterType === 'activity') currentActivity = value;
+                        
+                        renderProjects();
+                        updateFilterStatus();
+                        updateDynamicLogoText(); // Sync title
+                    });
                 });
-                picker.classList.toggle('active', idx !== 0);
-                onChange(items[idx]);
-            };
-
-            prevBtn.addEventListener('click', () => {
-                idx = (idx - 1 + items.length) % items.length;
-                update();
             });
-            nextBtn.addEventListener('click', () => {
-                idx = (idx + 1) % items.length;
-                update();
+        };
+
+        const updateFilterStatus = () => {
+            const activeCountEl = document.getElementById('active-filters-count');
+            const isAll = (currentDomain === 'ALL' || !currentDomain) && 
+                          (currentVisibility === 'ALL' || !currentVisibility) && 
+                          (currentActivity === 'ALL' || !currentActivity);
+            
+            if (activeCountEl) {
+                activeCountEl.innerText = isAll ? 'FILTER -> OFF' : 'FILTER -> ON';
+                activeCountEl.className = isAll ? 'status-off' : 'status-on';
+                
+                const toggleBtn = document.getElementById('toggle-filters-btn');
+                toggleBtn?.classList.toggle('active', !isAll);
+            }
+        };
+
+        const resetFilters = () => {
+            currentDomain = 'ALL';
+            currentVisibility = 'ALL';
+            currentActivity = 'ALL';
+            
+            document.querySelectorAll('.tag-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.value === 'ALL') btn.classList.add('active');
             });
-
-            update(); // set initial state
-
-            return { reset: () => { idx = 0; update(); } };
+            
+            renderProjects();
+            updateFilterStatus();
+            updateDynamicLogoText(); // Sync title
         };
 
         // 3. Inject Projects Function
@@ -94,7 +151,11 @@ const loadPortfolioData = async () => {
             if (currentDomain !== 'ALL') {
                 filteredProjects = filteredProjects.filter(p => {
                     const tags = Array.isArray(p.tags) ? p.tags : [p.tags];
-                    return tags.some(t => t && t.toUpperCase().includes(currentDomain));
+                    const cat = p.category || "";
+                    const search = currentDomain === 'WEB APP' ? 'WEB' : currentDomain;
+                    const matchTags = tags.some(t => t && t.toUpperCase().includes(search));
+                    const matchCat = cat.toUpperCase().includes(search);
+                    return matchTags || matchCat;
                 });
             }
 
@@ -284,28 +345,30 @@ const loadPortfolioData = async () => {
         // 3a. Initial render
         renderProjects();
 
-        const drumTag = initDrumPicker('drum-tag',
-            ['ALL', 'SOFTWARE', 'WEB APP', 'ELECTRONICS', 'DOCUMENTATION'],
-            val => { currentDomain = val === 'WEB APP' ? 'WEB' : val; renderProjects(); }
-        );
+        // 4. Initialize Filters
+        initGridFilters();
+        updateFilterStatus(); // Initial call to set OFF state
 
-        const drumVis = initDrumPicker('drum-visibility',
-            ['ALL', 'PUBLIC', 'PRIVATE'],
-            val => { currentVisibility = val; renderProjects(); }
-        );
+        // 4.1 Wire Toggle Drawer
+        const toggleFiltersBtn = document.getElementById('toggle-filters-btn');
+        const closeDrawerBtn = document.getElementById('close-drawer');
+        const filterDrawer = document.getElementById('filter-drawer');
+        const filterOverlay = document.getElementById('filter-overlay');
 
-        const drumAct = initDrumPicker('drum-activity',
-            ['ALL', 'ACTIVE', 'PAUSED', 'COMPLETED', 'CANCELLED'],
-            val => { currentActivity = val; renderProjects(); }
-        );
+        const toggleDrawer = () => {
+            filterDrawer?.classList.toggle('active');
+            filterOverlay?.classList.toggle('active');
+        };
 
-        // 4.1 Wire reset button
+        toggleFiltersBtn?.addEventListener('click', toggleDrawer);
+        closeDrawerBtn?.addEventListener('click', toggleDrawer);
+        filterOverlay?.addEventListener('click', toggleDrawer);
+
+        // 4.2 Wire Reset Button
         const resetBtn = document.getElementById('drum-reset');
         if (resetBtn) {
             resetBtn.addEventListener('click', () => {
-                drumTag.reset();
-                drumVis.reset();
-                drumAct.reset();
+                resetFilters();
             });
         }
 
@@ -501,25 +564,7 @@ const initNavigation = () => {
             }
         });
 
-        const updateDynamicLogoText = (sectionId) => {
-            const logoLabel = document.querySelector('#main-logo .logo-text');
-            if (logoLabel) {
-                const labels = {
-                    'home': 'HOME',
-                    'summary': 'EXECUTIVE SUMMARY',
-                    'code': 'REPOSITORIES',
-                    'stack': 'OPERATIONAL STACK'
-                };
-                const newText = labels[sectionId] || 'HOME';
-                if (logoLabel.innerText !== newText) {
-                    logoLabel.style.opacity = '0';
-                    setTimeout(() => {
-                        logoLabel.innerText = newText;
-                        logoLabel.style.opacity = '1';
-                    }, 200);
-                }
-            }
-        };
+
 
         if (scrollPos < 50) { 
             mainSections.forEach(s => s.classList.remove('is-focused'));

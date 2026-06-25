@@ -97,75 +97,71 @@
                     <h2 class="section-title">REPOSITORIES</h2>
                 </div>
                 
-                <div class="drum-controls animate-reveal">
+                <div class="repo-filter-toolbar animate-reveal">
+                    <button id="toggle-filters-btn" class="filter-toggle-btn" aria-label="Open Filter Panel">
+                        <span class="btn-icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                        </span>
+                        <span class="btn-text">FILTER_MODULE</span>
+                        <div class="filter-status-indicator">
+                            <span id="active-filters-count">ALL</span>
+                        </div>
+                    </button>
+                </div>
 
-                    <div class="drum-picker" id="drum-tag">
-                        <span class="drum-label">TAG</span>
-                        <div class="drum-body">
-                            <button class="drum-arrow drum-prev" aria-label="prev">&#x25b4;</button>
-                            <div class="drum-window">
-                                <div class="drum-track">
-                                    <span class="drum-item">ALL</span>
-                                    <span class="drum-item">SOFTWARE</span>
-                                    <span class="drum-item">WEB APP</span>
-                                    <span class="drum-item">ELECTRONICS</span>
-                                    <span class="drum-item">DOCUMENTATION</span>
-                                </div>
+                <!-- Right Side Filter Drawer -->
+                <div id="filter-overlay" class="filter-overlay"></div>
+                <aside id="filter-drawer" class="filter-drawer">
+                    <div class="drawer-header">
+                        <div class="header-label">
+                            <span class="prefix">IO_</span>
+                            <h3>FILTER_SET</h3>
+                        </div>
+                        <button id="close-drawer" class="close-drawer-btn" aria-label="Close Filter Panel">&times;</button>
+                    </div>
+
+                    <div class="drawer-content">
+                        <!-- Group 1: Tags -->
+                        <div class="filter-group">
+                            <h4 class="group-label">TAG_CATEGORIES</h4>
+                            <div class="tag-grid" data-filter="tag">
+                                <button class="tag-btn active" data-value="ALL">ALL</button>
+                                <button class="tag-btn" data-value="SOFTWARE">SOFTWARE</button>
+                                <button class="tag-btn" data-value="WEB APP">WEB APP</button>
+                                <button class="tag-btn" data-value="ELECTRONICS">ELECTRONICS</button>
+                                <button class="tag-btn" data-value="DOCUMENTATION">DOCUMENTATION</button>
                             </div>
-                            <button class="drum-arrow drum-next" aria-label="next">&#x25be;</button>
+                        </div>
+
+                        <!-- Group 2: Visibility -->
+                        <div class="filter-group">
+                            <h4 class="group-label">ACCESS_LEVEL</h4>
+                            <div class="tag-grid" data-filter="visibility">
+                                <button class="tag-btn active" data-value="ALL">ALL</button>
+                                <button class="tag-btn" data-value="PUBLIC">PUBLIC</button>
+                                <button class="tag-btn" data-value="PRIVATE">PRIVATE</button>
+                            </div>
+                        </div>
+
+                        <!-- Group 3: Activity -->
+                        <div class="filter-group">
+                            <h4 class="group-label">PROJECT_STATE</h4>
+                            <div class="tag-grid" data-filter="activity">
+                                <button class="tag-btn active" data-value="ALL">ALL</button>
+                                <button class="tag-btn" data-value="ACTIVE">ACTIVE</button>
+                                <button class="tag-btn" data-value="PAUSED">PAUSED</button>
+                                <button class="tag-btn" data-value="COMPLETED">COMPLETED</button>
+                                <button class="tag-btn" data-value="CANCELLED">CANCELLED</button>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="drum-sep"></div>
-
-                    <div class="drum-picker" id="drum-visibility">
-                        <span class="drum-label">VISIBILITY</span>
-                        <div class="drum-body">
-                            <button class="drum-arrow drum-prev" aria-label="prev">&#x25b4;</button>
-                            <div class="drum-window">
-                                <div class="drum-track">
-                                    <span class="drum-item">ALL</span>
-                                    <span class="drum-item">PUBLIC</span>
-                                    <span class="drum-item">PRIVATE</span>
-                                </div>
-                            </div>
-                            <button class="drum-arrow drum-next" aria-label="next">&#x25be;</button>
-                        </div>
-                    </div>
-
-                    <div class="drum-sep"></div>
-
-                    <div class="drum-picker" id="drum-activity">
-                        <span class="drum-label">STATE</span>
-                        <div class="drum-body">
-                            <button class="drum-arrow drum-prev" aria-label="prev">&#x25b4;</button>
-                            <div class="drum-window">
-                                <div class="drum-track">
-                                    <span class="drum-item">ALL</span>
-                                    <span class="drum-item">ACTIVE</span>
-                                    <span class="drum-item">PAUSED</span>
-                                    <span class="drum-item">COMPLETED</span>
-                                    <span class="drum-item">CANCELLED</span>
-                                </div>
-                            </div>
-                            <button class="drum-arrow drum-next" aria-label="next">&#x25be;</button>
-                        </div>
-                    </div>
-
-                    <div class="drum-sep"></div>
-
-                    <div class="drum-reset-container">
-                        <button id="drum-reset" class="drum-reset-btn" aria-label="Reset Filters">
-                            <div class="no-switch">
-                                <span class="no-terminal left"></span>
-                                <span class="no-arm"></span>
-                                <span class="no-terminal right"></span>
-                            </div>
-                            <span class="reset-text">RESET</span>
+                    <div class="drawer-footer">
+                        <button id="drum-reset" class="drawer-reset-btn">
+                            SYSTEM_RESET_O.R.
                         </button>
                     </div>
-
-                </div>
+                </aside>
                 <div class="section-line"></div>
             </div>
 
