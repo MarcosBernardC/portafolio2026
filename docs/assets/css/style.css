@@ -241,7 +241,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 0.5rem;
-    margin-left: 1rem;
+    margin-right: 1rem; /* Swapped from left to right */
     transition: all 0.3s var(--ease);
     border-radius: 4px;
 }
@@ -318,7 +318,7 @@ body {
 .sections-dropdown {
     position: absolute;
     top: 100%;
-    left: 10rem;
+    left: 0; /* Align with button */
     background: var(--bg);
     border: 1px solid var(--border);
     min-width: 240px;
@@ -326,6 +326,16 @@ body {
     z-index: 200;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     backdrop-filter: blur(10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s var(--ease);
+    transform: translateY(10px);
+}
+
+.sections-dropdown.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
 }
 
 .dropdown-item {

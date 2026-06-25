@@ -376,36 +376,28 @@ const cleanupAnimations = () => {
     });
     // Wire manual section selector
     const sectionsBtn = document.getElementById('sections-btn');
-    if (sectionsBtn) {
+    const sectionsDropdown = document.getElementById('sections-dropdown');
+
+    if (sectionsBtn && sectionsDropdown) {
         sectionsBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const existingList = document.querySelector('.sections-dropdown');
-            if (existingList) {
-                existingList.remove();
-                return;
+            sectionsDropdown.classList.toggle('active');
+
+            if (sectionsDropdown.classList.contains('active')) {
+                // Close on click outside
+                const closeHandler = () => {
+                    sectionsDropdown.classList.remove('active');
+                    document.removeEventListener('click', closeHandler);
+                };
+                document.addEventListener('click', closeHandler);
             }
+        });
 
-            const dropdown = document.createElement('div');
-            dropdown.className = 'sections-dropdown animate-fade-in';
-            
-            const sectionsMap = [
-                { id: 'home', label: 'HOME', icon: '00' },
-                { id: 'summary', label: 'EXECUTIVE SUMMARY', icon: '01' },
-                { id: 'code', label: 'REPOSITORIES', icon: '02' },
-                { id: 'stack', label: 'OPERATIONAL STACK', icon: '03' }
-            ];
-
-            dropdown.innerHTML = sectionsMap.map(s => `
-                <a href="#${s.id}" class="dropdown-item">
-                    <span class="item-icon">${s.icon}</span>
-                    <span class="item-label">${s.label}</span>
-                </a>
-            `).join('');
-
-            sectionsBtn.parentElement.appendChild(dropdown);
-
-            // Close on click outside
-            document.addEventListener('click', () => dropdown.remove(), { once: true });
+        // Close on dropdown item click
+        sectionsDropdown.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', () => {
+                sectionsDropdown.classList.remove('active');
+            });
         });
     }
 };
