@@ -551,21 +551,6 @@ html:not([data-theme="dark"]) .dial-pointer {
     will-change: opacity, transform;
 }
 
-/* Base state for all sections when focus mode is active */
-body[data-focus] .section:not(.is-focused) {
-    opacity: 0.8 !important; /* Reduced attenuation, increased visibility */
-    pointer-events: none;
-    transform: scale(0.99) !important;
-}
-
-@media (max-width: 768px) {
-    body[data-focus] .section:not(.is-focused) {
-        transform: none !important;
-        pointer-events: auto; /* Allow interaction even if focus logic isn't perfect */
-    }
-}
-
-
 /* The focused section itself */
 .section.is-focused {
     opacity: 1 !important;
@@ -579,12 +564,6 @@ body[data-focus] .section:not(.is-focused) {
 }
 
 /* Sibling Status for Sub-Sections (Labs/Archive) */
-#dynamic-sections-container:has(> .sub-section:hover) > .sub-section:not(:hover),
-#dynamic-sections-container:has(> .sub-section.is-focused) > .sub-section:not(.is-focused) {
-    opacity: 0.7;
-    transform: scale(0.99);
-}
-
 .sub-section.is-focused {
     opacity: 1;
     transform: scale(1);
