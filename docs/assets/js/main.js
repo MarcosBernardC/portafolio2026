@@ -45,14 +45,67 @@ const loadPortfolioData = async () => {
             `).join('');
         }
 
-        // 3. Inject Projects Function
-        const renderProjects = (filterDomain = 'ALL') => {
-            const labsGrid = document.getElementById('labs-grid');
-            const archiveGrid = document.getElementById('archive-grid');
+        // State for filters
+        let currentDomain = 'ALL';
+        let currentVisibility = 'ALL';
+        let currentActivity = 'ALL';
 
-            const filteredProjects = filterDomain === 'ALL' 
-                ? projectsData.projects 
-                : projectsData.projects.filter(p => p.tags && p.tags.includes(filterDomain));
+        // ── Drum Picker Engine ──────────────────────────────────────────────
+        const initDrumPicker = (pickerId, items, onChange) => {
+            const picker  = document.getElementById(pickerId);
+            if (!picker) return;
+
+            const track    = picker.querySelector('.drum-track');
+            const allItems = picker.querySelectorAll('.drum-item');
+            const prevBtn  = picker.querySelector('.drum-prev');
+            const nextBtn  = picker.querySelector('.drum-next');
+            const itemH    = 1.6 * parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+            let idx = 0; // always starts at 0 → "ALL"
+
+            const update = () => {
+                track.style.transform = `translateY(-${idx * itemH}px)`;
+                allItems.forEach((el, i) => {
+                    el.classList.toggle('is-active', i === idx);
+                    el.classList.toggle('is-all', i === idx && i === 0);
+                });
+                picker.classList.toggle('active', idx !== 0);
+                onChange(items[idx]);
+            };
+
+            prevBtn.addEventListener('click', () => {
+                idx = (idx - 1 + items.length) % items.length;
+                update();
+            });
+            nextBtn.addEventListener('click', () => {
+                idx = (idx + 1) % items.length;
+                update();
+            });
+
+            update(); // set initial state
+
+            return { reset: () => { idx = 0; update(); } };
+        };
+
+        // 3. Inject Projects Function
+        const renderProjects = () => {
+            let filteredProjects = projectsData.projects;
+
+            if (currentDomain !== 'ALL') {
+                filteredProjects = filteredProjects.filter(p => {
+                    const tags = Array.isArray(p.tags) ? p.tags : [p.tags];
+                    return tags.some(t => t && t.toUpperCase().includes(currentDomain));
+                });
+            }
+
+            if (currentVisibility !== 'ALL') {
+                filteredProjects = filteredProjects.filter(p => p.visibility === currentVisibility);
+            }
+
+            if (currentActivity !== 'ALL') {
+                filteredProjects = filteredProjects.filter(p => p.status && p.status.activity === currentActivity);
+            }
+
 
             const renderProject = (project, index, prefix = "02.x") => {
                 const url = project.repository?.https || "";
@@ -184,24 +237,13 @@ const loadPortfolioData = async () => {
                 return 0;
             };
 
-            const activeProjects = filteredProjects
-                .filter(p => p.status.activity === 'ACTIVE')
-                .sort(sortByVisibility);
-
-            const legacyProjects = filteredProjects
-                .filter(p => p.status.activity === 'ARCHIVED')
-                .sort(sortByVisibility);
-
-            const updateSection = (sectionId, gridId, countId, projects, prefix) => {
-                const section = document.getElementById(sectionId);
+            const updateGrid = (gridId, countId, projects) => {
                 const grid = document.getElementById(gridId);
                 const countSpan = document.getElementById(countId);
-                if (!section || !grid) return;
+                if (!grid) return;
 
-                section.style.display = 'block'; // Always show
-                
                 if (projects.length > 0) {
-                    grid.innerHTML = projects.map((p, i) => renderProject(p, i, prefix)).join('');
+                    grid.innerHTML = projects.map((p, i) => renderProject(p, i, "02")).join('');
                     if (countSpan) countSpan.innerText = `${projects.length} ITEMS`;
                 } else {
                     grid.innerHTML = `
@@ -211,35 +253,12 @@ const loadPortfolioData = async () => {
                     `;
                     if (countSpan) countSpan.innerText = `0 ITEMS`;
                 }
-                
-                // Trigger animation
-                section.classList.remove('section-reveal');
-                void section.offsetWidth;
-                section.classList.add('section-reveal');
             };
 
-            // 1. Determine DOM Order and Prefixes
-            const container = document.getElementById('dynamic-sections-container');
-            const labsSection = document.getElementById('labs');
-            const archiveSection = document.getElementById('archive');
-            
-            let labsPrefix, archivePrefix;
+            // Render single grid
+            updateGrid('projects-grid', 'projects-count', filteredProjects);
 
-            if (activeProjects.length === 0 && legacyProjects.length > 0) {
-                container.insertBefore(archiveSection, labsSection);
-                archivePrefix = "02.1";
-                labsPrefix = "02.2";
-            } else {
-                container.insertBefore(labsSection, archiveSection);
-                labsPrefix = "02.1";
-                archivePrefix = "02.2";
-            }
-
-            // 2. Render sections with calculated prefixes
-            updateSection('labs', 'labs-grid', 'labs-count', activeProjects, labsPrefix);
-            updateSection('archive', 'archive-grid', 'archive-count', legacyProjects, archivePrefix);
-
-            // 3. Final re-sequencing of header titles
+            // Final re-sequencing of header titles
             resequenceSections();
 
         };
@@ -255,38 +274,40 @@ const loadPortfolioData = async () => {
             if (stackSpan) stackSpan.innerText = "03";
 
             // 2. Sub-sections within CODE
-            const subSections = [
-                document.getElementById('labs'),
-                document.getElementById('archive')
-            ].sort((a, b) => {
-                return a.getBoundingClientRect().top - b.getBoundingClientRect().top;
-            });
-
-            let subIdx = 1;
-            subSections.forEach(sec => {
-                const span = sec.querySelector('.section-number');
-                if (span) {
-                    span.innerText = `02.${subIdx}`;
-                    subIdx++;
-                }
-            });
+            const section = document.getElementById('projects-section');
+            if (section) {
+                const span = section.querySelector('.section-number');
+                if (span) span.innerText = "02.1";
+            }
         };
 
-        // 3a. Update Domain Selector (No numbers as requested)
-        // Removed dynamic counting of items on buttons
-
-        // Initial render
+        // 3a. Initial render
         renderProjects();
 
-        // 4. Domain Selector Logic
-        const domainButtons = document.querySelectorAll('.domain-btn');
-        domainButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                domainButtons.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                renderProjects(btn.dataset.domain);
+        const drumTag = initDrumPicker('drum-tag',
+            ['ALL', 'SOFTWARE', 'WEB APP', 'ELECTRONICS', 'DOCUMENTATION'],
+            val => { currentDomain = val === 'WEB APP' ? 'WEB' : val; renderProjects(); }
+        );
+
+        const drumVis = initDrumPicker('drum-visibility',
+            ['ALL', 'PUBLIC', 'PRIVATE'],
+            val => { currentVisibility = val; renderProjects(); }
+        );
+
+        const drumAct = initDrumPicker('drum-activity',
+            ['ALL', 'ACTIVE', 'PAUSED', 'COMPLETED', 'CANCELLED'],
+            val => { currentActivity = val; renderProjects(); }
+        );
+
+        // 4.1 Wire reset button
+        const resetBtn = document.getElementById('drum-reset');
+        if (resetBtn) {
+            resetBtn.addEventListener('click', () => {
+                drumTag.reset();
+                drumVis.reset();
+                drumAct.reset();
             });
-        });
+        }
 
         // 5. Update Operational Stack
         const coreStack = document.getElementById('stack-core');
@@ -353,21 +374,55 @@ const cleanupAnimations = () => {
             el.classList.add('anim-done');
         }, { once: true });
     });
+    // Wire manual section selector
+    const sectionsBtn = document.getElementById('sections-btn');
+    if (sectionsBtn) {
+        sectionsBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const existingList = document.querySelector('.sections-dropdown');
+            if (existingList) {
+                existingList.remove();
+                return;
+            }
+
+            const dropdown = document.createElement('div');
+            dropdown.className = 'sections-dropdown animate-fade-in';
+            
+            const sectionsMap = [
+                { id: 'home', label: 'HOME', icon: '00' },
+                { id: 'summary', label: 'EXECUTIVE SUMMARY', icon: '01' },
+                { id: 'code', label: 'REPOSITORIES', icon: '02' },
+                { id: 'stack', label: 'OPERATIONAL STACK', icon: '03' }
+            ];
+
+            dropdown.innerHTML = sectionsMap.map(s => `
+                <a href="#${s.id}" class="dropdown-item">
+                    <span class="item-icon">${s.icon}</span>
+                    <span class="item-label">${s.label}</span>
+                </a>
+            `).join('');
+
+            sectionsBtn.parentElement.appendChild(dropdown);
+
+            // Close on click outside
+            document.addEventListener('click', () => dropdown.remove(), { once: true });
+        });
+    }
 };
 
 const initTheme = () => {
-    const themeToggle = document.getElementById('theme-toggle');
+    const themeDial = document.getElementById('theme-dial');
     const now = new Date();
     const mins = now.getHours() * 60 + now.getMinutes();
     
-    // Light between 08:30 and 17:20. Dark otherwise.
+    // Default theme based on time
     const isLightTime = mins >= (8 * 60 + 30) && mins < (17 * 60 + 20);
-    const initialTheme = isLightTime ? 'light' : 'dark';
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    const initialTheme = savedTheme || (isLightTime ? 'light' : 'dark');
     
-    // Apply theme based on time
     document.documentElement.setAttribute('data-theme', initialTheme);
 
-    themeToggle?.addEventListener('click', () => {
+    themeDial?.addEventListener('click', () => {
         const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
         
@@ -382,9 +437,9 @@ const initNavigation = () => {
     const navLinks = document.querySelectorAll('.nav-link');
     let current = '';
     
-    // Set current date
-    const dateElement = logo.querySelector('.logo-date');
-    if (dateElement) {
+    // Set current date/time in new minimalist container
+    const clockContainer = document.getElementById('realtime-clock');
+    if (clockContainer) {
         const updateTime = () => {
             const now = new Date();
             const d = String(now.getDate()).padStart(2, '0');
@@ -393,7 +448,11 @@ const initNavigation = () => {
             const h = String(now.getHours()).padStart(2, '0');
             const min = String(now.getMinutes()).padStart(2, '0');
             const s = String(now.getSeconds()).padStart(2, '0');
-            dateElement.innerHTML = `<span class="date-str">${d}.${mo}.${y}</span><span class="time-str">${h}:${min}:${s}</span>`;
+            
+            clockContainer.innerHTML = `
+                <span class="clock-date">${d}.${mo}.${y}</span>
+                <span class="clock-time">${h}:${min}:${s}</span>
+            `;
         };
         updateTime();
         setInterval(updateTime, 1000);
@@ -450,18 +509,41 @@ const initNavigation = () => {
             }
         });
 
-        if (scrollPos < 50) { // More sensitive to top
+        const updateDynamicLogoText = (sectionId) => {
+            const logoLabel = document.querySelector('#main-logo .logo-text');
+            if (logoLabel) {
+                const labels = {
+                    'home': 'HOME',
+                    'summary': 'EXECUTIVE SUMMARY',
+                    'code': 'REPOSITORIES',
+                    'stack': 'OPERATIONAL STACK'
+                };
+                const newText = labels[sectionId] || 'HOME';
+                if (logoLabel.innerText !== newText) {
+                    logoLabel.style.opacity = '0';
+                    setTimeout(() => {
+                        logoLabel.innerText = newText;
+                        logoLabel.style.opacity = '1';
+                    }, 200);
+                }
+            }
+        };
+
+        if (scrollPos < 50) { 
             mainSections.forEach(s => s.classList.remove('is-focused'));
             const home = document.getElementById('home');
             if (home) {
                 home.classList.add('is-focused');
                 document.body.setAttribute('data-focus', 'home');
+                updateDynamicLogoText('home');
             }
             current = '';
         } else if (closestSection) {
 
             closestSection.classList.add('is-focused');
-            document.body.setAttribute('data-focus', closestSection.id);
+            const sectionId = closestSection.id;
+            document.body.setAttribute('data-focus', sectionId);
+            updateDynamicLogoText(sectionId);
             current = closestSection.id === 'home' ? '' : closestSection.id;
         }
 

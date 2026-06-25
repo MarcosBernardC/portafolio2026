@@ -15,39 +15,35 @@
     
     <nav class="nav-minimal">
         <div class="nav-inner">
-            <a href="#" class="logo" id="main-logo">
-                <span class="logo-date">28.04.26</span>
-                <span class="logo-text">HOME</span>
-            </a>
-
-            <div class="theme-switch-container">
-                <span class="switch-label">LIGHT</span>
-                <button id="theme-toggle" class="theme-switch" aria-label="Toggle Theme">
-                    <div class="switch-knob"></div>
+            <div class="nav-left">
+                <a href="#" class="logo" id="main-logo">
+                    <span class="logo-text">HOME</span>
+                </a>
+                <button id="sections-btn" class="nav-icon-btn" aria-label="View Sections">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
                 </button>
-                <span class="switch-label">DARK</span>
             </div>
 
-            <div class="nav-links" id="nav-links">
-                <a href="#summary" class="nav-link">
-                    <span class="nav-label">INFO</span>
-                    <span class="nav-subtitle">EXECUTIVE SUMMARY</span>
-                </a>
-                <a href="#code" class="nav-link">
-                    <span class="nav-label">CODE</span>
-                    <span class="nav-subtitle">REPOSITORIES</span>
-                </a>
-                <a href="#stack" class="nav-link">
-                    <span class="nav-label">ARCH</span>
-                    <span class="nav-subtitle">OPERATIONAL STACK</span>
-                </a>
+            <div class="nav-spacer"></div>
+
+            <div class="nav-right">
+                <div id="realtime-clock" class="minimal-clock">
+                    <!-- Data injected by main.js -->
+                </div>
+                
+                <div class="theme-dial-wrapper">
+                    <button id="theme-dial" class="theme-dial" aria-label="Toggle Theme">
+                        <div class="dial-track"></div>
+                        <div class="dial-pointer"></div>
+                    </button>
+                </div>
             </div>
 
-            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+            <!-- Legacy Menu Toggle for Mobile (We keep it but hide it on desktop) -->
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu" style="display: none;">
                 <span class="menu-line"></span>
                 <span class="menu-line"></span>
             </button>
-
         </div>
     </nav>
 
@@ -94,35 +90,86 @@
                     <h2 class="section-title">REPOSITORIES</h2>
                 </div>
                 
-                <div class="domain-selector animate-reveal">
-                    <button class="domain-btn active" data-domain="ALL">ALL</button>
-                    <button class="domain-btn" data-domain="SOFTWARE">SOFTWARE</button>
-                    <button class="domain-btn" data-domain="WEB">WEB APP</button>
-                    <button class="domain-btn" data-domain="ELECTRONICS">ELECTRONICS</button>
-                    <button class="domain-btn" data-domain="DOCUMENTATION">DOCUMENTATION</button>
+                <div class="drum-controls animate-reveal">
+
+                    <div class="drum-picker" id="drum-tag">
+                        <span class="drum-label">TAG</span>
+                        <div class="drum-body">
+                            <button class="drum-arrow drum-prev" aria-label="prev">&#x25b4;</button>
+                            <div class="drum-window">
+                                <div class="drum-track">
+                                    <span class="drum-item">ALL</span>
+                                    <span class="drum-item">SOFTWARE</span>
+                                    <span class="drum-item">WEB APP</span>
+                                    <span class="drum-item">ELECTRONICS</span>
+                                    <span class="drum-item">DOCUMENTATION</span>
+                                </div>
+                            </div>
+                            <button class="drum-arrow drum-next" aria-label="next">&#x25be;</button>
+                        </div>
+                    </div>
+
+                    <div class="drum-sep"></div>
+
+                    <div class="drum-picker" id="drum-visibility">
+                        <span class="drum-label">VISIBILITY</span>
+                        <div class="drum-body">
+                            <button class="drum-arrow drum-prev" aria-label="prev">&#x25b4;</button>
+                            <div class="drum-window">
+                                <div class="drum-track">
+                                    <span class="drum-item">ALL</span>
+                                    <span class="drum-item">PUBLIC</span>
+                                    <span class="drum-item">PRIVATE</span>
+                                </div>
+                            </div>
+                            <button class="drum-arrow drum-next" aria-label="next">&#x25be;</button>
+                        </div>
+                    </div>
+
+                    <div class="drum-sep"></div>
+
+                    <div class="drum-picker" id="drum-activity">
+                        <span class="drum-label">STATE</span>
+                        <div class="drum-body">
+                            <button class="drum-arrow drum-prev" aria-label="prev">&#x25b4;</button>
+                            <div class="drum-window">
+                                <div class="drum-track">
+                                    <span class="drum-item">ALL</span>
+                                    <span class="drum-item">ACTIVE</span>
+                                    <span class="drum-item">PAUSED</span>
+                                    <span class="drum-item">COMPLETED</span>
+                                    <span class="drum-item">CANCELLED</span>
+                                </div>
+                            </div>
+                            <button class="drum-arrow drum-next" aria-label="next">&#x25be;</button>
+                        </div>
+                    </div>
+
+                    <div class="drum-sep"></div>
+
+                    <div class="drum-reset-container">
+                        <button id="drum-reset" class="drum-reset-btn" aria-label="Reset Filters">
+                            <div class="no-switch">
+                                <span class="no-terminal left"></span>
+                                <span class="no-arm"></span>
+                                <span class="no-terminal right"></span>
+                            </div>
+                            <span class="reset-text">RESET</span>
+                        </button>
+                    </div>
+
                 </div>
                 <div class="section-line"></div>
             </div>
 
             <div id="dynamic-sections-container">
-                <section id="labs" class="sub-section">
+                <section id="projects-section" class="sub-section">
                     <div class="section-header">
                         <span class="section-number">02.1</span>
-                        <h2 class="section-title">ACTIVE LABS <span class="section-count" id="labs-count"></span></h2>
+                        <h2 class="section-title">PROJECTS <span class="section-count" id="projects-count"></span></h2>
                         <div class="section-line"></div>
                     </div>
-                    <div id="labs-grid" class="projects-grid">
-                        <!-- Data injected by main.js -->
-                    </div>
-                </section>
-
-                <section id="archive" class="sub-section">
-                    <div class="section-header">
-                        <span class="section-number">02.2</span>
-                        <h2 class="section-title">ARCHIVE <span class="section-count" id="archive-count"></span></h2>
-                        <div class="section-line"></div>
-                    </div>
-                    <div id="archive-grid" class="projects-grid">
+                    <div id="projects-grid" class="projects-grid">
                         <!-- Data injected by main.js -->
                     </div>
                 </section>
