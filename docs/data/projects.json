@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-06-25 // 13:39 PET",
+    "last_sync": "2026-06-25 // 13:56 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -79,8 +79,8 @@
       ],
       "description": "Orquestador de activos de ingeniería.",
       "_telemetry": {
-        "last_update": "2026-06-21",
-        "last_commit_log": "feat(core): forzar inyección de progresos en RAM y reestructurar meta.json"
+        "last_update": "2026-06-25",
+        "last_commit_log": "chore: actualizar activity a 'COMPLETED'"
       }
     },
     {
@@ -94,7 +94,7 @@
         "Industrial Automation"
       ],
       "status": {
-        "activity": "ARCHIVED",
+        "activity": "COMPLETED",
         "maturity": "STABLE",
         "version": "0.1.0",
         "progress_pct": 100,
@@ -128,8 +128,8 @@
       ],
       "description": "Protocolos de optimización y estandarización.",
       "_telemetry": {
-        "last_update": "2026-05-02",
-        "last_commit_log": "chore: cambiar número de imágnes de renderizado 2D a una sola (minimalismo)"
+        "last_update": "2026-06-25",
+        "last_commit_log": "chore: actualizar activity a 'COMPLETED'"
       }
     },
     {
@@ -184,7 +184,7 @@
       "description": "Sistema de gestión de identidad profesional y visualización de activos de ingeniería.",
       "_telemetry": {
         "last_update": "2026-06-25",
-        "last_commit_log": "feat(ui): reemplazar sistema de filtrado drum picker por panel lateral"
+        "last_commit_log": "chore: actualizar meta.json y projects.json"
       }
     },
     {
@@ -198,7 +198,7 @@
         "Hardware Design"
       ],
       "status": {
-        "activity": "ARCHIVED",
+        "activity": "COMPLETED",
         "maturity": "STABLE",
         "version": "0.1.0",
         "progress_pct": 100,
@@ -236,8 +236,8 @@
       ],
       "description": "Controlador de intensidad lumínica.",
       "_telemetry": {
-        "last_update": "2026-05-02",
-        "last_commit_log": "docs: actualizar enlace de código fuente a vista raw con apertura en pestaña nueva"
+        "last_update": "2026-06-25",
+        "last_commit_log": "chore: actualizar activity a 'COMPLETED'"
       }
     },
     {
@@ -248,7 +248,7 @@
       "tags": "WEB APP",
       "domain": [],
       "status": {
-        "activity": "ACTIVE",
+        "activity": "PAUSED",
         "maturity": "BETA",
         "version": "0.1.0",
         "progress_pct": 50,
@@ -274,8 +274,8 @@
       ],
       "description": "Ecosistema de instrumentación electrónica.",
       "_telemetry": {
-        "last_update": "2026-05-22",
-        "last_commit_log": "style: reubicar y compactar barra de búsqueda en sección de catálogo"
+        "last_update": "2026-06-25",
+        "last_commit_log": "chore: actualizar activity a 'PAUSED'"
       }
     },
     {
@@ -291,7 +291,7 @@
         "ACADEMIC"
       ],
       "status": {
-        "activity": "ACTIVE",
+        "activity": "COMPLETED",
         "maturity": "PRODUCTION",
         "version": "1.0.0",
         "progress_pct": 100,
@@ -323,8 +323,8 @@
       ],
       "description": "Sistema centralizado de gestión documental: abarca expedientes técnicos (ANA), contratos, CVs, finanzas personales, tesis y automatización de planos hidráulicos.",
       "_telemetry": {
-        "last_update": "2026-06-22",
-        "last_commit_log": "feat: agregar meta.json para gestión de metadatos en portafolio"
+        "last_update": "2026-06-25",
+        "last_commit_log": "chore: actualizar activity a 'COMPLETED'"
       }
     },
     {
@@ -335,7 +335,7 @@
       "tags": "SOFTWARE",
       "domain": [],
       "status": {
-        "activity": "ACTIVE",
+        "activity": "COMPLETED",
         "maturity": "STABLE",
         "version": "0.1.0",
         "progress_pct": 96,
@@ -368,8 +368,8 @@
       ],
       "description": "Gestor de tareas Kanban interactivo con bindings estilo Vim.",
       "_telemetry": {
-        "last_update": "2026-05-27",
-        "last_commit_log": "feat(ui): implementar validación de repositorio y modal de inicialización"
+        "last_update": "2026-06-25",
+        "last_commit_log": "chore: actualizar activity a 'COMPLETED'"
       }
     },
     {
@@ -441,7 +441,7 @@
         "Hardware Design"
       ],
       "status": {
-        "activity": "ACTIVE",
+        "activity": "CANCELLED",
         "maturity": "PROTOTYPE",
         "version": "0.1.0",
         "progress_pct": 0,
@@ -476,8 +476,8 @@
       ],
       "description": "Sistema automatizado de gestión urbana con control centralizado y cableado estructurado tipo arnés.",
       "_telemetry": {
-        "last_update": "2026-06-23",
-        "last_commit_log": "docs(readme): unificar formato y mejorar estructura visual"
+        "last_update": "2026-06-25",
+        "last_commit_log": "chore: actualizar activity a 'CANCELLED'"
       }
     }
   ]
