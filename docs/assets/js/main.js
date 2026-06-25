@@ -596,10 +596,15 @@ const initNavigation = () => {
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Initial call to set focus on load
 
-    // Smooth scroll to top
+    // Scroll to the active section when clicking the logo
     logo.addEventListener('click', (e) => {
         e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        const targetElement = document.getElementById(activeSection);
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     });
 
     // Mobile menu toggle
