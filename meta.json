@@ -18,8 +18,8 @@
         "progress": 100
       },
       "Supabase_Integration": {
-        "status": "BETA",
-        "progress": 60
+        "status": "PROTOTYPE",
+        "progress": 0
       },
       "Data_Hydration": {
         "status": "STABLE",
