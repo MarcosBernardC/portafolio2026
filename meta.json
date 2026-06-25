@@ -1,12 +1,10 @@
-{
-  "id": "07",
-  "title": "Portfolio 2026",
+{ "id": "07", "title": "Portfolio 2026",
   "category": "Web App",
   "visibility": "PUBLIC",
   "tags": "SOFTWARE",
   "domain": ["Frontend Engineering", "DevOps"],
   "status": {
-    "activity": "ACTIVE",
+    "activity": "COMPLETED",
     "maturity": "BETA",
     "version": "2.0.0",
     "progress_pct": 85,

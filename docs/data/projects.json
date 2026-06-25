@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-06-23 // 22:05 PET",
+    "last_sync": "2026-06-25 // 13:39 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -29,11 +29,13 @@
       ]
     },
     "stats": {
-      "total_managed": 4
+      "total_managed": 9
     }
   },
   "projects": [
-    { "id": "02", "title": "Synquork",
+    {
+      "id": "02",
+      "title": "Synquork",
       "category": "Productivity",
       "visibility": "PUBLIC",
       "tags": "SOFTWARE",
@@ -81,7 +83,9 @@
         "last_commit_log": "feat(core): forzar inyección de progresos en RAM y reestructurar meta.json"
       }
     },
-    { "id": "03", "title": "Industrial Instrumentation Standards",
+    {
+      "id": "03",
+      "title": "Industrial Instrumentation Standards",
       "category": "Industrial R&D",
       "visibility": "PUBLIC",
       "tags": "DOCUMENTATION",
@@ -90,7 +94,7 @@
         "Industrial Automation"
       ],
       "status": {
-        "activity": "COMPLETED",
+        "activity": "ARCHIVED",
         "maturity": "STABLE",
         "version": "0.1.0",
         "progress_pct": 100,
@@ -128,7 +132,9 @@
         "last_commit_log": "chore: cambiar número de imágnes de renderizado 2D a una sola (minimalismo)"
       }
     },
-    { "id": "07", "title": "Portfolio 2026",
+    {
+      "id": "07",
+      "title": "Portfolio 2026",
       "category": "Web App",
       "visibility": "PUBLIC",
       "tags": "SOFTWARE",
@@ -137,7 +143,7 @@
         "DevOps"
       ],
       "status": {
-        "activity": "ACTIVE",
+        "activity": "COMPLETED",
         "maturity": "BETA",
         "version": "2.0.0",
         "progress_pct": 85,
@@ -177,11 +183,13 @@
       ],
       "description": "Sistema de gestión de identidad profesional y visualización de activos de ingeniería.",
       "_telemetry": {
-        "last_update": "2026-06-23",
-        "last_commit_log": "chore: agregar .vscode/ al gitignore"
+        "last_update": "2026-06-25",
+        "last_commit_log": "feat(ui): reemplazar sistema de filtrado drum picker por panel lateral"
       }
     },
-    { "id": "08", "title": "PIC12F675 LED Dimmer",
+    {
+      "id": "08",
+      "title": "PIC12F675 LED Dimmer",
       "category": "Power Electronics",
       "visibility": "PUBLIC",
       "tags": "ELECTRONICS",
@@ -190,7 +198,7 @@
         "Hardware Design"
       ],
       "status": {
-        "activity": "COMPLETED",
+        "activity": "ARCHIVED",
         "maturity": "STABLE",
         "version": "0.1.0",
         "progress_pct": 100,
@@ -232,13 +240,15 @@
         "last_commit_log": "docs: actualizar enlace de código fuente a vista raw con apertura en pestaña nueva"
       }
     },
-    { "id": "09", "title": "Helvetia-Instruments",
+    {
+      "id": "09",
+      "title": "Helvetia-Instruments",
       "category": "Electronic Commerce",
       "visibility": "PRIVATE",
       "tags": "WEB APP",
       "domain": [],
       "status": {
-        "activity": "PAUSED",
+        "activity": "ACTIVE",
         "maturity": "BETA",
         "version": "0.1.0",
         "progress_pct": 50,
@@ -268,7 +278,9 @@
         "last_commit_log": "style: reubicar y compactar barra de búsqueda en sección de catálogo"
       }
     },
-    { "id": "10", "title": "Docs-Central",
+    {
+      "id": "10",
+      "title": "Docs-Central",
       "category": "Technical Documentation & Management",
       "visibility": "PRIVATE",
       "tags": "DOCUMENTATION",
@@ -279,7 +291,7 @@
         "ACADEMIC"
       ],
       "status": {
-        "activity": "COMPLETED",
+        "activity": "ACTIVE",
         "maturity": "PRODUCTION",
         "version": "1.0.0",
         "progress_pct": 100,
@@ -315,13 +327,15 @@
         "last_commit_log": "feat: agregar meta.json para gestión de metadatos en portafolio"
       }
     },
-    { "id": "13", "title": "Kanban-TUI",
+    {
+      "id": "13",
+      "title": "Kanban-TUI",
       "category": "Productivity",
       "visibility": "PUBLIC",
       "tags": "SOFTWARE",
       "domain": [],
       "status": {
-        "activity": "COMPLETED",
+        "activity": "ACTIVE",
         "maturity": "STABLE",
         "version": "0.1.0",
         "progress_pct": 96,
@@ -358,7 +372,9 @@
         "last_commit_log": "feat(ui): implementar validación de repositorio y modal de inicialización"
       }
     },
-    { "id": "15", "title": "NE555 RC Circuit Simulator",
+    {
+      "id": "15",
+      "title": "NE555 RC Circuit Simulator",
       "category": "Electronic Simulation / CS50P Final Project",
       "visibility": "PRIVATE",
       "tags": [
@@ -409,11 +425,13 @@
       ],
       "description": "Simulador computacional de transitorios RC y modos de operación del temporizador 555.",
       "_telemetry": {
-        "last_update": "2026-06-20",
-        "last_commit_log": "chore(cli): reordenar bloques de código y mejorar prompt de TUI"
+        "last_update": "2026-06-25",
+        "last_commit_log": "chore: actualizar estructura de estados y progreso del proyecto"
       }
     },
-    { "id": "16", "title": "Smart City",
+    {
+      "id": "16",
+      "title": "Smart City",
       "category": "Urban Automation",
       "visibility": "PUBLIC",
       "tags": "ELECTRONICS",
@@ -423,7 +441,7 @@
         "Hardware Design"
       ],
       "status": {
-        "activity": "CANCELLED",
+        "activity": "ACTIVE",
         "maturity": "PROTOTYPE",
         "version": "0.1.0",
         "progress_pct": 0,
