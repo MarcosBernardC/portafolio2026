@@ -2,7 +2,7 @@
   "metadata": {
     "owner": "Marcos Bernard",
     "global_status": "Operational",
-    "last_sync": "2026-06-25 // 15:18 PET",
+    "last_sync": "2026-06-25 // 18:21 PET",
     "operational_stack": {
       "core": [
         "C",
@@ -324,7 +324,7 @@
       "description": "Sistema centralizado de gestión documental: abarca expedientes técnicos (ANA), contratos, CVs, finanzas personales, tesis y automatización de planos hidráulicos.",
       "_telemetry": {
         "last_update": "2026-06-25",
-        "last_commit_log": "chore: actualizar activity a 'COMPLETED'"
+        "last_commit_log": "docs(CV): crear versión 2026 (resume_junio)"
       }
     },
     {
